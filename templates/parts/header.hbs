@@ -1,4 +1,9 @@
 <header class="adversary-header-sheet dhca-section dhca-section--header dhca-header">
+  <div class="dhca-header__adornment" aria-hidden="true">
+    <div class="dhca-header__ribbon">{{adversaryType}}</div>
+    <div class="dhca-header__tier">{{source.system.tier}}</div>
+  </div>
+
   <div class="dhca-header__identity">
     <h1
       class="input actor-name dhca-header__name"
@@ -6,11 +11,6 @@
       data-property="name"
       placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
     >{{source.name}}</h1>
-    <span class="dhca-header__separator">,</span>
-    <span class="dhca-header__meta">
-      <span>{{compact.identity.tierLabel}} {{source.system.tier}}</span>
-      <span>{{adversaryType}}</span>
-    </span>
   </div>
 
   {{#if description}}

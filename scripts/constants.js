@@ -19,7 +19,7 @@ export const TEMPLATE_PARTIALS = Object.freeze({
 export const PRELOAD_TEMPLATE_PATHS = Object.freeze(Object.values(TEMPLATE_PARTIALS));
 
 export const DEFAULT_WINDOW = Object.freeze({
-  width: 350,
+  width: 345,
   height: 780
 });
 
