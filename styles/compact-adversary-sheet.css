@@ -27,6 +27,7 @@
   color: var(--dhca-text);
   container-type: inline-size;
   font-family: var(--dhca-font-family);
+  max-height: calc(100vh - 24px);
 }
 
 .adversary.dh-compact-adversary,

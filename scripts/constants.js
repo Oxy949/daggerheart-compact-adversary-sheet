@@ -20,7 +20,7 @@ export const PRELOAD_TEMPLATE_PATHS = Object.freeze(Object.values(TEMPLATE_PARTI
 
 export const DEFAULT_WINDOW = Object.freeze({
   width: 345,
-  height: 780
+  height: "auto"
 });
 
 export const FEATURE_DESCRIPTION_SELECTOR = ".dhca-tab-panel--features .inventory-item .extensible";
