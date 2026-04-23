@@ -66,7 +66,7 @@
   <div class="dhca-header__details{{#unless compact.hasExperiences}} dhca-header__details--single{{/unless}}">
     {{#if compact.hasExperiences}}
       <section class="dhca-detail-panel dhca-detail-panel--experience">
-        <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
+        <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}:</h3>
         <div class="dhca-experience-list">
           {{#each source.system.experiences as |experience id|}}
             <div class="dhca-experience-row" data-tooltip-text="{{experience.description}}">
@@ -82,7 +82,7 @@
     {{/if}}
 
     <section class="dhca-detail-panel dhca-detail-panel--motives">
-      <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</h3>
+      <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}:</h3>
       <div class="dhca-rich-text dhca-rich-text--motives">{{{source.system.motivesAndTactics}}}</div>
     </section>
   </div>

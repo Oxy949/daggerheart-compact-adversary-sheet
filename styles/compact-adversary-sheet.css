@@ -126,10 +126,10 @@
 
 .adversary.dh-compact-adversary .dhca-header__art {
   position: absolute;
-  top: 45px;
-  right: 0;
+  top: 24px;
+  right: -10px;
   z-index: 0;
-  width: 50%;
+  width: 60%;
   pointer-events: none;
   opacity: 0.52;
 }
@@ -157,6 +157,7 @@
   background:
     linear-gradient(90deg, var(--dhca-surface) 0%, rgba(255, 255, 255, 0.94) 20%, rgba(255, 255, 255, 0.32) 46%, rgba(255, 255, 255, 0) 72%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 54%, var(--dhca-surface) 100%);
+  inset: -10%;
 }
 
 .adversary.dh-compact-adversary .dhca-header__art-image {
