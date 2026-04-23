@@ -44,10 +44,10 @@
     </ul>
   </div>
 
-  <div class="compact-detail-grid compact-detail-grid-v2">
-    <section class="compact-detail-panel compact-experience-panel compact-detail-panel-v2">
-      <h3 class="compact-column-heading">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
-      {{#if compact.hasExperiences}}
+  <div class="compact-detail-grid compact-detail-grid-v2{{#unless compact.hasExperiences}} compact-detail-grid-single{{/unless}}">
+    {{#if compact.hasExperiences}}
+      <section class="compact-detail-panel compact-experience-panel compact-detail-panel-v2">
+        <h3 class="compact-column-heading">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
         <div class="compact-experience-list compact-experience-list-v2">
           {{#each source.system.experiences as |experience id|}}
             <div class="compact-experience-row compact-experience-row-v2" data-tooltip-text="{{experience.description}}">
@@ -59,10 +59,8 @@
             </div>
           {{/each}}
         </div>
-      {{else}}
-        <div class="compact-empty">-</div>
-      {{/if}}
-    </section>
+      </section>
+    {{/if}}
 
     <section class="compact-detail-panel compact-motives-panel compact-detail-panel-v2">
       <h3 class="compact-column-heading">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</h3>
