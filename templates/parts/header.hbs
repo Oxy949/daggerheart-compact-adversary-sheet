@@ -1,21 +1,20 @@
-<header class="adversary-header-sheet compact-card compact-card-v2">
-  <div class="compact-header-accent" aria-hidden="true"></div>
-
-  <div class="compact-card-topline">
-    <div class="compact-role-ribbon compact-role-ribbon-v2">
+<header class="adversary-header-sheet compact-card compact-card-v2 compact-header-simple">
+  <div class="compact-identity-line">
+    <h1
+      class="input actor-name compact-actor-name compact-actor-name-v2 compact-identity-name"
+      contenteditable="plaintext-only"
+      data-property="name"
+      placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+    >{{source.name}}</h1><span class="compact-identity-comma">,</span>
+    <span class="compact-identity-meta">
+      <span>Тир {{source.system.tier}}</span>
       <span>{{adversaryType}}</span>
-    </div>
-    <div class="compact-tier-badge compact-tier-badge-v2" data-tooltip-text="{{localize (concat 'DAGGERHEART.GENERAL.Tiers.' source.system.tier)}}">
-      <span>{{source.system.tier}}</span>
-    </div>
+    </span>
   </div>
 
-  <h1
-    class="input actor-name compact-actor-name compact-actor-name-v2"
-    contenteditable="plaintext-only"
-    data-property="name"
-    placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
-  >{{source.name}}</h1>
+  {{#if description}}
+    <div class="compact-adversary-description">{{{description}}}</div>
+  {{/if}}
 
   <div class="compact-summary-lines compact-summary-lines-v2">
     <div class="compact-summary-line">
@@ -45,13 +44,9 @@
     </ul>
   </div>
 
-  <div class="compact-divider-title compact-divider-title-v2 compact-two-up-headings">
-    <span>{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</span>
-    <span>{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</span>
-  </div>
-
   <div class="compact-detail-grid compact-detail-grid-v2">
     <section class="compact-detail-panel compact-experience-panel compact-detail-panel-v2">
+      <h3 class="compact-column-heading">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
       {{#if compact.hasExperiences}}
         <div class="compact-experience-list compact-experience-list-v2">
           {{#each source.system.experiences as |experience id|}}
@@ -70,6 +65,7 @@
     </section>
 
     <section class="compact-detail-panel compact-motives-panel compact-detail-panel-v2">
+      <h3 class="compact-column-heading">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</h3>
       <div class="compact-rich-text compact-rich-text-v2">{{{source.system.motivesAndTactics}}}</div>
     </section>
   </div>
