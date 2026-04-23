@@ -2365,6 +2365,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+  padding: 0 10px;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip-track::-webkit-scrollbar {

@@ -1,14 +1,22 @@
-const MODULE_ID = "daggerheart-compact-adversary-sheet";
+import {
+  DEFAULT_WINDOW,
+  FEATURE_DESCRIPTION_SELECTOR,
+  RESOURCE_STEP_SELECTOR,
+  TEMPLATE_PARTIALS
+} from "./constants.js";
+import { buildCompactContext, clampNumber } from "./utils.js";
 
 export function createCompactAdversarySheetClass(BaseAdversarySheet) {
   return class CompactAdversarySheet extends BaseAdversarySheet {
+    #renderController = null;
+
     static DEFAULT_OPTIONS = foundry.utils.mergeObject(
       foundry.utils.deepClone(BaseAdversarySheet.DEFAULT_OPTIONS),
       {
-        classes: [...(BaseAdversarySheet.DEFAULT_OPTIONS.classes ?? []), "dh-compact-adversary"],
+        classes: [...new Set([...(BaseAdversarySheet.DEFAULT_OPTIONS.classes ?? []), "dh-compact-adversary"])],
         position: {
-          width: 350,
-          height: 780
+          ...(BaseAdversarySheet.DEFAULT_OPTIONS.position ?? {}),
+          ...DEFAULT_WINDOW
         }
       },
       { inplace: false }
@@ -18,21 +26,21 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       foundry.utils.deepClone(BaseAdversarySheet.PARTS),
       {
         header: {
-          template: `modules/${MODULE_ID}/templates/parts/header.hbs`
+          template: TEMPLATE_PARTIALS.header
         },
         sidebar: {
-          template: `modules/${MODULE_ID}/templates/parts/footer.hbs`
+          template: TEMPLATE_PARTIALS.footer
         },
         features: {
-          template: `modules/${MODULE_ID}/templates/parts/features.hbs`,
+          template: TEMPLATE_PARTIALS.features,
           scrollable: [".compact-tab-scroll"]
         },
         effects: {
-          template: `modules/${MODULE_ID}/templates/parts/effects.hbs`,
+          template: TEMPLATE_PARTIALS.effects,
           scrollable: [".compact-tab-scroll"]
         },
         notes: {
-          template: `modules/${MODULE_ID}/templates/parts/notes.hbs`,
+          template: TEMPLATE_PARTIALS.notes,
           scrollable: [".compact-tab-scroll"]
         }
       },
@@ -41,76 +49,77 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
 
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
-
-      const hitPoints = this.document.system.resources?.hitPoints ?? { value: 0, max: 0 };
-      const stress = this.document.system.resources?.stress ?? { value: 0, max: 0 };
-      const makeSlots = (resource) => {
-        const value = Number(resource.value ?? 0);
-        const max = Number(resource.max ?? 0);
-        return Array.from({ length: Math.max(max, 0) }, (_, index) => ({
-          value: index + 1,
-          filled: value >= index + 1
-        }));
-      };
-      const groupSlots = (slots, size = 3) => {
-        const groups = [];
-        for (let index = 0; index < slots.length; index += size) {
-          groups.push(slots.slice(index, index + size));
-        }
-        return groups;
-      };
-      const hitPointSlots = makeSlots(hitPoints);
-      const stressSlots = makeSlots(stress);
-
-      context.compact = {
-        thresholdMajor: this.document.system.damageThresholds?.major ?? 0,
-        thresholdSevere: this.document.system.damageThresholds?.severe ?? 0,
-        hitPoints,
-        stress,
-        hitPointSlots,
-        stressSlots,
-        hitPointSlotGroups: groupSlots(hitPointSlots),
-        stressSlotGroups: groupSlots(stressSlots),
-        attackBonus: this.document.system.attack?.roll?.bonus,
-        criticalThreshold: this.document.system.criticalThreshold,
-        hasExperiences: !foundry.utils.isEmpty(this.document.system.experiences)
-      };
+      context.compact = buildCompactContext(this.document);
       context.useResourcePips = true;
-
       return context;
     }
 
     async _onRender(context, options) {
       await super._onRender(context, options);
-      this.#expandCompactDescriptions();
-      this.#activateCompactResourceSteps();
+      this.#refreshRenderBindings();
+      this.#expandFeatureDescriptions();
+      this.#bindResourceStepButtons();
     }
 
-    #expandCompactDescriptions() {
-      for (const element of this.element.querySelectorAll(".tab.features .inventory-item .extensible")) {
+    async close(options = {}) {
+      this.#renderController?.abort();
+      this.#renderController = null;
+      return super.close(options);
+    }
+
+    #refreshRenderBindings() {
+      this.#renderController?.abort();
+      this.#renderController = new AbortController();
+    }
+
+    #expandFeatureDescriptions() {
+      if (!this.element) return;
+
+      for (const element of this.element.querySelectorAll(FEATURE_DESCRIPTION_SELECTOR)) {
         element.classList.add("extended");
       }
     }
 
-    #activateCompactResourceSteps() {
-      for (const button of this.element.querySelectorAll("[data-compact-resource-step]")) {
-        button.addEventListener("click", this.#onCompactResourceStep);
+    #bindResourceStepButtons() {
+      if (!this.element || !this.#renderController) return;
+
+      const { signal } = this.#renderController;
+
+      for (const button of this.element.querySelectorAll(RESOURCE_STEP_SELECTOR)) {
+        button.addEventListener("click", this.#onCompactResourceStep, { signal });
       }
+    }
+
+    #isSheetEditable() {
+      return this.isEditable ?? this.document.isOwner ?? false;
     }
 
     #onCompactResourceStep = async (event) => {
       event.preventDefault();
       event.stopPropagation();
+
+      if (!this.#isSheetEditable()) return;
+
       const button = event.currentTarget;
       const resourceKey = button.dataset.compactResourceStep;
       const direction = Number(button.dataset.direction ?? 0);
       const resource = this.document.system.resources?.[resourceKey];
-      if (!resource || !direction) return;
+
+      if (!resourceKey || !Number.isFinite(direction) || direction === 0 || !resource) return;
 
       const current = Number(resource.value ?? 0);
-      const max = Number(resource.max ?? current);
-      const value = Math.min(Math.max(current + direction, 0), max);
-      await this.document.update({ [`system.resources.${resourceKey}.value`]: value });
+      const max = Math.max(Number(resource.max ?? current), 0);
+      const nextValue = clampNumber(current + direction, 0, max);
+
+      if (nextValue === current) return;
+
+      button.disabled = true;
+
+      try {
+        await this.document.update({ [`system.resources.${resourceKey}.value`]: nextValue });
+      } finally {
+        button.disabled = !this.#isSheetEditable();
+      }
     };
   };
 }
