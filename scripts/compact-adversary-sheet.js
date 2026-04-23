@@ -7,8 +7,8 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       {
         classes: [...(BaseAdversarySheet.DEFAULT_OPTIONS.classes ?? []), "dh-compact-adversary"],
         position: {
-          width: 380,
-          height: 760
+          width: 350,
+          height: 780
         }
       },
       { inplace: false }
@@ -42,15 +42,29 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
 
+      const hitPoints = this.document.system.resources?.hitPoints ?? { value: 0, max: 0 };
+      const stress = this.document.system.resources?.stress ?? { value: 0, max: 0 };
+      const makeSlots = (resource) => {
+        const value = Number(resource.value ?? 0);
+        const max = Number(resource.max ?? 0);
+        return Array.from({ length: Math.max(max, 0) }, (_, index) => ({
+          value: index + 1,
+          filled: value >= index + 1
+        }));
+      };
+
       context.compact = {
         thresholdMajor: this.document.system.damageThresholds?.major ?? 0,
         thresholdSevere: this.document.system.damageThresholds?.severe ?? 0,
-        hitPoints: this.document.system.resources?.hitPoints,
-        stress: this.document.system.resources?.stress,
+        hitPoints,
+        stress,
+        hitPointSlots: makeSlots(hitPoints),
+        stressSlots: makeSlots(stress),
         attackBonus: this.document.system.attack?.roll?.bonus,
         criticalThreshold: this.document.system.criticalThreshold,
         hasExperiences: !foundry.utils.isEmpty(this.document.system.experiences)
       };
+      context.useResourcePips = true;
 
       return context;
     }
@@ -58,6 +72,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
     async _onRender(context, options) {
       await super._onRender(context, options);
       this.#expandCompactDescriptions();
+      this.#activateCompactResourceSteps();
     }
 
     #expandCompactDescriptions() {
@@ -65,5 +80,26 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
         element.classList.add("extended");
       }
     }
+
+    #activateCompactResourceSteps() {
+      for (const button of this.element.querySelectorAll("[data-compact-resource-step]")) {
+        button.addEventListener("click", this.#onCompactResourceStep);
+      }
+    }
+
+    #onCompactResourceStep = async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const button = event.currentTarget;
+      const resourceKey = button.dataset.compactResourceStep;
+      const direction = Number(button.dataset.direction ?? 0);
+      const resource = this.document.system.resources?.[resourceKey];
+      if (!resource || !direction) return;
+
+      const current = Number(resource.value ?? 0);
+      const max = Number(resource.max ?? current);
+      const value = Math.min(Math.max(current + direction, 0), max);
+      await this.document.update({ [`system.resources.${resourceKey}.value`]: value });
+    };
   };
 }

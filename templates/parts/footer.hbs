@@ -26,18 +26,39 @@
 
   {{#if useResourcePips}}
     <div class="compact-resource-pips compact-resource-pips-v2">
-      {{> "systems/daggerheart/templates/sheets/global/partials/resource-bar.hbs"
-        resource=resources.hitPoints
-        label="DAGGERHEART.GENERAL.HitPoints.short"
-        key="system.resources.hitPoints.value"
-        action="toggleHitPoints"
-      }}
-      {{> "systems/daggerheart/templates/sheets/global/partials/resource-bar.hbs"
-        resource=resources.stress
-        label="DAGGERHEART.GENERAL.stress"
-        key="system.resources.stress.value"
-        action="toggleStress"
-      }}
+      <div class="compact-pip-row">
+        <span class="compact-resource-label">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} ({{compact.hitPoints.max}})</span>
+        <button type="button" class="compact-pip-step" data-compact-resource-step="hitPoints" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}">-</button>
+        <div class="compact-pip-track">
+          {{#each compact.hitPointSlots as |slot|}}
+            <button
+              type="button"
+              class="compact-pip {{#if slot.filled}}filled{{/if}}"
+              data-action="toggleHitPoints"
+              data-value="{{slot.value}}"
+              data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} {{slot.value}}"
+            ></button>
+          {{/each}}
+        </div>
+        <button type="button" class="compact-pip-step" data-compact-resource-step="hitPoints" data-direction="1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}">+</button>
+      </div>
+
+      <div class="compact-pip-row">
+        <span class="compact-resource-label">{{localize 'DAGGERHEART.GENERAL.stress'}} ({{compact.stress.max}})</span>
+        <button type="button" class="compact-pip-step" data-compact-resource-step="stress" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.stress'}}">-</button>
+        <div class="compact-pip-track">
+          {{#each compact.stressSlots as |slot|}}
+            <button
+              type="button"
+              class="compact-pip {{#if slot.filled}}filled{{/if}}"
+              data-action="toggleStress"
+              data-value="{{slot.value}}"
+              data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.stress'}} {{slot.value}}"
+            ></button>
+          {{/each}}
+        </div>
+        <button type="button" class="compact-pip-step" data-compact-resource-step="stress" data-direction="1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.stress'}}">+</button>
+      </div>
     </div>
   {{else}}
     <div class="compact-resource-row compact-resource-row-v2">

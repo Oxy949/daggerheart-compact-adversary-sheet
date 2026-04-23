@@ -20,7 +20,7 @@
   <div class="compact-summary-lines compact-summary-lines-v2">
     <div class="compact-summary-line">
       <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
-      <span class="compact-summary-value">{{ifThen source.system.difficulty source.system.difficulty '—'}}</span>
+      <span class="compact-summary-value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
     </div>
     <div class="compact-summary-line">
       <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.attack'}}:</span>
@@ -28,7 +28,7 @@
         {{#if compact.attackBonus includeZero=true}}
           {{numberFormat compact.attackBonus sign=true}}
         {{else}}
-          —
+          -
         {{/if}}
       </span>
     </div>
@@ -65,7 +65,7 @@
           {{/each}}
         </div>
       {{else}}
-        <div class="compact-empty">—</div>
+        <div class="compact-empty">-</div>
       {{/if}}
     </section>
 
