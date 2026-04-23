@@ -644,14 +644,11 @@
   color: #444;
 }
 
-.adversary.dh-compact-adversary .dhca-tab-panel .inventory-item-content {
-  margin-top: 2px;
-}
-
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item-content.extensible,
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item-content.extensible.extended {
   max-height: none;
   overflow: visible;
+  padding-top: 0;
 }
 
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .invetory-description,
@@ -666,22 +663,25 @@
   margin-top: 6px;
 }
 
+.adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .invetory-description .content-link,
+.adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .invetory-description .inline-roll {
+  font-weight: bold;
+  border: none;
+  border-radius: 0px;
+  background: #fff;
+  color: var(--dhca-text);
+  margin: 0;
+  padding: 0;
+}
+
+
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .invetory-description strong,
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .invetory-description b {
   font-style: italic;
 }
 
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .item-buttons {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .item-button {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: stretch;
+  display: none;
 }
 
 .adversary.dh-compact-adversary .dhca-tab-panel .inventory-item .item-button .spacer {
@@ -937,4 +937,8 @@
   font-size: 14px;
   font-weight: 700;
   text-align: center;
+}
+
+.adversary.dh-compact-adversary p:has(button.measured-template-button) {
+  display: none;
 }
