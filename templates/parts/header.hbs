@@ -1,29 +1,30 @@
-<header class="adversary-header-sheet compact-card compact-card-v2 compact-header-simple">
-  <div class="compact-identity-line">
+<header class="adversary-header-sheet dhca-section dhca-section--header dhca-header">
+  <div class="dhca-header__identity">
     <h1
-      class="input actor-name compact-actor-name compact-actor-name-v2 compact-identity-name"
+      class="input actor-name dhca-header__name"
       contenteditable="plaintext-only"
       data-property="name"
       placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
-    >{{source.name}}<span class="compact-identity-comma">,</span></h1>
-    <span class="compact-identity-meta">
-      <span>Тир {{source.system.tier}}</span>
+    >{{source.name}}</h1>
+    <span class="dhca-header__separator">,</span>
+    <span class="dhca-header__meta">
+      <span>{{compact.identity.tierLabel}} {{source.system.tier}}</span>
       <span>{{adversaryType}}</span>
     </span>
   </div>
 
   {{#if description}}
-    <div class="compact-adversary-description">{{{description}}}</div>
+    <div class="dhca-header__description">{{{description}}}</div>
   {{/if}}
 
-  <div class="compact-summary-lines compact-summary-lines-v2">
-    <div class="compact-summary-line">
-      <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
-      <span class="compact-summary-value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
+  <div class="dhca-header__stats">
+    <div class="dhca-summary__line">
+      <span class="dhca-summary__label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
+      <span class="dhca-summary__value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
     </div>
-    <div class="compact-summary-line">
-      <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.attack'}}:</span>
-      <span class="compact-summary-value">
+    <div class="dhca-summary__line">
+      <span class="dhca-summary__label">{{localize 'DAGGERHEART.GENERAL.attack'}}:</span>
+      <span class="dhca-summary__value">
         {{#if compact.attackBonus includeZero=true}}
           {{numberFormat compact.attackBonus sign=true}}
         {{else}}
@@ -33,8 +34,8 @@
     </div>
   </div>
 
-  <div class="compact-attack-row compact-attack-row-v2">
-    <ul class="compact-attack-list">
+  <div class="dhca-header__attack">
+    <ul class="dhca-header__attack-list">
       {{> 'daggerheart.inventory-item-compact'
         item=document.system.attack
         type='attack'
@@ -44,16 +45,16 @@
     </ul>
   </div>
 
-  <div class="compact-detail-grid compact-detail-grid-v2{{#unless compact.hasExperiences}} compact-detail-grid-single{{/unless}}">
+  <div class="dhca-header__details{{#unless compact.hasExperiences}} dhca-header__details--single{{/unless}}">
     {{#if compact.hasExperiences}}
-      <section class="compact-detail-panel compact-experience-panel compact-detail-panel-v2">
-        <h3 class="compact-column-heading">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
-        <div class="compact-experience-list compact-experience-list-v2">
+      <section class="dhca-detail-panel dhca-detail-panel--experience">
+        <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</h3>
+        <div class="dhca-experience-list">
           {{#each source.system.experiences as |experience id|}}
-            <div class="compact-experience-row compact-experience-row-v2" data-tooltip-text="{{experience.description}}">
-              <span class="compact-experience-name">{{experience.name}}</span>
-              <span class="compact-experience-value">+{{experience.value}}</span>
-              <a class="compact-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
+            <div class="dhca-experience-row" data-tooltip-text="{{experience.description}}">
+              <span class="dhca-experience-name">{{experience.name}}</span>
+              <span class="dhca-experience-value">+{{experience.value}}</span>
+              <a class="dhca-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
                 <i class="fa-regular fa-message"></i>
               </a>
             </div>
@@ -62,17 +63,17 @@
       </section>
     {{/if}}
 
-    <section class="compact-detail-panel compact-motives-panel compact-detail-panel-v2">
-      <h3 class="compact-column-heading">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</h3>
-      <div class="compact-rich-text compact-rich-text-v2 motives-and-tactics">{{{source.system.motivesAndTactics}}}</div>
+    <section class="dhca-detail-panel dhca-detail-panel--motives">
+      <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</h3>
+      <div class="dhca-rich-text dhca-rich-text--motives">{{{source.system.motivesAndTactics}}}</div>
     </section>
   </div>
 
-  <div class="compact-navigation-row compact-navigation-row-v2">
-    <div class="compact-tab-nav compact-tab-nav-v2">
+  <div class="dhca-header__toolbar">
+    <div class="dhca-tab-nav">
       {{> 'systems/daggerheart/templates/sheets/global/tabs/tab-navigation.hbs'}}
     </div>
-    <div class="compact-header-buttons compact-header-buttons-v2">
+    <div class="dhca-header-actions">
       <button type="button" data-action="reactionRoll" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Roll.reaction'}}">
         <i class="fa-solid fa-dice-d20"></i>
       </button>

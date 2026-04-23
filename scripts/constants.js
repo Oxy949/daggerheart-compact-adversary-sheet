@@ -23,8 +23,8 @@ export const DEFAULT_WINDOW = Object.freeze({
   height: 780
 });
 
-export const FEATURE_DESCRIPTION_SELECTOR = ".tab.features .inventory-item .extensible";
-export const RESOURCE_STEP_SELECTOR = "[data-compact-resource-step]";
+export const FEATURE_DESCRIPTION_SELECTOR = ".dhca-tab-panel--features .inventory-item .extensible";
+export const RESOURCE_STEP_SELECTOR = ".dhca-resource-step";
 export const RESOURCE_GROUP_SIZE = 3;
 
 export const RESOURCE_KEYS = Object.freeze({

@@ -1,16 +1,16 @@
 <section
-  class="tab {{tabs.notes.cssClass}} {{tabs.notes.id}} compact-tab-panel"
+  class="tab {{tabs.notes.cssClass}} {{tabs.notes.id}} dhca-section dhca-section--body dhca-tab-panel dhca-tab-panel--notes"
   data-tab="{{tabs.notes.id}}"
   data-group="{{tabs.notes.group}}"
 >
-  <div class="compact-tab-scroll compact-notes-scroll">
-    <fieldset class="compact-notes-fieldset">
-      <legend>{{localize tabs.notes.label}}</legend>
+  <div class="dhca-tab-panel__scroll">
+    <fieldset class="dhca-panel dhca-panel--notes">
+      <legend class="dhca-panel__title">{{localize tabs.notes.label}}</legend>
       {{formInput notes.field value=notes.value enriched=notes.enriched toggled=true}}
     </fieldset>
 
     {{#if (and showAttribution document.system.attribution.artist)}}
-      <label class="artist-attribution compact-artist-attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
+      <label class="dhca-notes__attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
     {{/if}}
   </div>
 </section>

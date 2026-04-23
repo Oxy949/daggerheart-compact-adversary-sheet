@@ -33,15 +33,15 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
         },
         features: {
           template: TEMPLATE_PARTIALS.features,
-          scrollable: [".compact-tab-scroll"]
+          scrollable: [".dhca-tab-panel__scroll"]
         },
         effects: {
           template: TEMPLATE_PARTIALS.effects,
-          scrollable: [".compact-tab-scroll"]
+          scrollable: [".dhca-tab-panel__scroll"]
         },
         notes: {
           template: TEMPLATE_PARTIALS.notes,
-          scrollable: [".compact-tab-scroll"]
+          scrollable: [".dhca-tab-panel__scroll"]
         }
       },
       { inplace: false }
@@ -101,7 +101,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       if (!this.#isSheetEditable()) return;
 
       const button = event.currentTarget;
-      const resourceKey = button.dataset.compactResourceStep;
+      const resourceKey = button.dataset.dhcaResourceStep;
       const direction = Number(button.dataset.direction ?? 0);
       const resource = this.document.system.resources?.[resourceKey];
 
