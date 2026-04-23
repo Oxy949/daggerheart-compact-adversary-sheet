@@ -1,0 +1,90 @@
+<header class="adversary-header-sheet compact-card compact-card-v2">
+  <div class="compact-header-accent" aria-hidden="true"></div>
+
+  <div class="compact-card-topline">
+    <div class="compact-role-ribbon compact-role-ribbon-v2">
+      <span>{{adversaryType}}</span>
+    </div>
+    <div class="compact-tier-badge compact-tier-badge-v2" data-tooltip-text="{{localize (concat 'DAGGERHEART.GENERAL.Tiers.' source.system.tier)}}">
+      <span>{{source.system.tier}}</span>
+    </div>
+  </div>
+
+  <h1
+    class="input actor-name compact-actor-name compact-actor-name-v2"
+    contenteditable="plaintext-only"
+    data-property="name"
+    placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+  >{{source.name}}</h1>
+
+  <div class="compact-summary-lines compact-summary-lines-v2">
+    <div class="compact-summary-line">
+      <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
+      <span class="compact-summary-value">{{ifThen source.system.difficulty source.system.difficulty '—'}}</span>
+    </div>
+    <div class="compact-summary-line">
+      <span class="compact-summary-label">{{localize 'DAGGERHEART.GENERAL.attack'}}:</span>
+      <span class="compact-summary-value">
+        {{#if compact.attackBonus includeZero=true}}
+          {{numberFormat compact.attackBonus sign=true}}
+        {{else}}
+          —
+        {{/if}}
+      </span>
+    </div>
+  </div>
+
+  <div class="compact-attack-row compact-attack-row-v2">
+    <ul class="compact-attack-list">
+      {{> 'daggerheart.inventory-item-compact'
+        item=document.system.attack
+        type='attack'
+        noCompendiumEdit=true
+        hideTooltip=false
+      }}
+    </ul>
+  </div>
+
+  <div class="compact-divider-title compact-divider-title-v2 compact-two-up-headings">
+    <span>{{localize 'DAGGERHEART.GENERAL.experience.plural'}}</span>
+    <span>{{localize 'DAGGERHEART.ACTORS.Adversary.FIELDS.motivesAndTactics.label'}}</span>
+  </div>
+
+  <div class="compact-detail-grid compact-detail-grid-v2">
+    <section class="compact-detail-panel compact-experience-panel compact-detail-panel-v2">
+      {{#if compact.hasExperiences}}
+        <div class="compact-experience-list compact-experience-list-v2">
+          {{#each source.system.experiences as |experience id|}}
+            <div class="compact-experience-row compact-experience-row-v2" data-tooltip-text="{{experience.description}}">
+              <span class="compact-experience-name">{{experience.name}}</span>
+              <span class="compact-experience-value">+{{experience.value}}</span>
+              <a class="compact-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
+                <i class="fa-regular fa-message"></i>
+              </a>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="compact-empty">—</div>
+      {{/if}}
+    </section>
+
+    <section class="compact-detail-panel compact-motives-panel compact-detail-panel-v2">
+      <div class="compact-rich-text compact-rich-text-v2">{{{source.system.motivesAndTactics}}}</div>
+    </section>
+  </div>
+
+  <div class="compact-navigation-row compact-navigation-row-v2">
+    <div class="compact-tab-nav compact-tab-nav-v2">
+      {{> 'systems/daggerheart/templates/sheets/global/tabs/tab-navigation.hbs'}}
+    </div>
+    <div class="compact-header-buttons compact-header-buttons-v2">
+      <button type="button" data-action="reactionRoll" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Roll.reaction'}}">
+        <i class="fa-solid fa-dice-d20"></i>
+      </button>
+      <button type="button" data-action="openSettings" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.openSheetSettings'}}">
+        <i class="fa-solid fa-wrench"></i>
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,24 @@
+<section
+  class="tab {{tabs.effects.cssClass}} {{tabs.effects.id}} compact-tab-panel"
+  data-tab="{{tabs.effects.id}}"
+  data-group="{{tabs.effects.group}}"
+>
+  <div class="compact-tab-scroll compact-effect-scroll">
+    {{> 'daggerheart.inventory-items'
+      title='DAGGERHEART.GENERAL.activeEffects'
+      type='effect'
+      collection=effects.actives
+      canCreate=@root.editable
+      hideResources=true
+    }}
+
+    {{> 'daggerheart.inventory-items'
+      title='DAGGERHEART.GENERAL.inactiveEffects'
+      type='effect'
+      collection=effects.inactives
+      canCreate=@root.editable
+      hideResources=true
+      disabled=true
+    }}
+  </div>
+</section>

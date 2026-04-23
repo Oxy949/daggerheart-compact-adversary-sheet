@@ -1,0 +1,34 @@
+<section
+  class="tab {{tabs.features.cssClass}} {{tabs.features.id}} compact-tab-panel compact-feature-panel"
+  data-tab="{{tabs.features.id}}"
+  data-group="{{tabs.features.group}}"
+>
+  <div class="compact-tab-scroll compact-feature-scroll">
+    <fieldset class="compact-features-fieldset compact-features-fieldset-v2 drop-section">
+      <legend>{{localize tabs.features.label}}</legend>
+      {{#if @root.editable}}
+        <a
+          class="compact-create-feature"
+          data-action="createDoc"
+          data-document-class="Item"
+          data-type="feature"
+          data-tooltip="{{localize 'DOCUMENT.Create' type=''}}"
+        >
+          <i class="fa-solid fa-plus icon-button"></i>
+        </a>
+      {{/if}}
+
+      <ul class="items-list compact-feature-list-v2">
+        {{#each @root.features as |item|}}
+          {{> 'daggerheart.inventory-item'
+            item=item
+            type='feature'
+            actorType=@root.document.type
+            hideContextMenu=true
+            showActions=@root.editable
+          }}
+        {{/each}}
+      </ul>
+    </fieldset>
+  </div>
+</section>

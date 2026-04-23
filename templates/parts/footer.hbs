@@ -1,0 +1,83 @@
+<aside class="adversary-sidebar-sheet compact-footer-card compact-footer-card-v2">
+  <div class="compact-divider-title compact-divider-title-v2">
+    <span>{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} &amp; {{localize 'DAGGERHEART.GENERAL.stress'}}</span>
+  </div>
+
+  <div class="compact-threshold-row compact-threshold-row-v2">
+    <div class="compact-threshold-chip compact-threshold-minor compact-threshold-chip-v2">
+      <span class="compact-threshold-name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.minor'}}</span>
+      <span class="compact-threshold-damage">1 {{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}</span>
+    </div>
+
+    <div class="compact-threshold-value compact-threshold-value-v2">{{compact.thresholdMajor}}</div>
+
+    <div class="compact-threshold-chip compact-threshold-major compact-threshold-chip-v2">
+      <span class="compact-threshold-name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.major'}}</span>
+      <span class="compact-threshold-damage">2 {{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}</span>
+    </div>
+
+    <div class="compact-threshold-value compact-threshold-value-v2">{{compact.thresholdSevere}}</div>
+
+    <div class="compact-threshold-chip compact-threshold-severe compact-threshold-chip-v2">
+      <span class="compact-threshold-name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.severe'}}</span>
+      <span class="compact-threshold-damage">3 {{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}</span>
+    </div>
+  </div>
+
+  {{#if useResourcePips}}
+    <div class="compact-resource-pips compact-resource-pips-v2">
+      {{> "systems/daggerheart/templates/sheets/global/partials/resource-bar.hbs"
+        resource=resources.hitPoints
+        label="DAGGERHEART.GENERAL.HitPoints.short"
+        key="system.resources.hitPoints.value"
+        action="toggleHitPoints"
+      }}
+      {{> "systems/daggerheart/templates/sheets/global/partials/resource-bar.hbs"
+        resource=resources.stress
+        label="DAGGERHEART.GENERAL.stress"
+        key="system.resources.stress.value"
+        action="toggleStress"
+      }}
+    </div>
+  {{else}}
+    <div class="compact-resource-row compact-resource-row-v2">
+      <label class="compact-resource-field compact-resource-field-v2">
+        <span class="compact-resource-label">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}:</span>
+        <input
+          type="number"
+          name="system.resources.hitPoints.value"
+          value="{{compact.hitPoints.value}}"
+          min="0"
+          max="{{compact.hitPoints.max}}"
+          data-allow-delta="true"
+        />
+        <span class="compact-resource-max">{{compact.hitPoints.max}}</span>
+      </label>
+
+      <label class="compact-resource-field compact-resource-field-v2">
+        <span class="compact-resource-label">{{localize 'DAGGERHEART.GENERAL.stress'}}:</span>
+        <input
+          type="number"
+          name="system.resources.stress.value"
+          value="{{compact.stress.value}}"
+          min="0"
+          max="{{compact.stress.max}}"
+          data-allow-delta="true"
+        />
+        <span class="compact-resource-max">{{compact.stress.max}}</span>
+      </label>
+    </div>
+  {{/if}}
+
+  {{#if (lt source.system.criticalThreshold 20)}}
+    <div class="compact-footer-meta compact-footer-meta-v2">
+      <span>
+        {{localize 'DAGGERHEART.GENERAL.criticalShort'}}: {{source.system.criticalThreshold}}+
+      </span>
+    </div>
+  {{/if}}
+
+  {{#if (and showAttribution document.system.attribution.artist)}}
+    <label class="artist-attribution compact-artist-attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
+  {{/if}}
+</aside>
