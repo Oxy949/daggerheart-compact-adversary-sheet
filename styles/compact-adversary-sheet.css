@@ -4,6 +4,7 @@
   --dhca-border: #b9b9b9;
   --dhca-border-strong: #7f848d;
   --dhca-text: #1f2329;
+  --dhca-text-soft: rgba(0, 0, 0, 0.87);
   --dhca-muted: #555c66;
   --dhca-accent: #e3a335;
   --dhca-ribbon: #406d9d;
@@ -887,7 +888,7 @@
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .inventory-item-content {
-  margin-top: 4px;
+  margin-top: 0;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description,
@@ -1396,7 +1397,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 6px;
   align-items: start;
-  margin: 0 0 2px;
+  margin: 0;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .item-label {
@@ -1441,12 +1442,13 @@
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .inventory-item-content {
   margin: 0;
+  padding: 0;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description,
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description p {
   margin: 0;
-  color: var(--dhca-text);
+  color: var(--dhca-text-soft);
   font-size: 15px;
   line-height: 1.45;
 }
@@ -2193,7 +2195,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
-  margin: 0 0 1px;
+  margin: 0 0 -2px;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .item-name {
@@ -2221,7 +2223,7 @@
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description,
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description p {
   margin: 0;
-  color: var(--dhca-text);
+  color: var(--dhca-text-soft);
   font-size: 14px !important;
   line-height: 1.5;
 }
@@ -2538,4 +2540,10 @@
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-role-ribbon-v2,
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-tier-badge-v2 {
   display: none !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .motives-and-tactics {
+  font-style: italic;
+  text-wrap: balance;
+  box-sizing: inherit;
 }
