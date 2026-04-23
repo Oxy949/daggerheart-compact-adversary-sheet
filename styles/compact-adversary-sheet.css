@@ -1017,11 +1017,6 @@
   --dhca-ribbon: #b87333;
   --dhca-tier: #d9ad4f;
   --dhca-chip: #6f7885;
-  width: 350px !important;
-  min-width: 350px !important;
-  max-width: 350px !important;
-  height: 780px !important;
-  max-height: calc(100vh - 16px) !important;
   border: 1px solid #aa8332;
   border-radius: 6px;
   background: var(--dhca-bg);
@@ -1066,6 +1061,10 @@
   box-shadow: none !important;
 }
 
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-content > form > .adversary-header-sheet {
+  grid-area: header !important;
+}
+
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .sheet-body {
   grid-area: body !important;
   min-width: 0;
@@ -1073,6 +1072,10 @@
   padding: 0 16px !important;
   overflow: hidden !important;
   background: transparent !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-content > form > .tab {
+  grid-area: body !important;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .sheet-sidebar {
@@ -1083,6 +1086,10 @@
   padding: 0 !important;
   overflow: visible !important;
   background: transparent !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-content > form > .adversary-sidebar-sheet {
+  grid-area: sidebar !important;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-card,
@@ -1341,9 +1348,7 @@
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-create-feature {
-  top: 15px;
-  right: 2px;
-  color: var(--dhca-muted);
+  display: none !important;
 }
 
 .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-list-v2 {
