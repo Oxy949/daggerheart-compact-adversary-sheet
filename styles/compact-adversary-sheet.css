@@ -1591,3 +1591,394 @@
     break-inside: avoid;
   }
 }
+
+/* =========================
+   Polish pass
+   ========================= */
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary {
+  --dhca-bg: #f2f3f1;
+  --dhca-surface: #fbfbf9;
+  --dhca-surface-soft: #f7f8f6;
+  --dhca-border: #bcc2c8;
+  --dhca-border-soft: #d7dade;
+  --dhca-text: #202226;
+  --dhca-muted: #57606a;
+  --dhca-faint: #7d8690;
+  --dhca-ribbon: #bd7433;
+  --dhca-tier: #d7aa45;
+  --dhca-chip: #737d89;
+  --dhca-radius: 5px;
+  --dhca-font: Arial, Helvetica, sans-serif;
+  font-family: var(--dhca-font);
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary * {
+  letter-spacing: 0;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  left: 10px;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  min-width: 0;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header .window-title {
+  display: block;
+  min-width: 0;
+  max-width: calc(100% - 98px);
+  margin-right: 8px;
+  overflow: hidden;
+  color: var(--dhca-faint);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header .header-button,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header button,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header a {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: 0 0 0 4px;
+  border-radius: 4px;
+  background: rgba(32, 34, 38, 0.9);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .adversary-header-sheet {
+  padding: 30px 18px 8px !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-card-topline {
+  top: 28px;
+  right: 0;
+  width: 102px;
+  height: 62px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-role-ribbon-v2 {
+  top: 0;
+  right: 0;
+  min-width: 74px;
+  min-height: 20px;
+  padding: 3px 8px 2px 17px;
+  background: var(--dhca-ribbon);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: right;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-tier-badge-v2 {
+  top: 29px;
+  right: 14px;
+  width: 29px;
+  height: 31px;
+  color: #2b2419;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-actor-name-v2 {
+  min-height: 22px;
+  margin: 0 86px 6px 0;
+  font-family: var(--dhca-font);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-summary-lines-v2 {
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-summary-line,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-attack-row-v2 .inventory-item-compact {
+  color: var(--dhca-text);
+  font-family: var(--dhca-font);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-summary-label,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-attack-row-v2 .inventory-item-compact .item-name {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-attack-row-v2 {
+  margin: 5px 86px 8px 0;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-attack-row-v2 .inventory-item-compact .label {
+  color: var(--dhca-text);
+  font-size: 13px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-two-up-headings {
+  gap: 16px;
+  margin: 0 0 4px;
+  color: var(--dhca-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-detail-grid-v2 {
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-experience-row-v2,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-rich-text-v2,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-rich-text-v2 p {
+  color: var(--dhca-text);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-rich-text-v2,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-rich-text-v2 p {
+  font-style: italic;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .sheet-body {
+  padding: 0 18px !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-tab-scroll {
+  padding: 0 8px 12px 0;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-section-heading,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-divider-title-v2 {
+  gap: 8px;
+  margin: 0 0 9px;
+  color: var(--dhca-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-section-heading::before,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-section-heading::after,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-divider-title-v2::before,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-divider-title-v2::after {
+  border-color: var(--dhca-border);
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-list-v2 {
+  gap: 8px;
+  padding-bottom: 12px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item {
+  padding: 10px 11px 9px;
+  border: 1px solid var(--dhca-border-soft);
+  border-radius: var(--dhca-radius);
+  background: var(--dhca-surface);
+  box-shadow: 0 1px 1px rgba(30, 34, 38, 0.04);
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .inventory-item-header {
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .item-name {
+  color: var(--dhca-text);
+  font-family: var(--dhca-font);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .feature-form {
+  color: var(--dhca-muted);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .controls a {
+  color: var(--dhca-muted);
+  font-size: 13px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description p {
+  color: var(--dhca-text);
+  font-size: 14px;
+  line-height: 1.38;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .invetory-description p + p {
+  margin-top: 5px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .tag:not(.feature-form),
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-panel .inventory-item .simple-tag {
+  display: none !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-footer-card-v2 {
+  padding: 8px 18px 12px !important;
+  background: var(--dhca-bg) !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-footer-card-v2 .compact-divider-title-v2 {
+  margin-bottom: 9px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-threshold-row-v2 {
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr) 30px minmax(0, 1fr);
+  margin-bottom: 9px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-threshold-chip-v2 {
+  min-height: 30px;
+  padding: 5px 7px;
+  background: var(--dhca-chip);
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-threshold-name {
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-threshold-damage {
+  font-size: 9px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-threshold-value-v2 {
+  color: var(--dhca-text);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-resource-pips-v2 {
+  gap: 7px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip-row {
+  grid-template-columns: 68px 28px minmax(0, 1fr) 28px;
+  gap: 5px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip-row .compact-resource-label {
+  color: #5f6c7a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip-step {
+  width: 27px;
+  height: 27px;
+  border-color: var(--dhca-border-soft);
+  background: var(--dhca-surface-soft);
+  color: var(--dhca-muted);
+  font-size: 16px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip-track {
+  gap: 4px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip {
+  width: 16px;
+  height: 16px;
+  border-color: #aeb6be;
+  background: #eef1f2;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-pip.filled {
+  background: #778391;
+}
+
+@container (min-width: 660px) {
+  .application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-feature-list-v2 {
+    column-gap: 10px;
+  }
+}
+
+/* Combined tier/type badge */
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .window-header .window-title {
+  display: none !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-card-topline {
+  top: 30px;
+  right: 0;
+  width: auto;
+  height: 24px;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-role-ribbon-v2 {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 22px;
+  padding: 4px 12px 3px 18px;
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%);
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-tier-badge-v2 {
+  display: none !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-actor-name-v2,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary .compact-attack-row-v2 {
+  margin-right: 118px;
+}
+
+/* Final typography override */
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary,
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary * {
+  font-family: "Noto Sans", "Noto Sans Fallback", sans-serif !important;
+  font-size: 14px !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary :is(.fa, .fas, .fa-solid) {
+  font-family: var(--fa-style-family-classic, "Font Awesome 6 Free") !important;
+  font-weight: 900 !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary :is(.far, .fa-regular) {
+  font-family: var(--fa-style-family-classic, "Font Awesome 6 Free") !important;
+  font-weight: 400 !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary :is(.fab, .fa-brands) {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+
+.application.sheet.daggerheart.actor.dh-style.adversary.dh-compact-adversary :is(b, strong, .compact-summary-label, .compact-attack-row-v2 .inventory-item-compact .item-name, .compact-feature-panel .inventory-item .item-name) {
+  font-weight: 700 !important;
+}
