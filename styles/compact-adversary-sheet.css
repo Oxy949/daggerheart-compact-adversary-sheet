@@ -144,6 +144,43 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   box-shadow: none !important;
 }
 
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment).minimized .window-content,
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment).minimizing .window-content,
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment).maximizing .window-content {
+  display: none !important;
+}
+
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment).minimized .window-header {
+  position: relative !important;
+  inset: auto !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex: 0 0 var(--header-height, 32px) !important;
+  width: 100% !important;
+  height: var(--header-height, 32px) !important;
+  padding: 0 8px !important;
+  background: var(--color-header-background, var(--dhca-control-bg)) !important;
+  border-bottom: 1px solid var(--color-border, transparent) !important;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment).minimized .window-header .window-title {
+  display: block !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--color-light-1) !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: var(--header-height, 32px) !important;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .adversary.dh-compact-adversary .window-content {
   position: relative;
   isolation: isolate;
@@ -188,6 +225,7 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  margin: 0;
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-section--header {
