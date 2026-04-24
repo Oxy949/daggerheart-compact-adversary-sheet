@@ -25,7 +25,10 @@
     {{#if useResourcePips}}
       <div class="dhca-resources">
         <div class="dhca-resource-row dhca-resource-row--hp">
-          <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} ({{compact.hitPoints.max}})</span>
+          <span class="dhca-resource-row__label">
+            <span class="dhca-resource-row__label-name">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}</span>
+            <span class="dhca-resource-row__label-max">{{compact.hitPoints.value}} / {{compact.hitPoints.max}}</span>
+          </span>
           <button type="button" class="dhca-resource-step" data-dhca-resource-step="hitPoints" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}">-</button>
           <div class="dhca-resource-row__track">
             {{#each compact.hitPointSlotGroups as |group|}}
@@ -46,7 +49,10 @@
         </div>
 
         <div class="dhca-resource-row dhca-resource-row--stress">
-          <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.stress'}} ({{compact.stress.max}})</span>
+          <span class="dhca-resource-row__label">
+            <span class="dhca-resource-row__label-name">{{localize 'DAGGERHEART.GENERAL.stress'}}</span>
+            <span class="dhca-resource-row__label-max">{{compact.stress.value}} / {{compact.stress.max}}</span>
+          </span>
           <button type="button" class="dhca-resource-step" data-dhca-resource-step="stress" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.stress'}}">-</button>
           <div class="dhca-resource-row__track">
             {{#each compact.stressSlotGroups as |group|}}
