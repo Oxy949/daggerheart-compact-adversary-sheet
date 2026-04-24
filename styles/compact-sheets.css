@@ -663,18 +663,22 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
 }
 
 .sheet.dh-compact .dhca-tab-nav [data-action="tab"] {
-  min-width: 72px;
-  padding: 3px 9px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
   border: 1px solid var(--dhca-line);
   border-radius: 999px;
   background: var(--dhca-button-bg);
   color: var(--dhca-button-text-soft);
-  font-size: 0.64rem;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1.1;
+  letter-spacing: 0;
+  line-height: 1;
   backdrop-filter: blur(0);
+  box-shadow: none;
   transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease, backdrop-filter 120ms ease, box-shadow 120ms ease;
 }
 

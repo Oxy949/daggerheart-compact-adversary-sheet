@@ -71,7 +71,38 @@
 
   <div class="dhca-header__toolbar">
     <div class="dhca-tab-nav">
-      {{> 'systems/daggerheart/templates/sheets/global/tabs/tab-navigation.hbs'}}
+      <nav class="sheet-tabs tabs">
+        <a
+          class="{{tabs.features.cssClass}}"
+          data-action="tab"
+          data-group="{{tabs.features.group}}"
+          data-tab="{{tabs.features.id}}"
+          data-tooltip="{{localize tabs.features.label}}"
+          aria-label="{{localize tabs.features.label}}"
+        >
+          <i class="fa-solid fa-list" inert></i>
+        </a>
+        <a
+          class="{{tabs.effects.cssClass}}"
+          data-action="tab"
+          data-group="{{tabs.effects.group}}"
+          data-tab="{{tabs.effects.id}}"
+          data-tooltip="{{localize tabs.effects.label}}"
+          aria-label="{{localize tabs.effects.label}}"
+        >
+          <i class="fa-solid fa-bolt" inert></i>
+        </a>
+        <a
+          class="{{tabs.notes.cssClass}}"
+          data-action="tab"
+          data-group="{{tabs.notes.group}}"
+          data-tab="{{tabs.notes.id}}"
+          data-tooltip="{{localize tabs.notes.label}}"
+          aria-label="{{localize tabs.notes.label}}"
+        >
+          <i class="fa-solid fa-note-sticky" inert></i>
+        </a>
+      </nav>
     </div>
     <div class="dhca-header-actions">
       <button type="button" data-action="reactionRoll" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Roll.reaction'}}">
