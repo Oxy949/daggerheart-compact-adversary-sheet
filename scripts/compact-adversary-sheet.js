@@ -29,6 +29,9 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
     static PARTS = foundry.utils.mergeObject(
       foundry.utils.deepClone(BaseAdversarySheet.PARTS),
       {
+        art: {
+          template: ADVERSARY_TEMPLATE_PARTIALS.art
+        },
         header: {
           template: ADVERSARY_TEMPLATE_PARTIALS.header
         },

@@ -26,6 +26,9 @@ export function createCompactEnvironmentSheetClass(BaseEnvironmentSheet) {
     static PARTS = foundry.utils.mergeObject(
       foundry.utils.deepClone(BaseEnvironmentSheet.PARTS),
       {
+        art: {
+          template: ENVIRONMENT_TEMPLATE_PARTIALS.art
+        },
         header: {
           template: ENVIRONMENT_TEMPLATE_PARTIALS.header
         },

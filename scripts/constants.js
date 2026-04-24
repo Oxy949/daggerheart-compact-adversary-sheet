@@ -13,6 +13,7 @@ export const SETTING_KEYS = Object.freeze({
 export const TEMPLATE_ROOT = `modules/${MODULE_ID}/templates`;
 
 export const ADVERSARY_TEMPLATE_PARTIALS = Object.freeze({
+  art: `${TEMPLATE_ROOT}/parts/art.hbs`,
   header: `${TEMPLATE_ROOT}/parts/header.hbs`,
   footer: `${TEMPLATE_ROOT}/parts/footer.hbs`,
   features: `${TEMPLATE_ROOT}/parts/features.hbs`,
@@ -21,6 +22,7 @@ export const ADVERSARY_TEMPLATE_PARTIALS = Object.freeze({
 });
 
 export const ENVIRONMENT_TEMPLATE_PARTIALS = Object.freeze({
+  art: `${TEMPLATE_ROOT}/parts/art.hbs`,
   header: `${TEMPLATE_ROOT}/environment/parts/header.hbs`,
   features: `${TEMPLATE_ROOT}/environment/parts/features.hbs`,
   potentialAdversaries: `${TEMPLATE_ROOT}/environment/parts/potential-adversaries.hbs`,

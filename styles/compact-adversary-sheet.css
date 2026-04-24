@@ -143,6 +143,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 .adversary.dh-compact-adversary .window-content {
+  position: relative;
+  isolation: isolate;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) !important;
   grid-template-rows: auto minmax(0, 1fr) auto !important;
@@ -158,16 +160,22 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 .adversary.dh-compact-adversary .adversary-header-sheet {
+  position: relative;
+  z-index: 1;
   grid-area: header;
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .tab {
+  position: relative;
+  z-index: 1;
   grid-area: body;
   min-height: 0;
   margin: 0;
 }
 
 .adversary.dh-compact-adversary .adversary-sidebar-sheet {
+  position: relative;
+  z-index: 1;
   grid-area: footer;
 }
 
@@ -186,6 +194,10 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   isolation: isolate;
 }
 
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header__art-layer {
+  display: contents;
+}
+
 .adversary.dh-compact-adversary .dhca-header__identity,
 .adversary.dh-compact-adversary .dhca-header__description,
 .adversary.dh-compact-adversary .dhca-header__stats,
@@ -197,16 +209,11 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header__art {
   position: absolute;
-  top: 24px;
-  right: -10px;
+  inset: 0 -10px 0 auto;
   z-index: 0;
-  width: 60%;
+  width: 70%;
   pointer-events: none;
   opacity: 0.52;
-}
-
-:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header__art--editable {
-  pointer-events: auto;
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header__art::before,
@@ -214,6 +221,7 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -232,6 +240,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header__art-image {
+  position: relative;
+  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -588,20 +598,28 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   gap: 8px;
   padding: 0;
   border-top: 0;
-  margin-top: -40px;
-  position: absolute;
-  right: 12px;
-  width: calc(100% - 24px);
+  margin-top: 0;
+  position: relative;
+  width: 100%;
   z-index: 5;
-  opacity: 0;
+  overflow: hidden;
   pointer-events: none;
+}
+
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-nav {
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
   transform: translateY(-6px);
   transition:
+    height 160ms ease,
+    max-height 160ms ease,
     opacity 140ms ease,
     transform 140ms ease;
 }
 
-.adversary.dh-compact-adversary .dhca-tab-nav nav {
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-nav nav {
   display: flex;
   flex-wrap: nowrap;
   gap: 6px;
@@ -612,17 +630,18 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-nav [data-action="tab"] {
   min-width: 72px;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border: 1px solid var(--dhca-line);
   border-radius: 999px;
   background: var(--dhca-button-bg);
   color: var(--dhca-button-text-soft);
-  font-size: 0.7rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1.1;
-  transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease;
+  backdrop-filter: blur(0);
+  transition: border-color 120ms ease, color 120ms ease, background-color 120ms ease, backdrop-filter 120ms ease, box-shadow 120ms ease;
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-nav [data-action="tab"].active,
@@ -630,6 +649,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   border-color: var(--dhca-accent);
   background: var(--dhca-button-bg-hover);
   color: var(--dhca-accent-strong);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-header-actions {
@@ -653,7 +674,6 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel {
   display: none;
   min-height: 0;
-  background: var(--dhca-surface);
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel.active {
@@ -720,8 +740,13 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 .adversary.dh-compact-adversary:has(.adversary-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-header__toolbar {
-  opacity: 1;
   pointer-events: auto;
+}
+
+.adversary.dh-compact-adversary:has(.adversary-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-tab-nav {
+  height: 32px;
+  max-height: 32px;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -734,7 +759,7 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   border-top: 1px dashed var(--dhca-line);
 }
 
-.adversary.dh-compact-adversary .dhca-panel--features {
+.adversary.dh-compact-adversary .dhca-panel {
   padding-top: 0;
 }
 
@@ -849,24 +874,24 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   font-weight: 400;
 }
 
-.adversary.dh-compact-adversary .dhca-tab-panel--features {
+.adversary.dh-compact-adversary .dhca-tab-panel {
   padding: 10px 10px !important;
 }
 
-:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel--features .inventory-item .item-label {
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel .inventory-item .item-label {
   display: inline-flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0 4px;
 }
 
-:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel--features .inventory-item .item-labels {
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel .inventory-item .item-labels {
   display: inline;
   min-width: 0;
 }
 
-:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel--features .inventory-item .feature-form,
-:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel--features .inventory-item .feature-form span {
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel .inventory-item .feature-form,
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel .inventory-item .feature-form span {
   white-space: nowrap;
   font-family: var(--dhca-font-family);
 }
@@ -961,7 +986,6 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   width: 100%;
   padding: 10px 16px 14px;
   border-top: 1px dashed var(--dhca-line);
-  background: var(--dhca-surface);
 }
 
 .adversary.dh-compact-adversary .dhca-footer__inner {
@@ -1223,6 +1247,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 .environment.dh-compact-environment .window-content {
+  position: relative;
+  isolation: isolate;
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) !important;
   grid-template-rows: auto minmax(0, 1fr) !important;
@@ -1237,6 +1263,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
 }
 
 .environment.dh-compact-environment .environment-header-sheet {
+  position: relative;
+  z-index: 1;
   grid-area: header;
 }
 
@@ -1303,33 +1331,19 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   text-align: left;
 }
 
-.environment.dh-compact-environment .dhca-tab-nav {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.environment.dh-compact-environment .dhca-tab-nav nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  width: 100%;
-  margin: 0;
-  padding-right: 36px;
-  justify-content: flex-start;
-}
-
-.environment.dh-compact-environment .dhca-tab-nav [data-action="tab"] {
-  min-width: 0;
-}
-
 .environment.dh-compact-environment:has(.environment-header-sheet:hover, .window-header:hover, .dhca-header__toolbar:hover) .window-header {
   opacity: 1;
   pointer-events: auto;
 }
 
 .environment.dh-compact-environment:has(.environment-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-header__toolbar {
-  opacity: 1;
   pointer-events: auto;
+}
+
+.environment.dh-compact-environment:has(.environment-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-tab-nav {
+  height: 32px;
+  max-height: 32px;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -1348,8 +1362,8 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   list-style: none;
 }
 
-.environment.dh-compact-environment .dhca-tab-panel--features .inventory-item .controls,
-.environment.dh-compact-environment .dhca-tab-panel--features .inventory-item .controls a[data-action="toChat"] {
+.environment.dh-compact-environment .dhca-tab-panel .inventory-item .controls,
+.environment.dh-compact-environment .dhca-tab-panel .inventory-item .controls a[data-action="toChat"] {
   display: none;
 }
 
