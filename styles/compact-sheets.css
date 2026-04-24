@@ -659,7 +659,16 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
   gap: 6px;
   width: max-content;
   margin: 0 auto;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
   justify-content: center;
+}
+
+.sheet.dh-compact .dhca-tab-nav .sheet-tabs.tabs::before,
+.sheet.dh-compact .dhca-tab-nav .sheet-tabs.tabs::after {
+  display: none !important;
 }
 
 .sheet.dh-compact .dhca-tab-nav [data-action="tab"] {

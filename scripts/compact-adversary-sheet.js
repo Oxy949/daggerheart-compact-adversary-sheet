@@ -184,7 +184,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       if (!this.#isSheetEditable()) return;
 
       const target = event.currentTarget;
-      const attr = target.dataset.edit ?? "img";
+      const attr = target.dataset.dhcaEdit ?? "img";
       const current = foundry.utils.getProperty(this.document, attr);
       const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {};
 
