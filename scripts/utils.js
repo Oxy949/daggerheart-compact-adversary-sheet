@@ -29,6 +29,31 @@ export function buildCompactContext(document) {
   };
 }
 
+export function buildCompactEnvironmentContext(document) {
+  const typeKey = document.system.type
+    ? `DAGGERHEART.CONFIG.EnvironmentType.${document.system.type}.label`
+    : null;
+
+  const potentialAdversaryCategories = Object.entries(document.system.potentialAdversaries ?? {})
+    .map(([id, category]) => ({
+      adversaries: Array.from(category?.adversaries ?? []),
+      id,
+      label: category?.label ?? id
+    }))
+    .filter((category) => category.adversaries.length > 0);
+
+  return {
+    canEditImage: document.isOwner ?? false,
+    hasImpulses: hasRenderableRichText(document.system.impulses),
+    hasPotentialAdversaries: potentialAdversaryCategories.length > 0,
+    identity: {
+      tierLabel: localizeFallback(I18N_KEYS.tier, "Tier"),
+      typeLabel: typeKey ? localizeFallback(typeKey, document.system.type) : null
+    },
+    potentialAdversaryCategories
+  };
+}
+
 export function clampNumber(value, min, max) {
   const number = Number(value);
   if (!Number.isFinite(number)) return min;
@@ -104,4 +129,15 @@ function toNumber(value, fallback = 0) {
 function toOptionalNumber(value) {
   const number = Number(value);
   return Number.isFinite(number) ? number : null;
+}
+
+function hasRenderableRichText(value) {
+  if (typeof value !== "string") return Boolean(value);
+
+  return Boolean(
+    value
+      .replace(/<[^>]+>/g, "")
+      .replace(/&nbsp;/gi, " ")
+      .trim()
+  );
 }

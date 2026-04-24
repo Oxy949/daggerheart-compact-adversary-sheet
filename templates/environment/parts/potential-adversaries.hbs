@@ -1,0 +1,32 @@
+<section
+  class="tab {{tabs.potentialAdversaries.cssClass}} {{tabs.potentialAdversaries.id}} dhca-section dhca-section--body dhca-tab-panel dhca-tab-panel--potential-adversaries"
+  data-tab="{{tabs.potentialAdversaries.id}}"
+  data-group="{{tabs.potentialAdversaries.group}}"
+>
+  <div class="dhca-tab-panel__scroll">
+    {{#each compact.potentialAdversaryCategories as |category|}}
+      <fieldset class="dhca-panel dhca-panel--adversaries">
+        <legend class="dhca-panel__title">{{category.label}}</legend>
+
+        <ul class="items-list dhca-actor-list">
+          {{#each category.adversaries as |item|}}
+            {{> 'daggerheart.inventory-item-compact'
+              item=item
+              type='adversary'
+              isActor=true
+              categoryAdversary=category.id
+              hideControls=true
+              hideTooltip=false
+            }}
+          {{/each}}
+        </ul>
+      </fieldset>
+    {{/each}}
+
+    {{#unless compact.hasPotentialAdversaries}}
+      <fieldset class="dhca-panel dhca-panel--adversaries">
+        <legend class="dhca-panel__title">{{localize tabs.potentialAdversaries.label}}</legend>
+      </fieldset>
+    {{/unless}}
+  </div>
+</section>

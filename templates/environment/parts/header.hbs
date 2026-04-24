@@ -1,0 +1,68 @@
+<header class="environment-header-sheet dhca-section dhca-section--header dhca-header dhca-header--environment">
+  <div class="dhca-header__adornment" aria-hidden="true">
+    {{#if compact.identity.typeLabel}}
+      <div class="dhca-header__ribbon">{{compact.identity.typeLabel}}</div>
+    {{/if}}
+    <div class="dhca-header__tier">{{source.system.tier}}</div>
+  </div>
+
+  {{#if document.img}}
+    <div class="dhca-header__art{{#if compact.canEditImage}} dhca-header__art--editable{{/if}}">
+      <img class="dhca-header__art-image" src="{{document.img}}" alt="" aria-hidden="true" />
+    </div>
+    {{#if compact.canEditImage}}
+      <button
+        type="button"
+        class="dhca-header__art-edit"
+        data-action="editImage"
+        data-edit="img"
+        data-tooltip-text="{{localize 'FILES.Edit'}}"
+        aria-label="{{localize 'FILES.Edit'}}"
+      >
+        <i class="fa-solid fa-image"></i>
+      </button>
+    {{/if}}
+  {{/if}}
+
+  <div class="dhca-header__identity">
+    <h1
+      class="input actor-name dhca-header__name"
+      contenteditable="plaintext-only"
+      data-property="name"
+      placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+    >{{source.name}}</h1>
+  </div>
+
+  {{#if description}}
+    <div class="dhca-header__description">{{{description}}}</div>
+  {{/if}}
+
+  {{#if (and showAttribution document.system.attributionLabel)}}
+    <div class="dhca-header__attribution">{{document.system.attributionLabel}}</div>
+  {{/if}}
+
+  <div class="dhca-header__stats dhca-header__stats--environment">
+    <div class="dhca-summary__line">
+      <span class="dhca-summary__label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
+      <span class="dhca-summary__value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
+    </div>
+  </div>
+
+  {{#if compact.hasImpulses}}
+    <section class="dhca-detail-panel dhca-detail-panel--environment">
+      <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.ACTORS.Environment.FIELDS.impulses.label'}}:</h3>
+      <div class="dhca-rich-text dhca-rich-text--impulses">{{{source.system.impulses}}}</div>
+    </section>
+  {{/if}}
+
+  <div class="dhca-header__toolbar">
+    <div class="dhca-tab-nav">
+      {{> 'systems/daggerheart/templates/sheets/global/tabs/tab-navigation.hbs'}}
+    </div>
+    <div class="dhca-header-actions">
+      <button type="button" data-action="openSettings" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.openSheetSettings'}}">
+        <i class="fa-solid fa-wrench"></i>
+      </button>
+    </div>
+  </div>
+</header>

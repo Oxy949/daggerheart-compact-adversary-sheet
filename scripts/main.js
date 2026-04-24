@@ -1,9 +1,10 @@
 import { createCompactAdversarySheetClass } from "./compact-adversary-sheet.js";
+import { createCompactEnvironmentSheetClass } from "./compact-environment-sheet.js";
 import {
   MODULE_ID,
   PRELOAD_TEMPLATE_PATHS,
   SETTING_KEYS,
-  SHEET_LABEL,
+  SHEET_LABELS,
   SYSTEM_ID
 } from "./constants.js";
 
@@ -14,13 +15,23 @@ Hooks.once("init", async () => {
 
 Hooks.once("setup", () => {
   if (game.system.id !== SYSTEM_ID) return;
-  registerCompactSheet();
+  registerCompactSheets();
 });
 
 function registerSettings() {
-  game.settings.register(MODULE_ID, SETTING_KEYS.makeDefault, {
+  game.settings.register(MODULE_ID, SETTING_KEYS.makeAdversaryDefault, {
     name: "Use compact sheet as the default adversary sheet",
     hint: "When enabled, adversary actors open with the compact sheet by default. Reload after changing this setting.",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    requiresReload: true
+  });
+
+  game.settings.register(MODULE_ID, SETTING_KEYS.makeEnvironmentDefault, {
+    name: "Use compact sheet as the default environment sheet",
+    hint: "When enabled, environment actors open with the compact sheet by default. Reload after changing this setting.",
     scope: "world",
     config: true,
     type: Boolean,
@@ -33,19 +44,37 @@ async function preloadTemplates() {
   await foundry.applications.handlebars.loadTemplates(PRELOAD_TEMPLATE_PATHS);
 }
 
-function registerCompactSheet() {
-  const BaseAdversarySheet = game.system.api?.applications?.sheets?.actors?.Adversary;
+function registerCompactSheets() {
+  const actorSheets = game.system.api?.applications?.sheets?.actors;
 
-  if (!BaseAdversarySheet) {
-    console.warn(`${MODULE_ID} | Daggerheart adversary sheet class was not found. Registration skipped.`);
+  registerCompactSheet({
+    baseSheet: actorSheets?.Adversary,
+    factory: createCompactAdversarySheetClass,
+    label: SHEET_LABELS.adversary,
+    makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makeAdversaryDefault),
+    type: "adversary"
+  });
+
+  registerCompactSheet({
+    baseSheet: actorSheets?.Environment,
+    factory: createCompactEnvironmentSheetClass,
+    label: SHEET_LABELS.environment,
+    makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makeEnvironmentDefault),
+    type: "environment"
+  });
+}
+
+function registerCompactSheet({ baseSheet, factory, label, makeDefault, type }) {
+  if (!baseSheet) {
+    console.warn(`${MODULE_ID} | Daggerheart ${type} sheet class was not found. Registration skipped.`);
     return;
   }
 
-  const CompactAdversarySheet = createCompactAdversarySheetClass(BaseAdversarySheet);
+  const CompactSheet = factory(baseSheet);
 
-  foundry.documents.collections.Actors.registerSheet(MODULE_ID, CompactAdversarySheet, {
-    types: ["adversary"],
-    makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makeDefault),
-    label: SHEET_LABEL
+  foundry.documents.collections.Actors.registerSheet(MODULE_ID, CompactSheet, {
+    types: [type],
+    makeDefault,
+    label
   });
 }

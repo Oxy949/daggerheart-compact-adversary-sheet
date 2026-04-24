@@ -1,8 +1,8 @@
 import {
-  DEFAULT_WINDOW,
+  ADVERSARY_TEMPLATE_PARTIALS,
+  DEFAULT_WINDOWS,
   FEATURE_DESCRIPTION_SELECTOR,
-  RESOURCE_STEP_SELECTOR,
-  TEMPLATE_PARTIALS
+  RESOURCE_STEP_SELECTOR
 } from "./constants.js";
 import { buildCompactContext, clampNumber } from "./utils.js";
 
@@ -20,7 +20,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
         classes: [...new Set([...(BaseAdversarySheet.DEFAULT_OPTIONS.classes ?? []), "dh-compact-adversary"])],
         position: {
           ...(BaseAdversarySheet.DEFAULT_OPTIONS.position ?? {}),
-          ...DEFAULT_WINDOW
+          ...DEFAULT_WINDOWS.adversary
         }
       },
       { inplace: false }
@@ -30,21 +30,21 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       foundry.utils.deepClone(BaseAdversarySheet.PARTS),
       {
         header: {
-          template: TEMPLATE_PARTIALS.header
+          template: ADVERSARY_TEMPLATE_PARTIALS.header
         },
         sidebar: {
-          template: TEMPLATE_PARTIALS.footer
+          template: ADVERSARY_TEMPLATE_PARTIALS.footer
         },
         features: {
-          template: TEMPLATE_PARTIALS.features,
+          template: ADVERSARY_TEMPLATE_PARTIALS.features,
           scrollable: [".dhca-tab-panel__scroll"]
         },
         effects: {
-          template: TEMPLATE_PARTIALS.effects,
+          template: ADVERSARY_TEMPLATE_PARTIALS.effects,
           scrollable: [".dhca-tab-panel__scroll"]
         },
         notes: {
-          template: TEMPLATE_PARTIALS.notes,
+          template: ADVERSARY_TEMPLATE_PARTIALS.notes,
           scrollable: [".dhca-tab-panel__scroll"]
         }
       },
