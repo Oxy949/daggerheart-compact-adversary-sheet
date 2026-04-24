@@ -31,7 +31,11 @@
     "scripts/main.js"
   ],
   "styles": [
-    "styles/compact-sheets.css"
+    "styles/compact-sheets.css",
+    "styles/compact-header.css",
+    "styles/compact-panels.css",
+    "styles/compact-adversary.css",
+    "styles/compact-environment.css"
   ],
   "license": "MIT"
 }

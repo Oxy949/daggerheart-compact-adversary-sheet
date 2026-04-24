@@ -9,29 +9,29 @@
         <span class="dhca-thresholds__name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.minor'}}</span>
       </div>
 
-      <span class="dhca-thresholds__value">{{compact.thresholdMajor}}</span>
+      <span class="dhca-thresholds__value">{{compact.thresholds.major}}</span>
 
       <div class="dhca-thresholds__label">
         <span class="dhca-thresholds__name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.major'}}</span>
       </div>
 
-      <span class="dhca-thresholds__value">{{compact.thresholdSevere}}</span>
+      <span class="dhca-thresholds__value">{{compact.thresholds.severe}}</span>
 
       <div class="dhca-thresholds__label">
         <span class="dhca-thresholds__name">{{localize 'DAGGERHEART.GENERAL.DamageThresholds.severe'}}</span>
       </div>
     </div>
 
-    {{#if useResourcePips}}
+    {{#if compact.useResourcePips}}
       <div class="dhca-resources">
         <div class="dhca-resource-row dhca-resource-row--hp">
           <span class="dhca-resource-row__label">
             <span class="dhca-resource-row__label-name">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}</span>
-            <span class="dhca-resource-row__label-max">{{compact.hitPoints.value}} / {{compact.hitPoints.max}}</span>
+            <span class="dhca-resource-row__label-max">{{compact.resources.hitPoints.value}} / {{compact.resources.hitPoints.max}}</span>
           </span>
           <button type="button" class="dhca-resource-step" data-dhca-resource-step="hitPoints" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}">-</button>
           <div class="dhca-resource-row__track">
-            {{#each compact.hitPointSlotGroups as |group|}}
+            {{#each compact.resources.hitPoints.slotGroups as |group|}}
               <div class="dhca-resource-row__group">
                 {{#each group as |slot|}}
                   <button
@@ -51,11 +51,11 @@
         <div class="dhca-resource-row dhca-resource-row--stress">
           <span class="dhca-resource-row__label">
             <span class="dhca-resource-row__label-name">{{localize 'DAGGERHEART.GENERAL.stress'}}</span>
-            <span class="dhca-resource-row__label-max">{{compact.stress.value}} / {{compact.stress.max}}</span>
+            <span class="dhca-resource-row__label-max">{{compact.resources.stress.value}} / {{compact.resources.stress.max}}</span>
           </span>
           <button type="button" class="dhca-resource-step" data-dhca-resource-step="stress" data-direction="-1" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.stress'}}">-</button>
           <div class="dhca-resource-row__track">
-            {{#each compact.stressSlotGroups as |group|}}
+            {{#each compact.resources.stress.slotGroups as |group|}}
               <div class="dhca-resource-row__group">
                 {{#each group as |slot|}}
                   <button
@@ -79,12 +79,12 @@
           <input
             type="number"
             name="system.resources.hitPoints.value"
-            value="{{compact.hitPoints.value}}"
+            value="{{compact.resources.hitPoints.value}}"
             min="0"
-            max="{{compact.hitPoints.max}}"
+            max="{{compact.resources.hitPoints.max}}"
             data-allow-delta="true"
           />
-          <span class="dhca-resource-field__max">{{compact.hitPoints.max}}</span>
+          <span class="dhca-resource-field__max">{{compact.resources.hitPoints.max}}</span>
         </label>
 
         <label class="dhca-resource-field">
@@ -92,20 +92,20 @@
           <input
             type="number"
             name="system.resources.stress.value"
-            value="{{compact.stress.value}}"
+            value="{{compact.resources.stress.value}}"
             min="0"
-            max="{{compact.stress.max}}"
+            max="{{compact.resources.stress.max}}"
             data-allow-delta="true"
           />
-          <span class="dhca-resource-field__max">{{compact.stress.max}}</span>
+          <span class="dhca-resource-field__max">{{compact.resources.stress.max}}</span>
         </label>
       </div>
     {{/if}}
 
-    {{#if (lt source.system.criticalThreshold 20)}}
+    {{#if (lt compact.criticalThreshold 20)}}
       <div class="dhca-footer__meta">
         <span>
-          {{localize 'DAGGERHEART.GENERAL.criticalShort'}}: {{source.system.criticalThreshold}}+
+          {{localize 'DAGGERHEART.GENERAL.criticalShort'}}: {{compact.criticalThreshold}}+
         </span>
       </div>
     {{/if}}

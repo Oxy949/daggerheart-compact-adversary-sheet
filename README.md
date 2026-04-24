@@ -13,7 +13,8 @@ Compact sheet module for Foundry VTT 13/14 and the Foundryborne Daggerheart syst
 
 - `scripts/main.js` - module bootstrap, settings, and sheet registration
 - `scripts/constants.js` - shared ids, paths, and config
+- `scripts/compact-sheet-helpers.js` - shared sheet class helpers and render bindings
 - `scripts/utils.js` - compact-context builders and data normalization helpers
 - `scripts/compact-adversary-sheet.js` - compact sheet subclass
 - `scripts/compact-environment-sheet.js` - compact environment sheet subclass
-- `styles/compact-sheets.css` - shared compact sheet styles
+- `styles/compact-*.css` - compact sheet tokens, layout, panels, and actor-specific styles

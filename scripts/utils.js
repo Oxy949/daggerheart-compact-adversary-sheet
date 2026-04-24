@@ -10,9 +10,6 @@ export function buildCompactContext(document) {
     canEditImage: document.isOwner ?? false,
     criticalThreshold: toNumber(document.system.criticalThreshold, 20),
     hasExperiences: !foundry.utils.isEmpty(document.system.experiences),
-    hitPoints: pickResourceSummary(hitPoints),
-    hitPointSlotGroups: hitPoints.slotGroups,
-    hitPointSlots: hitPoints.slots,
     identity: {
       tierLabel: localizeFallback(I18N_KEYS.tier, "Tier")
     },
@@ -20,12 +17,7 @@ export function buildCompactContext(document) {
       hitPoints,
       stress
     },
-    stress: pickResourceSummary(stress),
-    stressSlotGroups: stress.slotGroups,
-    stressSlots: stress.slots,
-    thresholds,
-    thresholdMajor: thresholds.major,
-    thresholdSevere: thresholds.severe
+    thresholds
   };
 }
 
@@ -98,13 +90,6 @@ function buildResourceTrack(key, resource = {}, groupSize = RESOURCE_GROUP_SIZE)
     slotGroups: groupItems(slots, groupSize),
     slots,
     value
-  };
-}
-
-function pickResourceSummary(resource) {
-  return {
-    value: resource.value,
-    max: resource.max
   };
 }
 

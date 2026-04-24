@@ -1,94 +1,69 @@
 import {
   ADVERSARY_TEMPLATE_PARTIALS,
   DEFAULT_WINDOWS,
-  FEATURE_DESCRIPTION_SELECTOR,
+  RESOURCE_ROW_SELECTOR,
   RESOURCE_STEP_SELECTOR
 } from "./constants.js";
+import {
+  bindCompactImageEditButtons,
+  buildTabNavContext,
+  closeRenderController,
+  createCompactDefaultOptions,
+  createCompactParts,
+  createTemplatePart,
+  expandFeatureDescriptions,
+  isCompactSheetEditable,
+  openCompactImagePicker,
+  refreshRenderController
+} from "./compact-sheet-helpers.js";
 import { buildCompactContext, clampNumber } from "./utils.js";
 
-const ART_EDIT_SELECTOR = ".dhca-header__art-edit";
-const RESOURCE_ROW_SELECTOR = ".dhca-resource-row:not(.dhca-resource-row--fallback)";
+const TAB_NAV_ENTRIES = Object.freeze([
+  { id: "features", icon: "fa-solid fa-list" },
+  { id: "effects", icon: "fa-solid fa-bolt" },
+  { id: "notes", icon: "fa-solid fa-note-sticky" }
+]);
 
 export function createCompactAdversarySheetClass(BaseAdversarySheet) {
   return class CompactAdversarySheet extends BaseAdversarySheet {
     #renderController = null;
     #resourceTrackResizeObserver = null;
 
-    static DEFAULT_OPTIONS = foundry.utils.mergeObject(
-      foundry.utils.deepClone(BaseAdversarySheet.DEFAULT_OPTIONS),
-      {
-        classes: [...new Set([...(BaseAdversarySheet.DEFAULT_OPTIONS.classes ?? []), "dh-compact"])],
-        position: {
-          ...(BaseAdversarySheet.DEFAULT_OPTIONS.position ?? {}),
-          ...DEFAULT_WINDOWS.adversary
-        }
-      },
-      { inplace: false }
-    );
+    static DEFAULT_OPTIONS = createCompactDefaultOptions(BaseAdversarySheet, DEFAULT_WINDOWS.adversary);
 
-    static PARTS = foundry.utils.mergeObject(
-      foundry.utils.deepClone(BaseAdversarySheet.PARTS),
-      {
-        art: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.art
-        },
-        header: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.header
-        },
-        sidebar: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.footer
-        },
-        features: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.features,
-          scrollable: [".dhca-tab-panel__scroll"]
-        },
-        effects: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.effects,
-          scrollable: [".dhca-tab-panel__scroll"]
-        },
-        notes: {
-          template: ADVERSARY_TEMPLATE_PARTIALS.notes,
-          scrollable: [".dhca-tab-panel__scroll"]
-        }
-      },
-      { inplace: false }
-    );
+    static PARTS = createCompactParts(BaseAdversarySheet, {
+      art: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.art),
+      header: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.header),
+      sidebar: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.footer),
+      features: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.features, { scrollable: true }),
+      effects: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.effects, { scrollable: true }),
+      notes: createTemplatePart(ADVERSARY_TEMPLATE_PARTIALS.notes, { scrollable: true })
+    });
 
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
-      context.compact = buildCompactContext(this.document);
-      context.useResourcePips = true;
+      context.compact = {
+        ...buildCompactContext(this.document),
+        tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES),
+        useResourcePips: true
+      };
       return context;
     }
 
     async _onRender(context, options) {
       await super._onRender(context, options);
-      this.#refreshRenderBindings();
-      this.#expandFeatureDescriptions();
+      this.#renderController = refreshRenderController(this.#renderController);
+      expandFeatureDescriptions(this.element);
       this.#bindResourceStepButtons();
-      this.#bindImageEditButton();
+      bindCompactImageEditButtons(this.element, this.#renderController.signal, this.#onCompactImageEdit);
       this.#bindResponsiveResourceTracks();
     }
 
     async close(options = {}) {
-      this.#renderController?.abort();
-      this.#renderController = null;
+      this.#renderController = closeRenderController(this.#renderController);
       this.#resourceTrackResizeObserver?.disconnect();
       this.#resourceTrackResizeObserver = null;
       return super.close(options);
-    }
-
-    #refreshRenderBindings() {
-      this.#renderController?.abort();
-      this.#renderController = new AbortController();
-    }
-
-    #expandFeatureDescriptions() {
-      if (!this.element) return;
-
-      for (const element of this.element.querySelectorAll(FEATURE_DESCRIPTION_SELECTOR)) {
-        element.classList.add("extended");
-      }
     }
 
     #bindResourceStepButtons() {
@@ -98,16 +73,6 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
 
       for (const button of this.element.querySelectorAll(RESOURCE_STEP_SELECTOR)) {
         button.addEventListener("click", this.#onCompactResourceStep, { signal });
-      }
-    }
-
-    #bindImageEditButton() {
-      if (!this.element || !this.#renderController) return;
-
-      const { signal } = this.#renderController;
-
-      for (const button of this.element.querySelectorAll(ART_EDIT_SELECTOR)) {
-        button.addEventListener("click", this.#onCompactImageEdit, { signal });
       }
     }
 
@@ -146,7 +111,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
     }
 
     #isSheetEditable() {
-      return this.isEditable ?? this.document.isOwner ?? false;
+      return isCompactSheetEditable(this);
     }
 
     #onCompactResourceStep = async (event) => {
@@ -177,29 +142,6 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       }
     };
 
-    #onCompactImageEdit = (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (!this.#isSheetEditable()) return;
-
-      const target = event.currentTarget;
-      const attr = target.dataset.dhcaEdit ?? "img";
-      const current = foundry.utils.getProperty(this.document, attr);
-      const { img } = this.document.constructor.getDefaultArtwork?.(this.document.toObject()) ?? {};
-
-      const picker = new foundry.applications.apps.FilePicker.implementation({
-        current,
-        type: "image",
-        redirectToRoot: img ? [img] : [],
-        callback: async (path) => {
-          await this.document.update({ [attr]: path });
-        },
-        top: this.position.top + 40,
-        left: this.position.left + 10
-      });
-
-      return picker.browse();
-    };
+    #onCompactImageEdit = (event) => openCompactImagePicker(this, event);
   };
 }

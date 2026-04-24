@@ -37,40 +37,7 @@
   </div>
 
   <div class="dhca-header__toolbar">
-    <div class="dhca-tab-nav">
-      <nav class="sheet-tabs tabs">
-        <a
-          class="{{tabs.features.cssClass}}"
-          data-action="tab"
-          data-group="{{tabs.features.group}}"
-          data-tab="{{tabs.features.id}}"
-          data-tooltip="{{localize tabs.features.label}}"
-          aria-label="{{localize tabs.features.label}}"
-        >
-          <i class="fa-solid fa-list" inert></i>
-        </a>
-        <a
-          class="{{tabs.potentialAdversaries.cssClass}}"
-          data-action="tab"
-          data-group="{{tabs.potentialAdversaries.group}}"
-          data-tab="{{tabs.potentialAdversaries.id}}"
-          data-tooltip="{{localize tabs.potentialAdversaries.label}}"
-          aria-label="{{localize tabs.potentialAdversaries.label}}"
-        >
-          <i class="fa-solid fa-user-group" inert></i>
-        </a>
-        <a
-          class="{{tabs.notes.cssClass}}"
-          data-action="tab"
-          data-group="{{tabs.notes.group}}"
-          data-tab="{{tabs.notes.id}}"
-          data-tooltip="{{localize tabs.notes.label}}"
-          aria-label="{{localize tabs.notes.label}}"
-        >
-          <i class="fa-solid fa-note-sticky" inert></i>
-        </a>
-      </nav>
-    </div>
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/tab-nav.hbs'}}
     <div class="dhca-header-actions">
       <button type="button" data-action="openSettings" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.openSheetSettings'}}">
         <i class="fa-solid fa-wrench"></i>

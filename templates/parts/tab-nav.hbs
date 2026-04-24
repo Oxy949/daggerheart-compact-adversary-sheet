@@ -1,0 +1,16 @@
+<div class="dhca-tab-nav">
+  <nav class="sheet-tabs tabs">
+    {{#each compact.tabNav as |tab|}}
+      <a
+        class="{{tab.cssClass}}"
+        data-action="tab"
+        data-group="{{tab.group}}"
+        data-tab="{{tab.id}}"
+        data-tooltip="{{localize tab.label}}"
+        aria-label="{{localize tab.label}}"
+      >
+        <i class="{{tab.icon}}" inert></i>
+      </a>
+    {{/each}}
+  </nav>
+</div>
