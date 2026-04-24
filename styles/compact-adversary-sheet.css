@@ -50,6 +50,8 @@
   --dhca-hp-border: #9d2d43;
   --dhca-stress: #e3a63a;
   --dhca-stress-border: #b37a1d;
+  --dhca-feature-column-width: 325px;
+  --dhca-feature-column-gap: 16px;
   --dhca-font-family: "Noto Sans", "Noto Sans Fallback", sans-serif;
   background: var(--dhca-bg) !important;
   color: var(--dhca-text);
@@ -797,10 +799,6 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   transform: translateY(0);
 }
 
-.adversary.dh-compact-adversary .dhca-feature-list {
-    gap: 8px;
-}
-
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-feature-list,
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel ul.items-list,
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-tab-panel ul.card-list,
@@ -808,6 +806,22 @@ body.theme-dark .environment.dh-compact-environment:not(.theme-light),
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-feature-list {
+  display: block !important;
+  column-fill: balance;
+  column-gap: var(--dhca-feature-column-gap);
+  column-width: var(--dhca-feature-column-width);
+}
+
+:is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-feature-list > .inventory-item {
+  display: inline-block;
+  margin: 0 0 14px !important;
+  width: 100%;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 }
 
 :is(.adversary.dh-compact-adversary, .environment.dh-compact-environment) .dhca-feature-list button.reveal {
