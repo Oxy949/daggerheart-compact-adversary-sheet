@@ -4,6 +4,9 @@ import {
   SCROLLABLE_PANEL_SELECTOR
 } from "./constants.js";
 
+const FEATURE_TOGGLE_ACTION = "toggleExtended";
+const FEATURE_TOGGLE_TARGET_SELECTOR = ":scope > .inventory-item-header .item-name, :scope > .inventory-item-header .feature-form";
+
 export function createCompactDefaultOptions(BaseSheet, position = {}) {
   return foundry.utils.mergeObject(
     foundry.utils.deepClone(BaseSheet.DEFAULT_OPTIONS),
@@ -56,6 +59,7 @@ export function inlineFeatureDescriptions(element, signal = null) {
   const inlineDescriptions = () => {
     for (const item of element.querySelectorAll(".dhca-tab-panel--features .inventory-item")) {
       inlineFeatureDescription(item);
+      scopeFeatureDescriptionToggle(item);
     }
   };
 
@@ -118,6 +122,21 @@ function inlineFeatureDescription(item) {
   firstParagraph.remove();
   item.classList.toggle("dhca-feature-inline-only", !description.textContent.trim());
   label.append(document.createTextNode(" "), inlineDescription);
+}
+
+function scopeFeatureDescriptionToggle(item) {
+  const description = item.querySelector(":scope > .inventory-item-content.extensible");
+  if (!description) return;
+
+  const header = item.querySelector(":scope > .inventory-item-header");
+  if (header?.dataset.action === FEATURE_TOGGLE_ACTION) {
+    delete header.dataset.action;
+  }
+
+  for (const target of item.querySelectorAll(FEATURE_TOGGLE_TARGET_SELECTOR)) {
+    if (!target.dataset.action) target.dataset.action = FEATURE_TOGGLE_ACTION;
+    target.classList.add("dhca-feature-toggle-target");
+  }
 }
 
 function removeEmptyTextNodes(element) {

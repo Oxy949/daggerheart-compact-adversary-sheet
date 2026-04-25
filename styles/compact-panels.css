@@ -195,6 +195,10 @@
   font-family: var(--dhca-font-family);
 }
 
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-toggle-target {
+  cursor: pointer;
+}
+
 .sheet.dh-compact .dhca-tab-panel .inventory-item .feature-form,
 .sheet.dh-compact .dhca-tab-panel .inventory-item .feature-form span {
   display: inline;
@@ -317,11 +321,13 @@
 }
 
 .sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .content-link,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .inline-roll {
+.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .inline-roll,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description .content-link,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description .inline-roll {
   font-weight: bold;
-  border: none;
-  border-radius: 0px;
-  background: var(--dhca-button-bg);
+  border: none !important;
+  border-radius: 0px !important;
+  background: unset;
   color: var(--dhca-text);
   margin: 0;
   padding: 0;

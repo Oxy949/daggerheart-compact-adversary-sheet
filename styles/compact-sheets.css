@@ -57,8 +57,6 @@
   color-scheme: light;
   container-type: inline-size;
   font-family: var(--dhca-font-family);
-  max-height: calc(100vh - 24px);
-  border: none;
 }
 
 body.theme-dark .sheet.dh-compact:not(.theme-light),
