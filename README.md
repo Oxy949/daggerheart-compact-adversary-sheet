@@ -2,6 +2,14 @@
 
 Compact sheet module for Foundry VTT 13/14 and the Foundryborne Daggerheart system.
 
+## Installation
+
+1. Copy https://github.com/Oxy949/daggerheart-compact-sheets/releases/latest/download/module.json
+2. Paste it in your Foundry VTT, wait for install
+3. Enable the module in your world
+4. Enjoy!
+
+
 ## Highlights
 
 - Compact paper-card layouts focused on fast table readability
