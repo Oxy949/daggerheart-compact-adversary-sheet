@@ -214,7 +214,7 @@
 }
 
 .sheet.dh-compact.adversary .dhca-tab-panel {
-  padding: 10px 10px !important;
+      padding: 10px 10px 0px 10px !important;
 }
 
 .sheet.dh-compact .dhca-tab-panel .inventory-item .item-label {

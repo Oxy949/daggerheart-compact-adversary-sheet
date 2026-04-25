@@ -63,7 +63,7 @@ export const PRELOAD_TEMPLATE_PATHS = Object.freeze(
 
 export const DEFAULT_WINDOWS = Object.freeze({
   adversary: Object.freeze({
-    width: 345,
+    width: 380,
     height: "auto"
   }),
   character: Object.freeze({
@@ -71,7 +71,7 @@ export const DEFAULT_WINDOWS = Object.freeze({
     height: "auto"
   }),
   environment: Object.freeze({
-    width: 345,
+    width: 380,
     height: "auto"
   })
 });

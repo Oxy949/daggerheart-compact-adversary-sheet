@@ -1,9 +1,3 @@
-.sheet.dh-compact.adversary .dhca-section--footer {
-  width: 100%;
-  padding: 10px 16px 14px;
-  border-top: 1px dashed var(--dhca-line);
-}
-
 .sheet.dh-compact.adversary .dhca-footer__inner {
   display: grid;
 }

@@ -247,3 +247,9 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
   box-shadow: none !important;
   margin: 0;
 }
+
+.sheet.dh-compact .dhca-section--footer {
+  width: 100%;
+  padding: 0px 10px 12px 10px;
+  border-top: 1px dashed var(--dhca-line);
+}

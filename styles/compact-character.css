@@ -222,12 +222,6 @@
   padding: 10px !important;
 }
 
-.sheet.dh-compact.character .dhca-section--footer {
-  width: 100%;
-  padding: 10px 14px 14px;
-  border-top: 1px dashed var(--dhca-line);
-}
-
 .sheet.dh-compact.character .dhca-footer__inner {
   display: grid;
   gap: 9px;
