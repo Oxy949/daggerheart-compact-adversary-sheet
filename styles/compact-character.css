@@ -34,6 +34,7 @@
 .sheet.dh-compact.character .dhca-header__ribbon {
   max-width: 190px;
   overflow: hidden;
+  font-family: var(--dhca-font-family) !important;
   font-size: 0.78em;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -460,6 +461,12 @@
   box-shadow:
     0 0 0 1px var(--dhca-surface),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.sheet.dh-compact.character .dhca-resource-row__pip:not(.filled) {
+  border-color: var(--dhca-row-empty-border) !important;
+  background: var(--dhca-row-empty) !important;
+  background-image: none !important;
 }
 
 .sheet.dh-compact.character .dhca-resource-row__pip.filled {

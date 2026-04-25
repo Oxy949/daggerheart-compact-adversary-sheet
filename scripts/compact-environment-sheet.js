@@ -10,6 +10,7 @@ import {
   createCompactParts,
   createTemplatePart,
   expandFeatureDescriptions,
+  inlineFeatureDescriptions,
   openCompactImagePicker,
   refreshRenderController
 } from "./compact-sheet-helpers.js";
@@ -48,6 +49,7 @@ export function createCompactEnvironmentSheetClass(BaseEnvironmentSheet) {
       await super._onRender(context, options);
       this.#renderController = refreshRenderController(this.#renderController);
       expandFeatureDescriptions(this.element);
+      inlineFeatureDescriptions(this.element, this.#renderController.signal);
       bindCompactImageEditButtons(this.element, this.#renderController.signal, this.#onCompactImageEdit);
     }
 

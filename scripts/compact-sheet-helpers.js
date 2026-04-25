@@ -50,6 +50,86 @@ export function expandFeatureDescriptions(element) {
   }
 }
 
+export function inlineFeatureDescriptions(element, signal = null) {
+  if (!element) return;
+
+  const inlineDescriptions = () => {
+    for (const item of element.querySelectorAll(".dhca-tab-panel--features .inventory-item")) {
+      inlineFeatureDescription(item);
+    }
+  };
+
+  inlineDescriptions();
+  requestAnimationFrame(inlineDescriptions);
+
+  if (!signal || signal.aborted) return;
+
+  let pending = false;
+  const observer = new MutationObserver(() => {
+    if (pending) return;
+    pending = true;
+
+    requestAnimationFrame(() => {
+      pending = false;
+      inlineDescriptions();
+    });
+  });
+
+  observer.observe(element, {
+    childList: true,
+    subtree: true
+  });
+
+  signal.addEventListener("abort", () => observer.disconnect(), { once: true });
+}
+
+function inlineFeatureDescription(item) {
+  if (item.querySelector(":scope > .inventory-item-header .dhca-feature-inline-description")) return;
+
+  const label = item.querySelector(":scope > .inventory-item-header .item-label");
+  const description = item.querySelector(":scope > .inventory-item-content.extensible > .invetory-description");
+  const firstParagraph = description?.querySelector(":scope > p");
+
+  if (!label || !firstParagraph || !firstParagraph.textContent.trim()) return;
+
+  const featureForm = label.querySelector(".feature-form");
+  const featureFormText = featureForm?.querySelector(".recall-value");
+
+  if (featureFormText) {
+    featureFormText.textContent = featureFormText.textContent.trimEnd().replace(/:+$/, "");
+  }
+
+  removeEmptyTextNodes(featureForm);
+
+  if (featureForm && !featureForm.querySelector(":scope > .dhca-feature-inline-colon")) {
+    const colon = document.createElement("span");
+    colon.className = "dhca-feature-inline-colon";
+    colon.textContent = ":";
+    featureForm.append(colon);
+  }
+
+  const inlineDescription = document.createElement("span");
+  inlineDescription.className = "dhca-feature-inline-description";
+
+  while (firstParagraph.firstChild) {
+    inlineDescription.append(firstParagraph.firstChild);
+  }
+
+  firstParagraph.remove();
+  item.classList.toggle("dhca-feature-inline-only", !description.textContent.trim());
+  label.append(document.createTextNode(" "), inlineDescription);
+}
+
+function removeEmptyTextNodes(element) {
+  if (!element) return;
+
+  for (const node of Array.from(element.childNodes)) {
+    if (node.nodeType === Node.TEXT_NODE && !node.textContent.trim()) {
+      node.remove();
+    }
+  }
+}
+
 export function bindCompactImageEditButtons(element, signal, handler) {
   if (!element || !signal) return;
 

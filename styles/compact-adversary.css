@@ -203,6 +203,12 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
+.sheet.dh-compact.adversary .dhca-resource-row__pip:not(.filled) {
+  border-color: var(--dhca-row-empty-border) !important;
+  background: var(--dhca-row-empty) !important;
+  background-image: none !important;
+}
+
 .sheet.dh-compact.adversary .dhca-resource-row__pip.filled {
   background: var(--dhca-row-fill);
   border-color: var(--dhca-row-border);

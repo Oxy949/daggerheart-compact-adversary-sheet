@@ -1,0 +1,34 @@
+<section
+  class="tab {{tabs.features.cssClass}} {{tabs.features.id}} dhca-section dhca-section--body dhca-tab-panel dhca-tab-panel--features"
+  data-tab="{{tabs.features.id}}"
+  data-group="{{tabs.features.group}}"
+>
+  <div class="dhca-tab-panel__scroll">
+    <div class="drop-section dhca-panel dhca-panel--features">
+      <div class="dhca-panel__title">{{localize tabs.features.label}}</div>
+      {{#if @root.editable}}
+        <a
+          class="dhca-panel__create"
+          data-action="createDoc"
+          data-document-class="Item"
+          data-type="feature"
+          data-tooltip="{{localize 'DOCUMENT.Create' type=''}}"
+        >
+          <i class="fa-solid fa-plus icon-button"></i>
+        </a>
+      {{/if}}
+
+      <ul class="items-list dhca-feature-list">
+        {{#each @root.features as |item|}}
+          {{> 'daggerheart.inventory-item'
+            item=item
+            type='feature'
+            actorType=@root.document.type
+            hideContextMenu=true
+            showActions=@root.editable
+          }}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

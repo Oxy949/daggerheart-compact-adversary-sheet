@@ -12,6 +12,7 @@ import {
   createCompactParts,
   createTemplatePart,
   expandFeatureDescriptions,
+  inlineFeatureDescriptions,
   isCompactSheetEditable,
   openCompactImagePicker,
   refreshRenderController
@@ -54,6 +55,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       await super._onRender(context, options);
       this.#renderController = refreshRenderController(this.#renderController);
       expandFeatureDescriptions(this.element);
+      inlineFeatureDescriptions(this.element, this.#renderController.signal);
       this.#bindResourceStepButtons();
       bindCompactImageEditButtons(this.element, this.#renderController.signal, this.#onCompactImageEdit);
       this.#bindResponsiveResourceTracks();

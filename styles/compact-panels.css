@@ -224,6 +224,62 @@
   gap: 0 4px;
 }
 
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .item-label {
+  display: block !important;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):hover:has(.inventory-item-content.extensible) .inventory-item-header,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):hover:has(.inventory-item-content.extensible) .inventory-item-content {
+  background: light-dark(var(--dark-blue-40, #18162e40), var(--golden-40, #f3c26740)) !important;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):has(.inventory-item-content.extensible) .inventory-item-header {
+  border-radius: 5px 5px 0 0;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):has(.inventory-item-content.extensible:not(.extended)) .inventory-item-header {
+  border-radius: 5px;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item.dhca-feature-inline-only .inventory-item-header {
+  border-radius: 5px !important;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):has(.inventory-item-content.extensible) .inventory-item-content {
+  border-radius: 0 0 5px 5px;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .item-tags,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .feature-form,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .feature-form span,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-colon,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description {
+  display: inline !important;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description {
+  color: var(--dhca-content-text);
+  font-size: 14px !important;
+  font-family: var(--dhca-font-family);
+  font-weight: 400;
+  line-height: inherit;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item-content.extensible,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item-content.extensible.extended {
+  padding-top: 0 !important;
+  transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .invetory-description {
+  margin-top: 0 !important;
+}
+
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(:has(> .inventory-item-content.extended)) .dhca-feature-inline-colon,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(:has(> .inventory-item-content.extended)) .dhca-feature-inline-description {
+  display: none !important;
+}
+
 .sheet.dh-compact .dhca-tab-panel .inventory-item .item-labels {
   display: inline;
   min-width: 0;
