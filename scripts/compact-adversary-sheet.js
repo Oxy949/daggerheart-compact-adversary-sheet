@@ -27,6 +27,8 @@ const TAB_NAV_ENTRIES = Object.freeze([
   { id: "notes", icon: "fa-solid fa-note-sticky" }
 ]);
 
+const ATTACK_CHAT_ACTION_SELECTOR = ".dhca-header__attack .inventory-item-compact .item-name";
+
 export function createCompactAdversarySheetClass(BaseAdversarySheet) {
   return class CompactAdversarySheet extends BaseAdversarySheet {
     #renderController = null;
@@ -58,6 +60,11 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       await super._onRender(context, options);
       this.#renderController = refreshRenderController(this.#renderController);
       this.element?.classList.toggle("dhca-show-interactions", context.compact?.showInteractionButtons === true);
+      setupAttackNameChatAction(
+        this.element,
+        context.compact?.showInteractionButtons === true,
+        this.#renderController.signal
+      );
       expandFeatureDescriptions(this.element);
       inlineFeatureDescriptions(this.element, this.#renderController.signal);
       this.#bindResourceStepButtons();
@@ -150,4 +157,35 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
 
     #onCompactImageEdit = (event) => openCompactImagePicker(this, event);
   };
+}
+
+function setupAttackNameChatAction(element, enabled, signal) {
+  if (!element) return;
+
+  const attackName = element.querySelector(ATTACK_CHAT_ACTION_SELECTOR);
+  if (!attackName) return;
+
+  attackName.classList.toggle("dhca-attack-chat-action", enabled);
+
+  if (!enabled) {
+    delete attackName.dataset.action;
+    delete attackName.dataset.tooltipText;
+    attackName.removeAttribute("role");
+    attackName.removeAttribute("tabindex");
+    return;
+  }
+
+  attackName.dataset.action = "toChat";
+  attackName.dataset.tooltipText = game.i18n.localize("DAGGERHEART.UI.Tooltip.sendToChat");
+  attackName.setAttribute("role", "button");
+  attackName.tabIndex = 0;
+
+  attackName.addEventListener("keydown", onAttackNameChatActionKeydown, { signal });
+}
+
+function onAttackNameChatActionKeydown(event) {
+  if (event.key !== "Enter" && event.key !== " ") return;
+
+  event.preventDefault();
+  event.currentTarget.click();
 }

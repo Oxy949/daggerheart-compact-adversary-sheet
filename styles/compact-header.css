@@ -247,7 +247,7 @@
 
 .sheet.dh-compact.adversary .dhca-header__attack .inventory-item-compact {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 6px;
   flex-wrap: nowrap;
   padding: 0;
@@ -277,8 +277,17 @@
   content: ":";
 }
 
+.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action {
+  cursor: pointer;
+}
+
+.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action:hover,
+.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action:focus-visible {
+  color: var(--dhca-accent-strong) !important;
+}
+
 .sheet.dh-compact.adversary .dhca-header__attack .item-labels {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: inline-flex;
   align-items: center;
   min-width: 0;
@@ -313,6 +322,11 @@
   vertical-align: middle;
 }
 
+.sheet.dh-compact.adversary .dhca-header__attack .controls a[data-action="toChat"] i {
+  display: block;
+  line-height: 1;
+}
+
 .sheet.dh-compact.adversary .dhca-header__attack .controls,
 .sheet.dh-compact.adversary .dhca-tab-panel .controls {
   display: flex;
@@ -322,8 +336,8 @@
 
 .sheet.dh-compact.adversary .dhca-header__attack .controls {
   flex: 0 0 auto;
-  align-self: center;
-  margin-left: auto;
+  align-self: baseline;
+  margin-left: 0;
   display: none;
 }
 
@@ -378,9 +392,45 @@
 
 .sheet.dh-compact.adversary .dhca-experience-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.sheet.dh-compact.adversary .dhca-experience-action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 6px;
   align-items: start;
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  appearance: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.sheet.dh-compact.adversary .dhca-experience-action--static {
+  cursor: default;
+}
+
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):hover,
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):focus-visible {
+  color: var(--dhca-accent-strong) !important;
+}
+
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):hover .dhca-experience-name,
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):hover .dhca-experience-value,
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):focus-visible .dhca-experience-name,
+.sheet.dh-compact.adversary .dhca-experience-action:not(.dhca-experience-action--static):focus-visible .dhca-experience-value {
+  color: var(--dhca-accent-strong) !important;
 }
 
 .sheet.dh-compact.adversary .dhca-experience-name {

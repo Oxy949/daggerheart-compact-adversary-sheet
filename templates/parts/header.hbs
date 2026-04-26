@@ -40,6 +40,7 @@
         item=document.system.attack
         type='attack'
         noCompendiumEdit=true
+        hideContextMenu=true
         hideControls=(not compact.showInteractionButtons)
         hideTooltip=false
       }}
@@ -52,13 +53,26 @@
         <h3 class="dhca-detail-panel__title">{{localize 'DAGGERHEART.GENERAL.experience.plural'}}:</h3>
         <div class="dhca-experience-list">
           {{#each source.system.experiences as |experience id|}}
-            <div class="dhca-experience-row" data-tooltip-text="{{experience.description}}">
-              <span class="dhca-experience-name">{{experience.name}}</span>
-              <span class="dhca-experience-value">+{{experience.value}}</span>
+            <div
+              class="dhca-experience-row"
+              {{#unless @root.compact.showInteractionButtons}}data-tooltip-text="{{experience.description}}"{{/unless}}
+            >
               {{#if @root.compact.showInteractionButtons}}
-                <a class="dhca-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
-                  <i class="fa-regular fa-message"></i>
-                </a>
+                <button
+                  type="button"
+                  class="dhca-experience-action"
+                  data-action="sendExpToChat"
+                  data-id="{{id}}"
+                  data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}"
+                >
+                  <span class="dhca-experience-name">{{experience.name}}</span>
+                  <span class="dhca-experience-value">+{{experience.value}}</span>
+                </button>
+              {{else}}
+                <span class="dhca-experience-action dhca-experience-action--static">
+                  <span class="dhca-experience-name">{{experience.name}}</span>
+                  <span class="dhca-experience-value">+{{experience.value}}</span>
+                </span>
               {{/if}}
             </div>
           {{/each}}

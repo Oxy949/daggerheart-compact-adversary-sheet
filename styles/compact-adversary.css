@@ -312,7 +312,7 @@
 
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls {
   gap: 3px;
-  margin-left: 4px;
+  margin-left: 0;
 }
 
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a,
@@ -335,6 +335,12 @@
   height: 18px;
   min-width: 18px;
   font-size: 10px;
+  transform: translateY(1px);
+}
+
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a[data-action="toChat"],
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a[data-action="triggerContextMenu"] {
+  display: none !important;
 }
 
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a:hover,
