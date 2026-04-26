@@ -1,4 +1,5 @@
-<aside class="adversary-sidebar-sheet dhca-section dhca-section--footer dhca-footer">
+<aside class="adversary-sidebar-sheet dhca-section dhca-section--footer dhca-footer{{#unless compact.showResourceBlock}} dhca-footer--hidden{{/unless}}" {{#unless compact.showResourceBlock}}hidden{{/unless}}>
+  {{#if compact.showResourceBlock}}
   <div class="dhca-footer__inner">
     <div class="dhca-footer__title">
       <span>{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} &amp; {{localize 'DAGGERHEART.GENERAL.stress'}}</span>
@@ -114,4 +115,5 @@
       <label class="dhca-footer__attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
     {{/if}}
   </div>
+  {{/if}}
 </aside>

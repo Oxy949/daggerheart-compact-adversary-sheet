@@ -60,6 +60,16 @@ function registerSettings() {
     default: false,
     onChange: rerenderOpenCompactAdversarySheets
   });
+
+  game.settings.register(MODULE_ID, SETTING_KEYS.showAdversaryResourceBlock, {
+    name: "DHCS.Settings.ShowAdversaryResourceBlock.Name",
+    hint: "DHCS.Settings.ShowAdversaryResourceBlock.Hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true,
+    onChange: rerenderOpenCompactAdversarySheets
+  });
 }
 
 function rerenderOpenCompactAdversarySheets() {

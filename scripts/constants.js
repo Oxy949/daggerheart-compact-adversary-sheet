@@ -11,6 +11,7 @@ export const SETTING_KEYS = Object.freeze({
   makeAdversaryDefault: "makeAdversaryDefault",
   makeCharacterDefault: "makeCharacterDefault",
   makeEnvironmentDefault: "makeEnvironmentDefault",
+  showAdversaryResourceBlock: "showAdversaryResourceBlock",
   showAdversaryInteractionButtons: "showAdversaryInteractionButtons"
 });
 
@@ -70,7 +71,7 @@ export const PRELOAD_TEMPLATE_PATHS = Object.freeze(
 
 export const DEFAULT_WINDOWS = Object.freeze({
   adversary: Object.freeze({
-    width: 380,
+    width: 400,
     height: "auto"
   }),
   minimalAdversary: Object.freeze({
@@ -82,7 +83,7 @@ export const DEFAULT_WINDOWS = Object.freeze({
     height: "auto"
   }),
   environment: Object.freeze({
-    width: 380,
+    width: 400,
     height: "auto"
   })
 });

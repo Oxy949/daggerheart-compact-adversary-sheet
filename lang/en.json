@@ -20,6 +20,10 @@
       "ShowAdversaryInteractionButtons": {
         "Name": "Show interaction buttons on compact adversary sheets",
         "Hint": "When enabled, compact adversary sheets show attack, chat, item action, and similar interaction buttons."
+      },
+      "ShowAdversaryResourceBlock": {
+        "Name": "Show a separate HP and stress block on compact adversary sheets",
+        "Hint": "When enabled, compact adversary sheets show HP, stress, and damage thresholds in a separate footer block. When disabled, the footer is hidden and those values move into the header summary."
       }
     },
     "Sheets": {
