@@ -74,7 +74,7 @@ export const DEFAULT_WINDOWS = Object.freeze({
     height: "auto"
   }),
   minimalAdversary: Object.freeze({
-    width: 730,
+    width: 480,
     height: "auto"
   }),
   character: Object.freeze({

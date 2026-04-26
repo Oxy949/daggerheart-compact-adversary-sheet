@@ -493,6 +493,7 @@ body.theme-dark .sheet.dh-compact.dh-minimal-adversary:not(.theme-light),
   background: transparent !important;
   box-shadow: none !important;
   color: var(--dhca-minimal-ink) !important;
+  font-size: 28px !important;
   font-weight: 900 !important;
   letter-spacing: 0;
   line-height: 1 !important;
@@ -650,6 +651,7 @@ body.theme-dark .sheet.dh-compact.dh-minimal-adversary:not(.theme-light),
 .sheet.dh-compact.dh-minimal-adversary .dhca-minimal-features__title {
   margin: 0 0 6px !important;
   color: var(--dhca-minimal-ink) !important;
+  font-size: 16px !important;
   font-weight: 900 !important;
   letter-spacing: 0;
   line-height: 1.1 !important;
