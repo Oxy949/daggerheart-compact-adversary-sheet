@@ -1,8 +1,10 @@
 import {
   ADVERSARY_TEMPLATE_PARTIALS,
   DEFAULT_WINDOWS,
+  MODULE_ID,
   RESOURCE_ROW_SELECTOR,
-  RESOURCE_STEP_SELECTOR
+  RESOURCE_STEP_SELECTOR,
+  SETTING_KEYS
 } from "./constants.js";
 import {
   bindCompactImageEditButtons,
@@ -45,6 +47,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       const context = await super._prepareContext(options);
       context.compact = {
         ...buildCompactContext(this.document),
+        showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES),
         useResourcePips: true
       };
@@ -54,6 +57,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
     async _onRender(context, options) {
       await super._onRender(context, options);
       this.#renderController = refreshRenderController(this.#renderController);
+      this.element?.classList.toggle("dhca-show-interactions", context.compact?.showInteractionButtons === true);
       expandFeatureDescriptions(this.element);
       inlineFeatureDescriptions(this.element, this.#renderController.signal);
       this.#bindResourceStepButtons();

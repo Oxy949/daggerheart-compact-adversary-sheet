@@ -40,6 +40,7 @@
         item=document.system.attack
         type='attack'
         noCompendiumEdit=true
+        hideControls=(not compact.showInteractionButtons)
         hideTooltip=false
       }}
     </ul>
@@ -54,9 +55,11 @@
             <div class="dhca-experience-row" data-tooltip-text="{{experience.description}}">
               <span class="dhca-experience-name">{{experience.name}}</span>
               <span class="dhca-experience-value">+{{experience.value}}</span>
-              <a class="dhca-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
-                <i class="fa-regular fa-message"></i>
-              </a>
+              {{#if @root.compact.showInteractionButtons}}
+                <a class="dhca-inline-action" data-action="sendExpToChat" data-id="{{id}}" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.sendToChat'}}">
+                  <i class="fa-regular fa-message"></i>
+                </a>
+              {{/if}}
             </div>
           {{/each}}
         </div>

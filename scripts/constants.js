@@ -10,7 +10,8 @@ export const SHEET_LABELS = Object.freeze({
 export const SETTING_KEYS = Object.freeze({
   makeAdversaryDefault: "makeAdversaryDefault",
   makeCharacterDefault: "makeCharacterDefault",
-  makeEnvironmentDefault: "makeEnvironmentDefault"
+  makeEnvironmentDefault: "makeEnvironmentDefault",
+  showAdversaryInteractionButtons: "showAdversaryInteractionButtons"
 });
 
 export const TEMPLATE_ROOT = `modules/${MODULE_ID}/templates`;

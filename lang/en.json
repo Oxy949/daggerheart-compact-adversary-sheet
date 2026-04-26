@@ -16,6 +16,10 @@
       "MakeEnvironmentDefault": {
         "Name": "Use compact sheet as the default environment sheet",
         "Hint": "When enabled, environment actors open with the compact sheet by default. Reload after changing this setting."
+      },
+      "ShowAdversaryInteractionButtons": {
+        "Name": "Show interaction buttons on compact adversary sheets",
+        "Hint": "When enabled, compact adversary sheets show attack, chat, item action, and similar interaction buttons."
       }
     },
     "Sheets": {

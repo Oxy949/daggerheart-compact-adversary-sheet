@@ -50,6 +50,42 @@ function registerSettings() {
     default: true,
     requiresReload: true
   });
+
+  game.settings.register(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons, {
+    name: "DHCS.Settings.ShowAdversaryInteractionButtons.Name",
+    hint: "DHCS.Settings.ShowAdversaryInteractionButtons.Hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: rerenderOpenCompactAdversarySheets
+  });
+}
+
+function rerenderOpenCompactAdversarySheets() {
+  const applications = new Set([
+    ...Object.values(ui.windows ?? {}),
+    ...getApplicationInstances()
+  ]);
+
+  for (const application of applications) {
+    if (application?.document?.type !== "adversary") continue;
+
+    const element = application.element instanceof HTMLElement
+      ? application.element
+      : application.element?.[0];
+
+    if (!element?.classList?.contains("dh-compact")) continue;
+    if (element.classList.contains("dh-minimal-adversary")) continue;
+
+    application.render?.({ force: true });
+  }
+}
+
+function getApplicationInstances() {
+  const instances = foundry.applications?.instances;
+  if (instances instanceof Map) return instances.values();
+  return Object.values(instances ?? {});
 }
 
 async function preloadTemplates() {
