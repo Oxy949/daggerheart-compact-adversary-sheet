@@ -340,6 +340,40 @@
   padding: 0;
 }
 
+.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  min-height: 22px;
+  margin: 2px 3px 2px 0;
+  padding: 2px 7px;
+  border: 1px solid var(--dhca-line) !important;
+  border-radius: 3px;
+  background: var(--dhca-button-bg) !important;
+  color: var(--dhca-text) !important;
+  box-shadow: none !important;
+  font-family: var(--dhca-font-family);
+  font-size: 11px !important;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: normal;
+}
+
+.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button:hover,
+.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button:focus-visible,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button:hover,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button:focus-visible {
+  border-color: var(--dhca-accent) !important;
+  background: var(--dhca-button-bg-hover) !important;
+  color: var(--dhca-accent-strong) !important;
+}
 
 .sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description strong,
 .sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description b {
