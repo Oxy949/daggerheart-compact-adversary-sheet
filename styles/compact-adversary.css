@@ -690,6 +690,7 @@ body.theme-dark .sheet.dh-compact.dh-minimal-adversary:not(.theme-light),
   padding: 0 !important;
   color: var(--dhca-minimal-ink) !important;
   font-size: inherit !important;
+  font-style: italic;
   font-weight: 900 !important;
   line-height: inherit !important;
   letter-spacing: 0 !important;

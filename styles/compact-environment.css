@@ -90,11 +90,11 @@
   pointer-events: auto;
 }
 
-.sheet.dh-compact.environment:has(.environment-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-header__toolbar {
+.sheet.dh-compact.environment:has(.dhca-header__toolbar:hover, .dhca-header__toolbar:focus-within) .dhca-header__toolbar {
   pointer-events: auto;
 }
 
-.sheet.dh-compact.environment:has(.environment-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-tab-nav {
+.sheet.dh-compact.environment:has(.dhca-header__toolbar:hover, .dhca-header__toolbar:focus-within) .dhca-tab-nav {
   height: 32px;
   max-height: 32px;
   opacity: 1;
@@ -167,6 +167,7 @@
   overflow: hidden;
   color: var(--dhca-text) !important;
   font-size: 14px !important;
+  font-style: italic;
   font-weight: 700 !important;
   line-height: 1.35 !important;
   font-family: var(--dhca-font-family);

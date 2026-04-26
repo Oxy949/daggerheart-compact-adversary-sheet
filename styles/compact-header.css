@@ -325,6 +325,7 @@
   max-width: 50%;
   color: var(--dhca-text) !important;
   font-size: 14px !important;
+  font-style: italic;
   font-family: var(--dhca-font-family);
   font-weight: 700 !important;
   line-height: 1.45 !important;
@@ -509,6 +510,8 @@
 }
 
 .sheet.dh-compact .dhca-header__toolbar {
+  --dhca-toolbar-collapsed-height: 12px;
+  --dhca-toolbar-expanded-height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,9 +521,48 @@
   margin-top: 0;
   position: relative;
   width: 100%;
+  height: var(--dhca-toolbar-collapsed-height);
+  min-height: var(--dhca-toolbar-collapsed-height);
   z-index: 5;
   overflow: hidden;
+  pointer-events: auto;
+  transition:
+    height 160ms ease,
+    min-height 160ms ease;
+}
+
+.sheet.dh-compact .dhca-header__toolbar::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 46px;
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--dhca-line) 72%, transparent);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 16%);
+  opacity: 0.78;
   pointer-events: none;
+  transform: translateX(-50%);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease,
+    width 140ms ease,
+    background-color 140ms ease;
+}
+
+.sheet.dh-compact .dhca-header__toolbar:hover,
+.sheet.dh-compact .dhca-header__toolbar:focus-within {
+  height: var(--dhca-toolbar-expanded-height);
+  min-height: var(--dhca-toolbar-expanded-height);
+}
+
+.sheet.dh-compact .dhca-header__toolbar:hover::before,
+.sheet.dh-compact .dhca-header__toolbar:focus-within::before {
+  width: 34px;
+  background: color-mix(in srgb, var(--dhca-accent) 70%, var(--dhca-line));
+  opacity: 0;
+  transform: translate(-50%, -3px);
 }
 
 .sheet.dh-compact .dhca-tab-nav {
@@ -534,6 +576,14 @@
     max-height 160ms ease,
     opacity 140ms ease,
     transform 140ms ease;
+}
+
+.sheet.dh-compact .dhca-header__toolbar:hover .dhca-tab-nav,
+.sheet.dh-compact .dhca-header__toolbar:focus-within .dhca-tab-nav {
+  height: 32px;
+  max-height: 32px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .sheet.dh-compact .dhca-tab-nav nav {
@@ -589,6 +639,19 @@
   right: 0px;
   display: flex;
   gap: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.sheet.dh-compact .dhca-header__toolbar:hover .dhca-header-actions,
+.sheet.dh-compact .dhca-header__toolbar:focus-within .dhca-header-actions {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .sheet.dh-compact .dhca-header-actions button {
@@ -599,5 +662,16 @@
   background: var(--dhca-button-bg);
   color: var(--dhca-button-text);
   box-shadow: none;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease;
+}
+
+.sheet.dh-compact .dhca-header-actions button:hover,
+.sheet.dh-compact .dhca-header-actions button:focus-visible {
+  border-color: var(--dhca-accent);
+  background: var(--dhca-button-bg-hover);
+  color: var(--dhca-accent-strong);
 }
 

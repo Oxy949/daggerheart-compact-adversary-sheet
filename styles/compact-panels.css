@@ -66,11 +66,11 @@
   pointer-events: auto;
 }
 
-.sheet.dh-compact.adversary:has(.adversary-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-header__toolbar {
+.sheet.dh-compact.adversary:has(.dhca-header__toolbar:hover, .dhca-header__toolbar:focus-within) .dhca-header__toolbar {
   pointer-events: auto;
 }
 
-.sheet.dh-compact.adversary:has(.adversary-header-sheet:hover, .dhca-header__toolbar:hover) .dhca-tab-nav {
+.sheet.dh-compact.adversary:has(.dhca-header__toolbar:hover, .dhca-header__toolbar:focus-within) .dhca-tab-nav {
   height: 32px;
   max-height: 32px;
   opacity: 1;
@@ -190,9 +190,16 @@
   margin: 0;
   color: var(--dhca-text);
   font-size: 14px !important;
+  font-style: italic;
   font-weight: 700 !important;
   line-height: 1.35;
   font-family: var(--dhca-font-family);
+}
+
+.sheet.dh-compact .dhca-tab-panel .inventory-item .tag,
+.sheet.dh-compact .dhca-tab-panel .inventory-item .tag span,
+.sheet.dh-compact .dhca-tab-panel .inventory-item .simple-tag {
+  font-style: italic;
 }
 
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-toggle-target {
@@ -208,6 +215,7 @@
   background: transparent;
   color: var(--dhca-inline-text);
   font-size: 14px !important;
+  font-style: italic;
   font-weight: 500 !important;
   font-family: var(--dhca-font-family);
 }
