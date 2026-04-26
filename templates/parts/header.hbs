@@ -89,9 +89,11 @@
   <div class="dhca-header__toolbar">
     {{> 'modules/daggerheart-compact-sheets/templates/parts/tab-nav.hbs'}}
     <div class="dhca-header-actions">
-      <button type="button" data-action="reactionRoll" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Roll.reaction'}}">
-        <i class="fa-solid fa-dice-d20"></i>
-      </button>
+      {{#if compact.showInteractionButtons}}
+        <button type="button" data-action="reactionRoll" data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Roll.reaction'}}">
+          <i class="fa-solid fa-dice-d20"></i>
+        </button>
+      {{/if}}
       <button type="button" data-action="openSettings" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.openSheetSettings'}}">
         <i class="fa-solid fa-wrench"></i>
       </button>

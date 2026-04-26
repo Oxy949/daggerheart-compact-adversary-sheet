@@ -9,12 +9,35 @@
   </div>
 
   <header class="dhca-minimal-heading">
-    <h1
-      class="input actor-name dhca-minimal-name"
-      contenteditable="plaintext-only"
-      data-property="name"
-      placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
-    >{{source.name}}</h1>
+    <div class="dhca-minimal-title-row">
+      {{#if document.img}}
+        {{#if compact.canEditImage}}
+          <button
+            type="button"
+            class="dhca-minimal-portrait dhca-header__art-edit"
+            data-dhca-edit="img"
+            data-tooltip-text="{{localize 'FILES.Edit'}}"
+            aria-label="{{localize 'FILES.Edit'}}"
+          >
+            <img class="dhca-minimal-portrait__image" src="{{document.img}}" alt="" aria-hidden="true" />
+            <span class="dhca-minimal-portrait__edit" aria-hidden="true">
+              <i class="fa-solid fa-image"></i>
+            </span>
+          </button>
+        {{else}}
+          <div class="dhca-minimal-portrait" aria-hidden="true">
+            <img class="dhca-minimal-portrait__image" src="{{document.img}}" alt="" />
+          </div>
+        {{/if}}
+      {{/if}}
+
+      <h1
+        class="input actor-name dhca-minimal-name"
+        contenteditable="plaintext-only"
+        data-property="name"
+        placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+      >{{source.name}}</h1>
+    </div>
 
     <div class="dhca-minimal-tier">
       {{localize (concat 'DAGGERHEART.GENERAL.Tiers.' source.system.tier)}} {{adversaryType}}

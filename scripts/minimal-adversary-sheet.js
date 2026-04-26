@@ -3,11 +3,13 @@ import {
   MINIMAL_ADVERSARY_TEMPLATE_PARTIALS
 } from "./constants.js";
 import {
+  bindCompactImageEditButtons,
   closeRenderController,
   createCompactDefaultOptions,
   createTemplatePart,
   expandFeatureDescriptions,
   inlineFeatureDescriptions,
+  openCompactImagePicker,
   refreshRenderController
 } from "./compact-sheet-helpers.js";
 import { buildCompactContext } from "./utils.js";
@@ -32,12 +34,15 @@ export function createMinimalAdversarySheetClass(BaseAdversarySheet) {
       expandFeatureDescriptions(this.element);
       inlineFeatureDescriptions(this.element, this.#renderController.signal);
       normalizeAttackSeparators(this.element);
+      bindCompactImageEditButtons(this.element, this.#renderController.signal, this.#onCompactImageEdit);
     }
 
     async close(options = {}) {
       this.#renderController = closeRenderController(this.#renderController);
       return super.close(options);
     }
+
+    #onCompactImageEdit = (event) => openCompactImagePicker(this, event);
   };
 }
 
