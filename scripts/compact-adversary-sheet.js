@@ -27,7 +27,7 @@ const TAB_NAV_ENTRIES = Object.freeze([
   { id: "notes", icon: "fa-solid fa-note-sticky" }
 ]);
 
-const ATTACK_CHAT_ACTION_SELECTOR = ".dhca-header__attack .inventory-item-compact .item-name";
+const ATTACK_CHAT_ACTION_SELECTOR = ".dhca-header__attack-list .inventory-item-compact .item-name";
 const HEADER_RESOURCE_MAX_SELECTOR = ".dhca-header__resource-max[data-dhca-resource-path]";
 const HEADER_RESOURCE_VALUE_SELECTOR = ".dhca-header__resource-current[data-dhca-resource-path]";
 
@@ -70,6 +70,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       );
       expandFeatureDescriptions(this.element);
       inlineFeatureDescriptions(this.element, this.#renderController.signal);
+      normalizeAttackSeparators(this.element);
       this.#bindResourceStepButtons();
       this.#bindHeaderResourceEdits();
       bindCompactImageEditButtons(this.element, this.#renderController.signal, this.#onCompactImageEdit);
@@ -268,4 +269,14 @@ function onAttackNameChatActionKeydown(event) {
 
   event.preventDefault();
   event.currentTarget.click();
+}
+
+function normalizeAttackSeparators(element) {
+  if (!element) return;
+
+  for (const separator of element.querySelectorAll(".dhca-header__attack-list .label > span")) {
+    if (separator.textContent.trim() !== "-") continue;
+    separator.textContent = "|";
+    separator.classList.add("dhca-header__attack-separator");
+  }
 }

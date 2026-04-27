@@ -266,14 +266,16 @@
   display: block;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .img-portait {
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait {
   position: relative;
-  display: grid !important;
+  display: inline-grid !important;
   place-items: center;
+  align-self: center;
   flex: 0 0 18px;
   width: 18px;
   height: 18px;
   min-width: 18px;
+  margin: 0 -2px 0 0;
   padding: 0;
   overflow: hidden;
   border: 1px solid var(--dhca-line);
@@ -284,38 +286,44 @@
   box-shadow: none;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .img-portait:hover,
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .img-portait:focus-visible {
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:hover,
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:focus-visible {
   border-color: var(--dhca-accent);
   background: var(--dhca-button-bg-hover);
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .img-portait .item-img {
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait .item-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.8;
+  transition: opacity 120ms ease;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .img-portait .roll-img {
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait .roll-img {
   position: absolute;
   inset: auto;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+  opacity: 0;
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 20%));
+  transition: opacity 120ms ease;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls,
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:hover .item-img,
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:focus-visible .item-img {
+  opacity: 0.24;
+}
+
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:hover .roll-img,
+.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack-list .img-portait:focus-visible .roll-img {
+  opacity: 1;
+}
+
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-tab-panel .controls {
   display: flex;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls {
-  gap: 3px;
-  margin-left: 0;
-}
-
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a,
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-tab-panel .controls a,
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-inline-action {
   display: grid;
@@ -330,21 +338,6 @@
   line-height: 1;
 }
 
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  font-size: 10px;
-  transform: translateY(1px);
-}
-
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a[data-action="toChat"],
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a[data-action="triggerContextMenu"] {
-  display: none !important;
-}
-
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a:hover,
-.sheet.dh-compact.adversary.dhca-show-interactions .dhca-header__attack .controls a:focus-visible,
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-tab-panel .controls a:hover,
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-tab-panel .controls a:focus-visible,
 .sheet.dh-compact.adversary.dhca-show-interactions .dhca-inline-action:hover,

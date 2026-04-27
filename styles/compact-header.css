@@ -11,7 +11,7 @@
 .sheet.dh-compact.adversary .dhca-header__identity,
 .sheet.dh-compact.adversary .dhca-header__description,
 .sheet.dh-compact.adversary .dhca-header__stats,
-.sheet.dh-compact.adversary .dhca-header__attack,
+.sheet.dh-compact.adversary .dhca-header__attack-summary,
 .sheet.dh-compact.adversary .dhca-header__details {
   position: relative;
   z-index: 1;
@@ -235,8 +235,27 @@
   color: var(--dhca-content-text-soft) !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack {
+.sheet.dh-compact.adversary .dhca-header__attack-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 7px;
+  min-width: 0;
   margin: 0 0 8px !important;
+  color: var(--dhca-content-text-soft);
+  font-size: 14px !important;
+  font-family: var(--dhca-font-family);
+  line-height: 1.35 !important;
+}
+
+.sheet.dh-compact.adversary .dhca-header__attack-summary strong {
+  color: var(--dhca-text);
+  font-weight: 700;
+}
+
+.sheet.dh-compact.adversary .dhca-header__attack-summary .dhca-summary__separator {
+  flex: 0 0 auto;
+  color: var(--dhca-text);
 }
 
 .sheet.dh-compact.adversary .dhca-header__compact-summary {
@@ -297,109 +316,123 @@
 }
 
 .sheet.dh-compact.adversary .dhca-header__attack-list {
+  display: inline-flex;
+  align-items: baseline;
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
+  font: inherit;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .inventory-item-compact {
-  display: flex;
+.sheet.dh-compact.adversary .dhca-header__attack-list .inventory-item-compact {
+  display: inline-flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 5px;
   flex-wrap: nowrap;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
   min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font: inherit !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .img-portait {
+.sheet.dh-compact.adversary .dhca-header__attack-list .img-portait {
   display: none !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .item-name {
-  display: inline;
-  flex: 0 0 auto;
-  margin: 0;
-  max-width: 50%;
+.sheet.dh-compact.adversary .dhca-header__attack-list .item-name {
+  align-self: baseline !important;
+  display: inline !important;
+  margin: 0 !important;
+  padding: 0 !important;
   color: var(--dhca-text) !important;
-  font-size: 14px !important;
-  font-style: italic;
-  font-family: var(--dhca-font-family);
+  font-size: inherit !important;
+  font-style: normal;
   font-weight: 700 !important;
-  line-height: 1.45 !important;
+  line-height: inherit !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .item-name::after {
+.sheet.dh-compact.adversary .dhca-header__attack-list .item-name::after {
   content: ":";
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action {
+.sheet.dh-compact.adversary .dhca-header__attack-list .dhca-attack-chat-action {
   cursor: pointer;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action:hover,
-.sheet.dh-compact.adversary .dhca-header__attack .dhca-attack-chat-action:focus-visible {
+.sheet.dh-compact.adversary .dhca-header__attack-list .dhca-attack-chat-action:hover,
+.sheet.dh-compact.adversary .dhca-header__attack-list .dhca-attack-chat-action:focus-visible {
   color: var(--dhca-accent-strong) !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .item-labels {
+.sheet.dh-compact.adversary .dhca-header__attack-list .item-labels {
   flex: 0 1 auto;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   min-width: 0;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
   white-space: nowrap;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .label,
-.sheet.dh-compact.adversary .dhca-header__attack .label span {
+.sheet.dh-compact.adversary .dhca-header__attack-list .label,
+.sheet.dh-compact.adversary .dhca-header__attack-list .label span {
   color: var(--dhca-attack-meta) !important;
   font-size: 14px !important;
-  font-family: var(--dhca-font-family);
-  line-height: 1.45 !important;
+  line-height: 1.35 !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .label {
+.sheet.dh-compact.adversary .dhca-header__attack-list .label {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 0 4px;
+  gap: 0 5px;
   min-width: 0;
   white-space: nowrap;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .label > * {
+.sheet.dh-compact.adversary .dhca-header__attack-list .label > * {
   white-space: nowrap;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .label i,
-.sheet.dh-compact.adversary .dhca-header__attack .label .fa-solid,
-.sheet.dh-compact.adversary .dhca-header__attack .label .fa-regular {
-  display: inline-block;
-  vertical-align: middle;
+.sheet.dh-compact.adversary .dhca-header__attack-list .dhca-header__attack-separator {
+  color: var(--dhca-text) !important;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .controls a[data-action="toChat"] i {
+.sheet.dh-compact.adversary .dhca-header__attack-list .label i,
+.sheet.dh-compact.adversary .dhca-header__attack-list .label .fa-solid,
+.sheet.dh-compact.adversary .dhca-header__attack-list .label .fa-regular {
+  display: inline-block;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  vertical-align: baseline;
+}
+
+.sheet.dh-compact.adversary .dhca-header__attack-list .controls a[data-action="toChat"] i {
   display: block;
   line-height: 1;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .controls,
+.sheet.dh-compact.adversary .dhca-header__attack-list .controls,
 .sheet.dh-compact.adversary .dhca-tab-panel .controls {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .controls {
+.sheet.dh-compact.adversary .dhca-header__attack-list .controls {
   flex: 0 0 auto;
-  align-self: baseline;
+  align-self: center;
   margin-left: 0;
   display: none;
 }
 
-.sheet.dh-compact.adversary .dhca-header__attack .controls a,
+.sheet.dh-compact.adversary .dhca-header__attack-list .controls a,
 .sheet.dh-compact.adversary .dhca-tab-panel .controls a,
 .sheet.dh-compact.adversary .dhca-inline-action {
   color: var(--dhca-inline-text);
