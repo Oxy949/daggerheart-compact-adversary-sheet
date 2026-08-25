@@ -379,6 +379,7 @@ function moveFeatureResourcesToActions(item) {
 
 function getFeatureResourceControls(item) {
   return [
+    ...item.querySelectorAll(":scope > .item-main > .inventory-item-header .item-resource"),
     ...item.querySelectorAll(":scope > .inventory-item-header .item-resource"),
     ...item.querySelectorAll(":scope > .item-resources"),
     ...item.querySelectorAll(":scope > .item-resource")

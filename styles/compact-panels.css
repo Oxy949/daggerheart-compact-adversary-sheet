@@ -401,15 +401,11 @@
 }
 
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions {
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
   margin-top: 4px;
-}
-
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions {
-  display: flex;
 }
 
 .sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-buttons {
@@ -420,8 +416,8 @@
   margin-top: 0 !important;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resource,
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resources {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resource,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resources {
   display: flex !important;
   flex: 0 1 auto;
   align-items: center;
@@ -435,28 +431,28 @@
   line-height: 1;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resource {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resource {
   max-width: 76px;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resources {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions > .item-resources {
   flex-wrap: wrap;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource {
   display: flex !important;
   align-items: center;
   justify-content: flex-end;
   gap: 4px;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource i {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource i {
   flex: 0 0 auto;
   color: var(--dhca-inline-text);
   font-size: 12px !important;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input {
   width: 34px;
   min-width: 0;
   height: 22px;
@@ -473,8 +469,8 @@
   text-align: center;
 }
 
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input:hover,
-.sheet.dh-compact.dhca-show-interactions .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input:focus {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input:hover,
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-actions .item-resource input:focus {
   border-color: var(--dhca-accent);
   outline: 0;
 }
