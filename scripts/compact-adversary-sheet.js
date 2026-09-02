@@ -50,6 +50,7 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       const context = await super._prepareContext(options);
       context.compact = {
         ...buildCompactContext(this.document),
+        showAttribution: context.showAttribution !== false,
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         showResourceBlock: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryResourceBlock),
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES),

@@ -236,6 +236,12 @@
   box-sizing: border-box;
 }
 
+.sheet.dh-compact .dhca-feature-list__divider {
+  height: 1px;
+  margin: 2px 0 14px;
+  border-top: 1px dashed var(--dhca-line);
+}
+
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):hover:has(.inventory-item-content.extensible) .inventory-item-header,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item:not(.single-img):hover:has(.inventory-item-content.extensible) .inventory-item-content {
   background: light-dark(var(--dark-blue-40, #18162e40), var(--golden-40, #f3c26740)) !important;
@@ -292,7 +298,7 @@
   transition: none !important;
 }
 
-.sheet.dh-compact .dhca-tab-panel--features .inventory-item .invetory-description {
+.sheet.dh-compact .dhca-tab-panel--features .inventory-item :is(.inventory-description, .invetory-description) {
   margin-top: 0 !important;
 }
 
@@ -327,8 +333,8 @@
   padding-top: 0;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description p {
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description),
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) p {
   min-width: 0;
   max-width: 100%;
   margin: 0;
@@ -340,12 +346,12 @@
   word-break: normal;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description p + p {
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) p + p {
   margin-top: 6px;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .content-link,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .inline-roll,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) .content-link,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) .inline-roll,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description .content-link,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description .inline-roll {
   font-weight: bold;
@@ -356,7 +362,7 @@
   padding: 0;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) button,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button {
   appearance: none;
   display: inline-flex;
@@ -382,8 +388,8 @@
   white-space: normal;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button:hover,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description button:focus-visible,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) button:hover,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) button:focus-visible,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button:hover,
 .sheet.dh-compact .dhca-tab-panel--features .inventory-item .dhca-feature-inline-description button:focus-visible {
   border-color: var(--dhca-accent) !important;
@@ -391,8 +397,8 @@
   color: var(--dhca-accent-strong) !important;
 }
 
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description strong,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description b {
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) strong,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) b {
   font-style: italic;
 }
 

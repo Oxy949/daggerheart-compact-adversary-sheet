@@ -9,7 +9,7 @@
       {{formInput notes.field value=notes.value enriched=notes.enriched toggled=true}}
     </fieldset>
 
-    {{#if (and showAttribution document.system.attribution.artist)}}
+    {{#if (and compact.showAttribution document.system.attribution.artist)}}
       <label class="dhca-notes__attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
     {{/if}}
   </div>

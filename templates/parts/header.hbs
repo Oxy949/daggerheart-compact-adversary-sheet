@@ -79,27 +79,29 @@
         <span class="dhca-summary__value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
       </div>
     {{/if}}
-    <div class="dhca-header__attack-summary">
-      <span class="dhca-header__attack-bonus">
-        <strong>{{localize 'DHCS.Labels.AttackShort'}}:</strong>
-        {{#if compact.attackBonus includeZero=true}}
-          {{numberFormat compact.attackBonus sign=true}}
-        {{else}}
-          -
-        {{/if}}
-      </span>
-      <span class="dhca-summary__separator" aria-hidden="true">|</span>
-      <ul class="dhca-header__attack-list">
-        {{> 'daggerheart.inventory-item-compact'
-          item=document.system.attack
-          type='attack'
-          noCompendiumEdit=true
-          hideContextMenu=true
-          hideControls=true
-          hideTooltip=false
-        }}
-      </ul>
-    </div>
+    {{#if document.system.attack}}
+      <div class="dhca-header__attack-summary">
+        <span class="dhca-header__attack-bonus">
+          <strong>{{localize 'DHCS.Labels.AttackShort'}}:</strong>
+          {{#if compact.attackBonus includeZero=true}}
+            {{numberFormat compact.attackBonus sign=true}}
+          {{else}}
+            -
+          {{/if}}
+        </span>
+        <span class="dhca-summary__separator" aria-hidden="true">|</span>
+        <ul class="dhca-header__attack-list">
+          {{> 'daggerheart.inventory-item-compact'
+            item=document.system.attack
+            type='attack'
+            noCompendiumEdit=true
+            hideContextMenu=true
+            hideControls=true
+            hideTooltip=false
+          }}
+        </ul>
+      </div>
+    {{/if}}
   </div>
 
   <div class="dhca-header__details{{#unless compact.hasExperiences}} dhca-header__details--single{{/unless}}">

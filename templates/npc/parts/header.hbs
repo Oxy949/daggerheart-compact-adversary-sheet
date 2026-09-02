@@ -1,0 +1,42 @@
+<header class="npc-header-sheet dhca-section dhca-section--header dhca-header dhca-header--npc">
+  <div class="dhca-header__adornment" aria-hidden="true">
+    <div class="dhca-header__ribbon">{{compact.identity.primaryLabel}}</div>
+  </div>
+
+  <div class="dhca-header__identity">
+    <h1
+      class="input actor-name dhca-header__name"
+      contenteditable="plaintext-only"
+      data-property="name"
+      placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+    >{{source.name}}</h1>
+  </div>
+
+  {{#if description}}
+    <div class="dhca-header__description">{{{description}}}</div>
+  {{/if}}
+
+  <div class="dhca-npc__summary">
+    {{#if compact.status.difficulty includeZero=true}}
+      <span>
+        <strong>{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</strong>
+        {{compact.status.difficulty}}
+      </span>
+    {{/if}}
+    {{#if compact.hasMotives}}
+      <span class="dhca-npc__motives">
+        <strong>{{localize 'DAGGERHEART.ACTORS.NPC.FIELDS.motives.label'}}:</strong>
+        {{source.system.motives}}
+      </span>
+    {{/if}}
+  </div>
+
+  <div class="dhca-header__toolbar">
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/tab-nav.hbs'}}
+    <div class="dhca-header-actions">
+      <button type="button" data-action="openSettings" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.openSheetSettings'}}">
+        <i class="fa-solid fa-wrench"></i>
+      </button>
+    </div>
+  </div>
+</header>

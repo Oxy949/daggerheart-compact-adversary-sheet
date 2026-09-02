@@ -3,13 +3,17 @@ export const SYSTEM_ID = "daggerheart";
 export const SHEET_LABELS = Object.freeze({
   character: "DHCS.Sheets.Character",
   adversary: "DHCS.Sheets.Adversary",
-  environment: "DHCS.Sheets.Environment"
+  environment: "DHCS.Sheets.Environment",
+  npc: "DHCS.Sheets.NPC",
+  party: "DHCS.Sheets.Party"
 });
 
 export const SETTING_KEYS = Object.freeze({
   makeCharacterDefault: "makeCharacterDefault",
   makeAdversaryDefault: "makeAdversaryDefault",
   makeEnvironmentDefault: "makeEnvironmentDefault",
+  makeNpcDefault: "makeNpcDefault",
+  makePartyDefault: "makePartyDefault",
   showAdversaryResourceBlock: "showAdversaryResourceBlock",
   showAdversaryInteractionButtons: "showAdversaryInteractionButtons"
 });
@@ -59,12 +63,33 @@ export const ENVIRONMENT_TEMPLATE_PARTIALS = Object.freeze({
   tabNav: SHARED_TEMPLATE_PARTIALS.tabNav
 });
 
+export const NPC_TEMPLATE_PARTIALS = Object.freeze({
+  art: SHARED_TEMPLATE_PARTIALS.art,
+  header: `${TEMPLATE_ROOT}/npc/parts/header.hbs`,
+  navigation: `${TEMPLATE_ROOT}/parts/empty.hbs`,
+  features: SHARED_TEMPLATE_PARTIALS.features,
+  notes: SHARED_TEMPLATE_PARTIALS.notes,
+  tabNav: SHARED_TEMPLATE_PARTIALS.tabNav
+});
+
+export const PARTY_TEMPLATE_PARTIALS = Object.freeze({
+  art: SHARED_TEMPLATE_PARTIALS.art,
+  header: `${TEMPLATE_ROOT}/party/parts/header.hbs`,
+  navigation: `${TEMPLATE_ROOT}/parts/empty.hbs`,
+  partyMembers: `${TEMPLATE_ROOT}/party/parts/party-members.hbs`,
+  inventory: `${TEMPLATE_ROOT}/party/parts/inventory.hbs`,
+  notes: SHARED_TEMPLATE_PARTIALS.notes,
+  tabNav: SHARED_TEMPLATE_PARTIALS.tabNav
+});
+
 export const PRELOAD_TEMPLATE_PATHS = Object.freeze(
   Array.from(new Set([
     ...Object.values(SHARED_TEMPLATE_PARTIALS),
     ...Object.values(ADVERSARY_TEMPLATE_PARTIALS),
     ...Object.values(CHARACTER_TEMPLATE_PARTIALS),
-    ...Object.values(ENVIRONMENT_TEMPLATE_PARTIALS)
+    ...Object.values(ENVIRONMENT_TEMPLATE_PARTIALS),
+    ...Object.values(NPC_TEMPLATE_PARTIALS),
+    ...Object.values(PARTY_TEMPLATE_PARTIALS)
   ]))
 );
 
@@ -80,6 +105,14 @@ export const DEFAULT_WINDOWS = Object.freeze({
   environment: Object.freeze({
     width: 400,
     height: "auto"
+  }),
+  npc: Object.freeze({
+    width: 400,
+    height: 560
+  }),
+  party: Object.freeze({
+    width: 560,
+    height: 720
   })
 });
 

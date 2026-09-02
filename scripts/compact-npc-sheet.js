@@ -1,7 +1,7 @@
 import {
   DEFAULT_WINDOWS,
-  ENVIRONMENT_TEMPLATE_PARTIALS,
   MODULE_ID,
+  NPC_TEMPLATE_PARTIALS,
   SETTING_KEYS
 } from "./constants.js";
 import {
@@ -14,34 +14,31 @@ import {
   normalizeCompactFeatureRows,
   prepareCompactRender
 } from "./compact-sheet-helpers.js";
-import { buildCompactEnvironmentContext } from "./utils.js";
+import { buildCompactNpcContext } from "./utils.js";
 
 const TAB_NAV_ENTRIES = Object.freeze([
-  { id: "features", icon: "fa-solid fa-list" },
-  { id: "potentialAdversaries", icon: "fa-solid fa-user-group" },
-  { id: "notes", icon: "fa-solid fa-note-sticky" }
+  { id: "notes", icon: "fa-solid fa-note-sticky" },
+  { id: "features", icon: "fa-solid fa-list" }
 ]);
 
-export function createCompactEnvironmentSheetClass(BaseEnvironmentSheet) {
-  return class CompactEnvironmentSheet extends BaseEnvironmentSheet {
+export function createCompactNpcSheetClass(BaseNpcSheet) {
+  return class CompactNpcSheet extends BaseNpcSheet {
     #renderController = null;
 
-    static DEFAULT_OPTIONS = createCompactDefaultOptions(BaseEnvironmentSheet, DEFAULT_WINDOWS.environment);
+    static DEFAULT_OPTIONS = createCompactDefaultOptions(BaseNpcSheet, DEFAULT_WINDOWS.npc);
 
-    static PARTS = createCompactParts(BaseEnvironmentSheet, {
-      art: createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.art),
-      header: createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.header),
-      sidebar: { ...createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.footer), scrollable: [] },
-      features: createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.features, { scrollable: true }),
-      potentialAdversaries: createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.potentialAdversaries, { scrollable: true }),
-      notes: createTemplatePart(ENVIRONMENT_TEMPLATE_PARTIALS.notes, { scrollable: true })
+    static PARTS = createCompactParts(BaseNpcSheet, {
+      art: createTemplatePart(NPC_TEMPLATE_PARTIALS.art),
+      header: createTemplatePart(NPC_TEMPLATE_PARTIALS.header),
+      tabs: createTemplatePart(NPC_TEMPLATE_PARTIALS.navigation),
+      features: createTemplatePart(NPC_TEMPLATE_PARTIALS.features, { scrollable: true }),
+      notes: createTemplatePart(NPC_TEMPLATE_PARTIALS.notes, { scrollable: true })
     });
 
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
-      const compactEnvironment = await buildCompactEnvironmentContext(this.document);
       context.compact = {
-        ...compactEnvironment,
+        ...buildCompactNpcContext(this.document),
         showAttribution: context.showAttribution !== false,
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES)

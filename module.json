@@ -1,11 +1,11 @@
 {
   "id": "daggerheart-compact-sheets",
   "title": "Daggerheart: Compact Sheets",
-  "description": "Compact sheets for Foundry VTT 13/14 and the Foundryborne Daggerheart system.",
+  "description": "Compact actor sheets for Foundry VTT 14 and the Foundryborne Daggerheart system.",
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": "13",
-    "verified": "14"
+    "minimum": "14.359",
+    "verified": "14.367"
   },
   "relationships": {
     "systems": [
@@ -14,7 +14,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "2.0.0",
-          "verified": "2.5.0"
+          "verified": "2.9.1"
         }
       }
     ],
@@ -51,6 +51,8 @@
     "styles/compact-resources.css",
     "styles/compact-adversary.css",
     "styles/compact-environment.css",
+    "styles/compact-npc.css",
+    "styles/compact-party.css",
     "styles/compact-character.css"
   ],
   "url": "#{URL}#",

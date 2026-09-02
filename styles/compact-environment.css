@@ -208,13 +208,13 @@
   padding-inline: 7px;
 }
 
-.sheet.dh-compact.environment .dhca-tab-panel .inventory-item .invetory-description ul {
+.sheet.dh-compact.environment .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) ul {
   margin: 4px 0px;
 }
 
 .sheet.dh-compact .dhca-tab-panel .inventory-item .secret,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .secret,
-.sheet.dh-compact .dhca-tab-panel .inventory-item .invetory-description .secret p {
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) .secret,
+.sheet.dh-compact .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) .secret p {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;

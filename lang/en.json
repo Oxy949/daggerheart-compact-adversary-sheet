@@ -3,8 +3,12 @@
     "Labels": {
       "AttackShort": "ATK",
       "CreateCharacter": "Create Character",
+      "DropActorsHere": "Drop actors here to add them to the party",
       "Experiences": "Experiences",
       "Filter": "Filter",
+      "Members": "Members",
+      "OpenMember": "Open {name}",
+      "RemoveMember": "Remove {name} from the party",
       "Thresholds": "Thresholds"
     },
     "ContextMenu": {
@@ -25,9 +29,17 @@
         "Name": "Use compact sheet as the default environment sheet",
         "Hint": "When enabled, environment actors open with the compact sheet by default. Reload after changing this setting."
       },
+      "MakeNpcDefault": {
+        "Name": "Use compact sheet as the default NPC sheet",
+        "Hint": "When enabled, NPC actors open with the compact sheet by default. Reload after changing this setting."
+      },
+      "MakePartyDefault": {
+        "Name": "Use compact sheet as the default party sheet",
+        "Hint": "When enabled, party actors open with the compact sheet by default. Reload after changing this setting."
+      },
       "ShowAdversaryInteractionButtons": {
-        "Name": "Show interaction buttons on compact adversary and environment sheets",
-        "Hint": "When enabled, compact adversary and environment sheets show attack, chat, item action, and similar interaction controls."
+        "Name": "Show interaction buttons on compact adversary, environment, and NPC sheets",
+        "Hint": "When enabled, compact adversary, environment, and NPC sheets show attack, chat, item action, and similar interaction controls."
       },
       "ShowAdversaryResourceBlock": {
         "Name": "Show a separate HP and stress block on compact adversary sheets",
@@ -37,7 +49,9 @@
     "Sheets": {
       "Character": "Compact Character Sheet",
       "Adversary": "Compact Adversary Sheet",
-      "Environment": "Compact Environment Sheet"
+      "Environment": "Compact Environment Sheet",
+      "NPC": "Compact NPC Sheet",
+      "Party": "Compact Party Sheet"
     }
   }
 }

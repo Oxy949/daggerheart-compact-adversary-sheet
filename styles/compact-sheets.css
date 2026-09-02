@@ -178,7 +178,9 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
 
 .sheet.dh-compact.adversary .window-content,
 .sheet.dh-compact.character .window-content,
-.sheet.dh-compact.environment .window-content {
+.sheet.dh-compact.environment .window-content,
+.sheet.dh-compact.npc .window-content,
+.sheet.dh-compact.party .window-content {
   position: relative;
   isolation: isolate;
   display: grid !important;
@@ -212,6 +214,14 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
     "header"
     "body"
     "footer" !important;
+}
+
+.sheet.dh-compact.npc .window-content,
+.sheet.dh-compact.party .window-content {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  grid-template-areas:
+    "header"
+    "body" !important;
 }
 
 .sheet.dh-compact.adversary .adversary-header-sheet {
@@ -306,4 +316,11 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
 
 .sheet.dh-compact section.secret p:last-child {
     margin-bottom: 0;
+}
+
+.sheet.dh-compact.npc .npc-header-sheet,
+.sheet.dh-compact.party .party-header-sheet {
+  position: relative;
+  z-index: 1;
+  grid-area: header;
 }

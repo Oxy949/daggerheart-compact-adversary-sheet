@@ -127,7 +127,7 @@
   </div>
 
   <div class="dhca-character__focus-row">
-    <div class="dhca-character__hope" aria-label="{{localize 'DAGGERHEART.GENERAL.hope'}}">
+    <div class="dhca-character__hope resource-section" aria-label="{{localize 'DAGGERHEART.GENERAL.hope'}}">
       <span class="dhca-character__focus-label">{{localize 'DAGGERHEART.GENERAL.hope'}}</span>
       <div class="dhca-character__hope-track">
         {{#each compact.resources.hope.slots as |slot|}}
@@ -150,7 +150,7 @@
       {{#if hasExtraResources}}
         <button
           type="button"
-          class="dhca-character__micro-button"
+          class="dhca-character__micro-button resource-manager"
           data-action="toggleResourceManagement"
           data-tooltip-text="{{localize 'DAGGERHEART.GENERAL.Tabs.resources'}}"
         >

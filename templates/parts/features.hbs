@@ -23,12 +23,27 @@
           {{> 'daggerheart.inventory-item'
             item=item
             type='feature'
+            inactive=item.system.inactive
             actorType=@root.document.type
             hideControls=true
             hideContextMenu=true
             showActions=@root.compact.showInteractionButtons
           }}
         {{/each}}
+        {{#if @root.evolutionFeatures}}
+          <li class="dhca-feature-list__divider" aria-hidden="true"></li>
+          {{#each @root.evolutionFeatures as |item|}}
+            {{> 'daggerheart.inventory-item'
+              item=item
+              type='feature'
+              inactive=item.system.inactive
+              actorType=@root.document.type
+              hideControls=true
+              hideContextMenu=true
+              showActions=@root.compact.showInteractionButtons
+            }}
+          {{/each}}
+        {{/if}}
       </ul>
     </div>
   </div>

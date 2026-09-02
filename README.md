@@ -1,7 +1,7 @@
 [![Module Download Count](https://img.shields.io/github/downloads/Oxy949/daggerheart-compact-sheets/total?color=2b82fc&label=ТОTAL%20DOWNLOADS&style=for-the-badge&logo=github)](https://tooomm.github.io/github-release-stats/?username=Oxy949&repository=daggerheart-compact-sheets) [![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdaggerheart-compact-sheets&color=2b82fc&style=for-the-badge&logo=cloudfoundry)](https://forge-vtt.com/bazaar#package=daggerheart-compact-sheets) [![Foundry 13](https://img.shields.io/badge/Foundry-v14-informational?color=2b82fc&label=Foundry%20VTT&style=for-the-badge&logo=foundryvirtualtabletop)](https://foundryvtt.com/packages/daggerheart-compact-sheets)
 
 # Daggerheart Compact Sheets
-Compact adaptive sheets for Daggerheart (Foundryborne) system.
+Compact adaptive actor sheets for the Daggerheart (Foundryborne) system on Foundry VTT 14.
 
 ![Image](./assets/sheets_preview.webp)
 
@@ -16,7 +16,7 @@ Compact adaptive sheets for Daggerheart (Foundryborne) system.
 
 ## Highlights
 
-- Compact character, adversary, and environment actor sheets
+- Compact character, adversary, environment, NPC, and party actor sheets
 - Responsive and adaptive layout
 - Dark and Light color sheme support
 - Minimal player character layout with quick traits, Hope, HP, Stress, Armor, Loadout, Inventory, Biography, and Effects
@@ -36,7 +36,9 @@ Module settings are available in Foundry VTT under **Configure Settings > Module
 - **Use compact sheet as the default character sheet** - enabled by default. This is a world setting and requires a world reload after changing.
 - **Use compact sheet as the default adversary sheet** - enabled by default. This is a world setting and requires a world reload after changing.
 - **Use compact sheet as the default environment sheet** - enabled by default. This is a world setting and requires a world reload after changing.
-- **Show interaction buttons on compact adversary and environment sheets** - enabled by default. This is a world setting that shows attack, chat, item action, and similar controls on compact adversary and environment sheets.
+- **Use compact sheet as the default NPC sheet** - enabled by default. This is a world setting and requires a world reload after changing.
+- **Use compact sheet as the default party sheet** - enabled by default. This is a world setting and requires a world reload after changing.
+- **Show interaction buttons on compact adversary, environment, and NPC sheets** - enabled by default. This is a world setting that shows attack, chat, item action, and similar controls on compact adversary, environment, and NPC sheets.
 - **Show a separate HP and stress block on compact adversary sheets** - enabled by default. This is a world setting that shows HP, stress, and damage thresholds in a footer block. When disabled, the footer is hidden and those values move into the header summary.
   
 ## Credits

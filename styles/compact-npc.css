@@ -1,0 +1,75 @@
+.sheet.dh-compact.npc .npc-header-sheet {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 12px 12px 0 !important;
+  background: transparent !important;
+}
+
+.sheet.dh-compact.npc .dhca-header__identity,
+.sheet.dh-compact.npc .dhca-header__description,
+.sheet.dh-compact.npc .dhca-npc__summary {
+  position: relative;
+  z-index: 1;
+}
+
+.sheet.dh-compact.npc .dhca-header__identity {
+  margin-right: 92px;
+}
+
+.sheet.dh-compact.npc .dhca-header__description {
+  margin-right: 22%;
+}
+
+.sheet.dh-compact.npc .dhca-npc__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  margin: 6px 0 4px;
+  color: var(--dhca-content-text-soft);
+  font-family: var(--dhca-font-family);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.sheet.dh-compact.npc .dhca-npc__summary strong {
+  color: var(--dhca-text);
+}
+
+.sheet.dh-compact.npc .dhca-npc__motives {
+  flex-basis: 100%;
+}
+
+.sheet.dh-compact.npc .dhca-tab-panel,
+.sheet.dh-compact.npc .dhca-tab-panel.active {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.sheet.dh-compact.npc .dhca-tab-panel__scroll {
+  padding: 10px;
+  scrollbar-gutter: stable;
+}
+
+.sheet.dh-compact.npc .dhca-panel--notes .editor,
+.sheet.dh-compact.npc .dhca-panel--notes .prosemirror,
+.sheet.dh-compact.npc .dhca-panel--notes textarea {
+  min-height: 280px;
+}
+
+.sheet.dh-compact.npc .dhca-notes__attribution {
+  display: block;
+  margin-top: 10px;
+  color: var(--dhca-text-soft);
+  font-family: var(--dhca-font-family);
+  font-size: 12px;
+  text-align: center;
+}
+
+@container (max-width: 360px) {
+  .sheet.dh-compact.npc .dhca-header__description {
+    margin-right: 8%;
+  }
+}

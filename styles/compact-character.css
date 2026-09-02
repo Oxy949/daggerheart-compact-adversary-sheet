@@ -827,8 +827,8 @@ body.theme-light.sheet.dh-compact.character .dhca-character__domains img {
   display: none !important;
 }
 
-.sheet.dh-compact.character .dhca-tab-panel .inventory-item .invetory-description ul,
-.sheet.dh-compact.character .dhca-tab-panel .inventory-item .invetory-description ol {
+.sheet.dh-compact.character .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) ul,
+.sheet.dh-compact.character .dhca-tab-panel .inventory-item :is(.inventory-description, .invetory-description) ol {
   margin: 4px 0;
 }
 

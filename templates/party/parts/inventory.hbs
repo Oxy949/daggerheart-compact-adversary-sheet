@@ -1,0 +1,69 @@
+<section
+  class="tab {{tabs.inventory.cssClass}} {{tabs.inventory.id}} dhca-section dhca-section--body dhca-tab-panel dhca-tab-panel--inventory"
+  data-tab="{{tabs.inventory.id}}"
+  data-group="{{tabs.inventory.group}}"
+>
+  <div class="dhca-tab-panel__scroll">
+    <div class="dhca-character__tool-row">
+      <label class="dhca-character__search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" name="search" class="search-inventory" placeholder="{{localize 'DAGGERHEART.GENERAL.searchPlaceholder'}}" />
+      </label>
+      <button type="button" class="filter-button" data-tooltip-text="{{localize 'DHCS.Labels.Filter'}}">
+        <i class="fa-solid fa-filter"></i>
+      </button>
+      <button type="button" data-action="tempBrowser" data-tooltip-text="{{localize 'DAGGERHEART.UI.Tooltip.compendiumBrowser'}}">
+        <i class="fa-solid fa-book-atlas"></i>
+      </button>
+    </div>
+
+    {{#if inventory.hasCurrency}}
+      {{> 'systems/daggerheart/templates/sheets/global/partials/gold.hbs' currencies=inventory.currencies}}
+    {{/if}}
+
+    <div class="items-section dhca-character__section-stack">
+      {{> 'daggerheart.inventory-items'
+        title='TYPES.Item.weapon'
+        type='weapon'
+        actorType='party'
+        collection=@root.inventory.weapons
+        isGlassy=true
+        canCreate=@root.editable
+        hideResources=true
+        hideContextMenu=true
+        isQuantifiable=true
+      }}
+      {{> 'daggerheart.inventory-items'
+        title='TYPES.Item.armor'
+        type='armor'
+        actorType='party'
+        collection=@root.inventory.armor
+        isGlassy=true
+        canCreate=@root.editable
+        hideResources=true
+        hideContextMenu=true
+        isQuantifiable=true
+      }}
+      {{> 'daggerheart.inventory-items'
+        title='TYPES.Item.consumable'
+        type='consumable'
+        actorType='party'
+        collection=@root.inventory.consumables
+        isGlassy=true
+        canCreate=@root.editable
+        hideContextMenu=true
+        isQuantifiable=true
+      }}
+      {{> 'daggerheart.inventory-items'
+        title='TYPES.Item.loot'
+        type='loot'
+        actorType='party'
+        collection=@root.inventory.loot
+        isGlassy=true
+        canCreate=@root.editable
+        hideContextMenu=true
+        isQuantifiable=true
+      }}
+    </div>
+  </div>
+</section>

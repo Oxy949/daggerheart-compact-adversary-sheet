@@ -1,6 +1,8 @@
 import { createCompactAdversarySheetClass } from "./compact-adversary-sheet.js";
 import { createCompactCharacterSheetClass } from "./compact-character-sheet.js";
 import { createCompactEnvironmentSheetClass } from "./compact-environment-sheet.js";
+import { createCompactNpcSheetClass } from "./compact-npc-sheet.js";
+import { createCompactPartySheetClass } from "./compact-party-sheet.js";
 import {
   MODULE_ID,
   PRELOAD_TEMPLATE_PATHS,
@@ -50,6 +52,26 @@ function registerSettings() {
     requiresReload: true
   });
 
+  game.settings.register(MODULE_ID, SETTING_KEYS.makeNpcDefault, {
+    name: "DHCS.Settings.MakeNpcDefault.Name",
+    hint: "DHCS.Settings.MakeNpcDefault.Hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    requiresReload: true
+  });
+
+  game.settings.register(MODULE_ID, SETTING_KEYS.makePartyDefault, {
+    name: "DHCS.Settings.MakePartyDefault.Name",
+    hint: "DHCS.Settings.MakePartyDefault.Hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    requiresReload: true
+  });
+
   game.settings.register(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons, {
     name: "DHCS.Settings.ShowAdversaryInteractionButtons.Name",
     hint: "DHCS.Settings.ShowAdversaryInteractionButtons.Hint",
@@ -78,7 +100,7 @@ function rerenderOpenCompactNpcSheets() {
   ]);
 
   for (const application of applications) {
-    if (!["adversary", "environment"].includes(application?.document?.type)) continue;
+    if (!["adversary", "environment", "npc"].includes(application?.document?.type)) continue;
 
     const element = application.element instanceof HTMLElement
       ? application.element
@@ -125,6 +147,22 @@ function registerCompactSheets() {
     label: SHEET_LABELS.environment,
     makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makeEnvironmentDefault),
     type: "environment"
+  });
+
+  registerCompactSheet({
+    baseSheet: actorSheets?.NPC,
+    factory: createCompactNpcSheetClass,
+    label: SHEET_LABELS.npc,
+    makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makeNpcDefault),
+    type: "npc"
+  });
+
+  registerCompactSheet({
+    baseSheet: actorSheets?.Party,
+    factory: createCompactPartySheetClass,
+    label: SHEET_LABELS.party,
+    makeDefault: game.settings.get(MODULE_ID, SETTING_KEYS.makePartyDefault),
+    type: "party"
   });
 }
 

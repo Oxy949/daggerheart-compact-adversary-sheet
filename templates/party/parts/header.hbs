@@ -1,0 +1,53 @@
+<header class="party-header-sheet dhca-section dhca-section--header dhca-header dhca-header--party">
+  <div class="dhca-header__adornment" aria-hidden="true">
+    <div class="dhca-header__ribbon">{{compact.identity.primaryLabel}}</div>
+  </div>
+
+  <div class="dhca-header__identity">
+    <h1
+      class="input actor-name dhca-header__name"
+      contenteditable="plaintext-only"
+      data-property="name"
+      placeholder="{{localize 'DAGGERHEART.GENERAL.actorName'}}"
+    >{{source.name}}</h1>
+  </div>
+
+  {{#if description}}
+    <div class="dhca-header__description">{{{description}}}</div>
+  {{/if}}
+
+  <div class="dhca-party__summary">
+    <strong>{{localize 'DHCS.Labels.Members'}}:</strong>
+    <span>{{compact.identity.memberCount}}</span>
+  </div>
+
+  <div class="dhca-header__toolbar">
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/tab-nav.hbs'}}
+    <div class="dhca-header-actions dhca-party__actions">
+      <button
+        type="button"
+        class="{{#if tagTeamActive}}active{{/if}}"
+        data-action="tagTeamRoll"
+        data-tooltip-text="{{localize 'DAGGERHEART.APPLICATIONS.TagTeamSelect.title'}}"
+      >
+        <i class="fa-solid fa-user-group"></i>
+      </button>
+      <button
+        type="button"
+        class="{{#if groupRollActive}}active{{/if}}"
+        data-action="groupRoll"
+        data-tooltip-text="{{localize 'DAGGERHEART.APPLICATIONS.GroupRollSelect.title'}}"
+      >
+        <i class="fa-solid fa-users"></i>
+      </button>
+      {{#if isGM}}
+        <button type="button" data-action="triggerRest" data-type="shortRest" data-tooltip-text="{{localize 'DAGGERHEART.APPLICATIONS.Downtime.shortRest.title'}}">
+          <i class="fa-solid fa-utensils"></i>
+        </button>
+        <button type="button" data-action="triggerRest" data-type="longRest" data-tooltip-text="{{localize 'DAGGERHEART.APPLICATIONS.Downtime.longRest.title'}}">
+          <i class="fa-solid fa-bed"></i>
+        </button>
+      {{/if}}
+    </div>
+  </div>
+</header>

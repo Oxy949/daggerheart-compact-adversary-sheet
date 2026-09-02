@@ -69,6 +69,44 @@ export async function buildCompactEnvironmentContext(document) {
   };
 }
 
+export function buildCompactNpcContext(document) {
+  const system = document.system ?? {};
+  const art = getCompactDocumentArt(document);
+
+  return {
+    artDefaultImg: art.defaultImg,
+    artImg: art.img,
+    artImgIsFallback: art.isFallback,
+    canEditImage: document.isOwner ?? false,
+    hasDescription: hasRenderableRichText(system.description),
+    hasMotives: hasRenderableRichText(system.motives),
+    identity: {
+      primaryLabel: localizeFallback("TYPES.Actor.npc", "NPC")
+    },
+    status: {
+      difficulty: toOptionalNumber(system.difficulty)
+    }
+  };
+}
+
+export function buildCompactPartyContext(document) {
+  const system = document.system ?? {};
+  const art = getCompactDocumentArt(document);
+  const partyMembers = normalizeCollection(system.partyMembers);
+
+  return {
+    artDefaultImg: art.defaultImg,
+    artImg: art.img,
+    artImgIsFallback: art.isFallback,
+    canEditImage: document.isOwner ?? false,
+    hasDescription: hasRenderableRichText(system.description),
+    identity: {
+      memberCount: partyMembers.length,
+      primaryLabel: localizeFallback("TYPES.Actor.party", "Party")
+    }
+  };
+}
+
 export function buildCompactCharacterContext(document) {
   const system = document.system ?? {};
   const hitPoints = buildResourceTrack("hitPoints", system.resources?.hitPoints);

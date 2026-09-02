@@ -317,7 +317,9 @@ function inlineFeatureDescription(item) {
   if (item.querySelector(":scope > .inventory-item-header .dhca-feature-inline-description")) return;
 
   const label = item.querySelector(":scope > .inventory-item-header .item-label");
-  const description = item.querySelector(":scope > .inventory-item-content.extensible > .invetory-description");
+  const description = item.querySelector(
+    ":scope > .inventory-item-content.extensible > :is(.inventory-description, .invetory-description)"
+  );
   const firstParagraph = description?.querySelector(":scope > p");
 
   if (!label || !firstParagraph || !firstParagraph.textContent.trim()) return;
