@@ -93,6 +93,7 @@ export function buildCompactAttributionContext(document, enabled = false) {
 export function buildCompactNpcContext(document) {
   const system = document.system ?? {};
   const art = getCompactDocumentArt(document);
+  const difficulty = toOptionalNumber(system.difficulty);
 
   return {
     artDefaultImg: art.defaultImg,
@@ -105,7 +106,8 @@ export function buildCompactNpcContext(document) {
       primaryLabel: localizeFallback("TYPES.Actor.npc", "NPC")
     },
     status: {
-      difficulty: toOptionalNumber(system.difficulty)
+      difficulty,
+      hasDifficulty: difficulty !== null && difficulty > 0
     }
   };
 }
