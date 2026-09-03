@@ -9,43 +9,59 @@
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
   padding: 0;
   border: 1px solid var(--dhca-line);
   border-radius: 999px;
-  background: var(--dhca-button-bg);
+  background: var(--dhca-button-bg) !important;
   color: var(--dhca-button-text);
   box-shadow: none;
-  font-size: 11px !important;
+  font-size: 8px !important;
   line-height: 1;
+  position: absolute;
+  right: 10px;
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-groups__add {
-  min-width: 26px;
-  min-height: 26px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  margin-block: -3px;
   padding: 0;
+  border: 1px solid var(--dhca-panel-create-border);
+  border-radius: 999px;
+  background: none !important;
+  color: var(--dhca-text-soft) !important;
   box-shadow: none;
+  font-size: 9px !important;
+  line-height: 1;
+  opacity: 0.86;
+  transition:
+    border-color 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease,
+    opacity 120ms ease;
 }
 
+.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add:hover,
+.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add:focus-visible,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:not(:disabled):hover,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:not(:disabled):focus-visible {
   border-color: var(--dhca-accent);
   background: var(--dhca-button-bg-hover);
   color: var(--dhca-accent-strong);
+  opacity: 1;
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:disabled {
   opacity: 0.5;
-}
-
-.sheet.dh-compact.adversary .adversary-sidebar-sheet:hover .dhca-adversary-resource-groups__add,
-.sheet.dh-compact.adversary .adversary-sidebar-sheet:focus-within .dhca-adversary-resource-groups__add {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-groups,
@@ -55,10 +71,14 @@
   min-width: 0;
 }
 
+.sheet.dh-compact.adversary .dhca-adversary-resource-groups:has(> .dhca-adversary-resource-group:nth-child(2)) {
+  margin-top: 0px;
+}
+
 .sheet.dh-compact.adversary .dhca-adversary-resource-group + .dhca-adversary-resource-group {
   margin-top: 2px;
   padding-top: 12px;
-  border-top: 1px dashed var(--dhca-line);
+  /* border-top: 1px dashed var(--dhca-line); */
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__header {
@@ -72,16 +92,19 @@
   flex: 1 1 auto;
   width: 100%;
   min-width: 0;
-  height: 28px;
-  padding: 3px 9px 3px 0 !important;
-  border: 1px solid var(--dhca-line);
+  height: auto;
+  margin: -3px -3px -12px -3px;
+  padding: 3px 9px 3px 3px !important;
+  border: none !important;
   border-radius: 6px;
   background: transparent !important;
-  color: var(--dhca-text);
+  color: var(--dhca-text) !important;
   box-shadow: none;
-  font-family: var(--dhca-font-family);
-  font-size: 12px !important;
-  font-weight: 700;
+  font-family: var(--dhca-font-family) !important;
+  font-size: 14px !important;
+  font-size: 14px !important;
+  font-style: italic;
+  font-weight: 700 !important;
   line-height: 1.2;
 }
 
