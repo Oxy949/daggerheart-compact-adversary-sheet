@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove {
   display: grid;
   place-items: center;
@@ -25,11 +24,12 @@
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-groups__add {
-  margin-block: -6px;
+  min-width: 26px;
+  min-height: 26px;
+  padding: 0;
+  box-shadow: none;
 }
 
-.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add:not(:disabled):hover,
-.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add:not(:disabled):focus-visible,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:not(:disabled):hover,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:not(:disabled):focus-visible {
   border-color: var(--dhca-accent);
@@ -37,9 +37,15 @@
   color: var(--dhca-accent-strong);
 }
 
-.sheet.dh-compact.adversary .dhca-adversary-resource-groups__add:disabled,
 .sheet.dh-compact.adversary .dhca-adversary-resource-group__remove:disabled {
   opacity: 0.5;
+}
+
+.sheet.dh-compact.adversary .adversary-sidebar-sheet:hover .dhca-adversary-resource-groups__add,
+.sheet.dh-compact.adversary .adversary-sidebar-sheet:focus-within .dhca-adversary-resource-groups__add {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .sheet.dh-compact.adversary .dhca-adversary-resource-groups,
@@ -67,10 +73,10 @@
   width: 100%;
   min-width: 0;
   height: 28px;
-  padding: 3px 9px;
+  padding: 3px 9px 3px 0 !important;
   border: 1px solid var(--dhca-line);
   border-radius: 6px;
-  background: var(--dhca-input-bg);
+  background: transparent !important;
   color: var(--dhca-text);
   box-shadow: none;
   font-family: var(--dhca-font-family);
