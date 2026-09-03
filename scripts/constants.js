@@ -111,7 +111,7 @@ export const DEFAULT_WINDOWS = Object.freeze({
   }),
   npc: Object.freeze({
     width: 400,
-    height: 560
+    height: "auto"
   }),
   party: Object.freeze({
     width: 560,

@@ -54,7 +54,7 @@
 }
 
 .sheet.dh-compact.npc .dhca-panel--notes > :is(.editor, .prosemirror, prose-mirror, textarea) {
-  min-height: 280px !important;
+  min-height: 240px !important;
 }
 
 @container (max-width: 360px) {
