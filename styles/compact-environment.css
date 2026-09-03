@@ -322,3 +322,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+
+.sheet.dh-compact.environment .dhca-panel--notes > :is(.editor, .prosemirror, prose-mirror, textarea) {
+  min-height: 240px !important;
+}

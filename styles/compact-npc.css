@@ -53,6 +53,10 @@
   scrollbar-gutter: stable;
 }
 
+.sheet.dh-compact.npc .dhca-panel--notes > :is(.editor, .prosemirror, prose-mirror, textarea) {
+  min-height: 280px !important;
+}
+
 @container (max-width: 360px) {
   .sheet.dh-compact.npc .dhca-header__description {
     margin-right: 8%;

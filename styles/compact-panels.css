@@ -540,6 +540,10 @@
   min-height: 0;
 }
 
+.sheet.dh-compact.adversary .dhca-panel--notes > :is(.editor, .prosemirror, prose-mirror, textarea) {
+  min-height: 240px !important;
+}
+
 @container (min-width: 690px) {
   .sheet.dh-compact .dhca-feature-list {
     column-fill: balance;

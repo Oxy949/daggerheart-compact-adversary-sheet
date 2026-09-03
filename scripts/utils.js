@@ -8,6 +8,7 @@ export function buildCompactContext(document) {
   const thresholds = buildThresholds(document.system.damageThresholds);
   const hordeHp = buildHordeHpContext(document.system);
   const art = getCompactDocumentArt(document);
+  const difficulty = toOptionalNumber(document.system.difficulty);
 
   const hasExperiences = !foundry.utils.isEmpty(document.system.experiences);
   const hasMotivesAndTactics = hasRenderableRichText(document.system.motivesAndTactics);
@@ -19,8 +20,10 @@ export function buildCompactContext(document) {
     artImgIsFallback: art.isFallback,
     canEditImage: document.isOwner ?? false,
     criticalThreshold: toNumber(document.system.criticalThreshold, 20),
+    difficulty,
     hasAttack: hasRenderableRichText(document.system.attack?.name),
     hasDetails: hasExperiences || hasMotivesAndTactics,
+    hasDifficulty: difficulty !== null && difficulty > 0,
     hasExperiences,
     hasMotivesAndTactics,
     hasTrackedResources: hitPoints.max > 0 || stress.max > 0,

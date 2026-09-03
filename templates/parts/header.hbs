@@ -19,19 +19,25 @@
 
   {{#unless compact.showResourceBlock}}
     <div class="dhca-header__compact-summary" aria-label="{{localize 'DAGGERHEART.GENERAL.details'}}">
-      <div class="dhca-header__compact-summary-row">
-        <span>
-          <strong>{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</strong>
-          {{#if source.system.difficulty includeZero=true}}{{source.system.difficulty}}{{else}}-{{/if}}
-        </span>
-        {{#if compact.thresholds.visible}}
-          <span class="dhca-summary__separator">|</span>
-          <span>
-            <strong>{{localize 'DHCS.Labels.Thresholds'}}:</strong>
-            {{compact.thresholds.major}}/{{compact.thresholds.severe}}
-          </span>
-        {{/if}}
-      </div>
+      {{#if (or compact.hasDifficulty compact.thresholds.visible)}}
+        <div class="dhca-header__compact-summary-row">
+          {{#if compact.hasDifficulty}}
+            <span>
+              <strong>{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</strong>
+              {{compact.difficulty}}
+            </span>
+            {{#if compact.thresholds.visible}}
+              <span class="dhca-summary__separator">|</span>
+            {{/if}}
+          {{/if}}
+          {{#if compact.thresholds.visible}}
+            <span>
+              <strong>{{localize 'DHCS.Labels.Thresholds'}}:</strong>
+              {{compact.thresholds.major}}/{{compact.thresholds.severe}}
+            </span>
+          {{/if}}
+        </div>
+      {{/if}}
       <div class="dhca-header__compact-summary-row">
         <span>
           <strong>{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}:</strong>
@@ -76,10 +82,12 @@
 
   <div class="dhca-header__stats">
     {{#if compact.showResourceBlock}}
-      <div class="dhca-summary__line">
-        <span class="dhca-summary__label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
-        <span class="dhca-summary__value">{{ifThen source.system.difficulty source.system.difficulty '-'}}</span>
-      </div>
+      {{#if compact.hasDifficulty}}
+        <div class="dhca-summary__line">
+          <span class="dhca-summary__label">{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</span>
+          <span class="dhca-summary__value">{{compact.difficulty}}</span>
+        </div>
+      {{/if}}
     {{/if}}
     {{#if compact.hasAttack}}
       <div class="dhca-header__attack-summary">
