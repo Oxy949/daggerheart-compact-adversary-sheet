@@ -14,6 +14,7 @@ export const SETTING_KEYS = Object.freeze({
   makeEnvironmentDefault: "makeEnvironmentDefault",
   makeNpcDefault: "makeNpcDefault",
   makePartyDefault: "makePartyDefault",
+  showSourceAndArtist: "showSourceAndArtist",
   showAdversaryResourceBlock: "showAdversaryResourceBlock",
   showAdversaryInteractionButtons: "showAdversaryInteractionButtons"
 });
@@ -25,6 +26,7 @@ export const SHARED_TEMPLATE_PARTIALS = Object.freeze({
   effects: `${TEMPLATE_ROOT}/parts/effects.hbs`,
   features: `${TEMPLATE_ROOT}/parts/features.hbs`,
   notes: `${TEMPLATE_ROOT}/parts/notes.hbs`,
+  attribution: `${TEMPLATE_ROOT}/parts/attribution.hbs`,
   resourceRow: `${TEMPLATE_ROOT}/parts/resource-row.hbs`,
   resources: `${TEMPLATE_ROOT}/parts/resources.hbs`,
   thresholds: `${TEMPLATE_ROOT}/parts/thresholds.hbs`,
@@ -66,6 +68,7 @@ export const ENVIRONMENT_TEMPLATE_PARTIALS = Object.freeze({
 export const NPC_TEMPLATE_PARTIALS = Object.freeze({
   art: SHARED_TEMPLATE_PARTIALS.art,
   header: `${TEMPLATE_ROOT}/npc/parts/header.hbs`,
+  footer: `${TEMPLATE_ROOT}/npc/parts/footer.hbs`,
   navigation: `${TEMPLATE_ROOT}/parts/empty.hbs`,
   features: SHARED_TEMPLATE_PARTIALS.features,
   notes: SHARED_TEMPLATE_PARTIALS.notes,

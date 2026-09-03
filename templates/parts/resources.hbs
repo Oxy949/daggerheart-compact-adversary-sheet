@@ -1,15 +1,19 @@
 <div class="dhca-resources{{#if className}} {{className}}{{/if}}">
-  {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
-    rowClass='dhca-resource-row--hp'
-    resource=compact.resources.hitPoints
-    label=(localize 'DAGGERHEART.GENERAL.HitPoints.short')
-  }}
+  {{#if compact.resources.hitPoints.max}}
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
+      rowClass='dhca-resource-row--hp'
+      resource=compact.resources.hitPoints
+      label=(localize 'DAGGERHEART.GENERAL.HitPoints.short')
+    }}
+  {{/if}}
 
-  {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
-    rowClass='dhca-resource-row--stress'
-    resource=compact.resources.stress
-    label=(localize 'DAGGERHEART.GENERAL.stress')
-  }}
+  {{#if compact.resources.stress.max}}
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
+      rowClass='dhca-resource-row--stress'
+      resource=compact.resources.stress
+      label=(localize 'DAGGERHEART.GENERAL.stress')
+    }}
+  {{/if}}
 
   {{#if includeArmor}}
     {{#if compact.resources.armor.max}}

@@ -1,0 +1,10 @@
+{{#if compact.attribution.visible}}
+  <div class="dhca-footer__attribution">
+    {{#if compact.attribution.source}}
+      <span class="dhca-footer__attribution-source">{{compact.attribution.source}}</span>
+    {{/if}}
+    {{#if compact.attribution.artist}}
+      <span class="dhca-footer__attribution-artist">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=compact.attribution.artist}}</span>
+    {{/if}}
+  </div>
+{{/if}}

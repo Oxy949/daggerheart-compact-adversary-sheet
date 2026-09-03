@@ -216,7 +216,14 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
     "footer" !important;
 }
 
-.sheet.dh-compact.npc .window-content,
+.sheet.dh-compact.npc .window-content {
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+  grid-template-areas:
+    "header"
+    "body"
+    "footer" !important;
+}
+
 .sheet.dh-compact.party .window-content {
   grid-template-rows: auto minmax(0, 1fr) !important;
   grid-template-areas:
@@ -288,6 +295,12 @@ body.theme-dark .sheet.dh-compact:not(.theme-light),
 }
 
 .sheet.dh-compact.environment .environment-sidebar-sheet {
+  position: relative;
+  z-index: 1;
+  grid-area: footer;
+}
+
+.sheet.dh-compact.npc .npc-sidebar-sheet {
   position: relative;
   z-index: 1;
   grid-area: footer;

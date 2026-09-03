@@ -1,9 +1,16 @@
-<aside class="adversary-sidebar-sheet dhca-section dhca-section--footer dhca-footer{{#unless compact.showResourceBlock}} dhca-footer--hidden{{/unless}}" {{#unless compact.showResourceBlock}}hidden{{/unless}}>
-  {{#if compact.showResourceBlock}}
+<aside class="adversary-sidebar-sheet dhca-section dhca-section--footer dhca-footer{{#unless compact.hasFooter}} dhca-footer--hidden{{/unless}}" {{#unless compact.hasFooter}}hidden{{/unless}}>
+  {{#if compact.hasFooter}}
   <div class="dhca-footer__inner">
-    <div class="dhca-footer__title">
-      <span>{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}} &amp; {{localize 'DAGGERHEART.GENERAL.stress'}}</span>
-    </div>
+  {{#if compact.showResourceBlock}}
+    {{#if compact.hasTrackedResources}}
+      <div class="dhca-footer__title">
+        {{#if compact.resources.hitPoints.max}}
+          <span>{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}{{#if compact.resources.stress.max}} &amp; {{localize 'DAGGERHEART.GENERAL.stress'}}{{/if}}</span>
+        {{else}}
+          <span>{{localize 'DAGGERHEART.GENERAL.stress'}}</span>
+        {{/if}}
+      </div>
+    {{/if}}
 
     {{> 'modules/daggerheart-compact-sheets/templates/parts/thresholds.hbs'}}
 
@@ -11,31 +18,35 @@
       {{> 'modules/daggerheart-compact-sheets/templates/parts/resources.hbs'}}
     {{else}}
       <div class="dhca-resource-row dhca-resource-row--fallback">
-        <label class="dhca-resource-field">
-          <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}:</span>
-          <input
-            type="number"
-            name="system.resources.hitPoints.value"
-            value="{{compact.resources.hitPoints.value}}"
-            min="0"
-            max="{{compact.resources.hitPoints.max}}"
-            data-allow-delta="true"
-          />
-          <span class="dhca-resource-field__max">{{compact.resources.hitPoints.max}}</span>
-        </label>
+        {{#if compact.resources.hitPoints.max}}
+          <label class="dhca-resource-field">
+            <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.HitPoints.short'}}:</span>
+            <input
+              type="number"
+              name="system.resources.hitPoints.value"
+              value="{{compact.resources.hitPoints.value}}"
+              min="0"
+              max="{{compact.resources.hitPoints.max}}"
+              data-allow-delta="true"
+            />
+            <span class="dhca-resource-field__max">{{compact.resources.hitPoints.max}}</span>
+          </label>
+        {{/if}}
 
-        <label class="dhca-resource-field">
-          <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.stress'}}:</span>
-          <input
-            type="number"
-            name="system.resources.stress.value"
-            value="{{compact.resources.stress.value}}"
-            min="0"
-            max="{{compact.resources.stress.max}}"
-            data-allow-delta="true"
-          />
-          <span class="dhca-resource-field__max">{{compact.resources.stress.max}}</span>
-        </label>
+        {{#if compact.resources.stress.max}}
+          <label class="dhca-resource-field">
+            <span class="dhca-resource-row__label">{{localize 'DAGGERHEART.GENERAL.stress'}}:</span>
+            <input
+              type="number"
+              name="system.resources.stress.value"
+              value="{{compact.resources.stress.value}}"
+              min="0"
+              max="{{compact.resources.stress.max}}"
+              data-allow-delta="true"
+            />
+            <span class="dhca-resource-field__max">{{compact.resources.stress.max}}</span>
+          </label>
+        {{/if}}
       </div>
     {{/if}}
 
@@ -47,9 +58,9 @@
       </div>
     {{/if}}
 
-    {{#if (and compact.showAttribution document.system.attribution.artist)}}
-      <label class="dhca-footer__attribution">{{localize 'DAGGERHEART.GENERAL.artistAttribution' artist=document.system.attribution.artist}}</label>
-    {{/if}}
+  {{/if}}
+
+    {{> 'modules/daggerheart-compact-sheets/templates/parts/attribution.hbs'}}
   </div>
   {{/if}}
 </aside>

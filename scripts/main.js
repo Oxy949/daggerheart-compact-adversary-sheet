@@ -91,6 +91,16 @@ function registerSettings() {
     default: true,
     onChange: rerenderOpenCompactNpcSheets
   });
+
+  game.settings.register(MODULE_ID, SETTING_KEYS.showSourceAndArtist, {
+    name: "DHCS.Settings.ShowSourceAndArtist.Name",
+    hint: "DHCS.Settings.ShowSourceAndArtist.Hint",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false,
+    onChange: rerenderOpenCompactNpcSheets
+  });
 }
 
 function rerenderOpenCompactNpcSheets() {

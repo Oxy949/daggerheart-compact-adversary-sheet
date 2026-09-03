@@ -18,7 +18,7 @@ import {
   normalizeCompactFeatureRows,
   prepareCompactRender
 } from "./compact-sheet-helpers.js";
-import { buildCompactContext, clampNumber } from "./utils.js";
+import { buildCompactAttributionContext, buildCompactContext, clampNumber } from "./utils.js";
 
 const TAB_NAV_ENTRIES = Object.freeze([
   { id: "features", icon: "fa-solid fa-list" },
@@ -48,11 +48,16 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
 
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
+      const showResourceBlock = game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryResourceBlock);
+      const showAttribution = game.settings.get(MODULE_ID, SETTING_KEYS.showSourceAndArtist)
+        && context.showAttribution !== false;
+      const attribution = buildCompactAttributionContext(this.document, showAttribution);
       context.compact = {
         ...buildCompactContext(this.document),
-        showAttribution: context.showAttribution !== false,
+        attribution,
+        hasFooter: showResourceBlock || attribution.visible,
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
-        showResourceBlock: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryResourceBlock),
+        showResourceBlock,
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES),
         useResourcePips: true
       };

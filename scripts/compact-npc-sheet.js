@@ -14,7 +14,7 @@ import {
   normalizeCompactFeatureRows,
   prepareCompactRender
 } from "./compact-sheet-helpers.js";
-import { buildCompactNpcContext } from "./utils.js";
+import { buildCompactAttributionContext, buildCompactNpcContext } from "./utils.js";
 
 const TAB_NAV_ENTRIES = Object.freeze([
   { id: "notes", icon: "fa-solid fa-note-sticky" },
@@ -30,6 +30,7 @@ export function createCompactNpcSheetClass(BaseNpcSheet) {
     static PARTS = createCompactParts(BaseNpcSheet, {
       art: createTemplatePart(NPC_TEMPLATE_PARTIALS.art),
       header: createTemplatePart(NPC_TEMPLATE_PARTIALS.header),
+      footer: createTemplatePart(NPC_TEMPLATE_PARTIALS.footer),
       tabs: createTemplatePart(NPC_TEMPLATE_PARTIALS.navigation),
       features: createTemplatePart(NPC_TEMPLATE_PARTIALS.features, { scrollable: true }),
       notes: createTemplatePart(NPC_TEMPLATE_PARTIALS.notes, { scrollable: true })
@@ -37,9 +38,11 @@ export function createCompactNpcSheetClass(BaseNpcSheet) {
 
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
+      const showAttribution = game.settings.get(MODULE_ID, SETTING_KEYS.showSourceAndArtist)
+        && context.showAttribution !== false;
       context.compact = {
         ...buildCompactNpcContext(this.document),
-        showAttribution: context.showAttribution !== false,
+        attribution: buildCompactAttributionContext(this.document, showAttribution),
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES)
       };

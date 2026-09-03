@@ -14,7 +14,7 @@ import {
   normalizeCompactFeatureRows,
   prepareCompactRender
 } from "./compact-sheet-helpers.js";
-import { buildCompactEnvironmentContext } from "./utils.js";
+import { buildCompactAttributionContext, buildCompactEnvironmentContext } from "./utils.js";
 
 const TAB_NAV_ENTRIES = Object.freeze([
   { id: "features", icon: "fa-solid fa-list" },
@@ -40,9 +40,11 @@ export function createCompactEnvironmentSheetClass(BaseEnvironmentSheet) {
     async _prepareContext(options) {
       const context = await super._prepareContext(options);
       const compactEnvironment = await buildCompactEnvironmentContext(this.document);
+      const showAttribution = game.settings.get(MODULE_ID, SETTING_KEYS.showSourceAndArtist)
+        && context.showAttribution !== false;
       context.compact = {
         ...compactEnvironment,
-        showAttribution: context.showAttribution !== false,
+        attribution: buildCompactAttributionContext(this.document, showAttribution),
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES)
       };

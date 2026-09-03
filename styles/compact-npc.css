@@ -59,15 +59,6 @@
   min-height: 280px;
 }
 
-.sheet.dh-compact.npc .dhca-notes__attribution {
-  display: block;
-  margin-top: 10px;
-  color: var(--dhca-text-soft);
-  font-family: var(--dhca-font-family);
-  font-size: 12px;
-  text-align: center;
-}
-
 @container (max-width: 360px) {
   .sheet.dh-compact.npc .dhca-header__description {
     margin-right: 8%;

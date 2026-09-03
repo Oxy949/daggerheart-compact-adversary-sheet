@@ -41,9 +41,13 @@
         "Name": "Show interaction buttons on compact adversary, environment, and NPC sheets",
         "Hint": "When enabled, compact adversary, environment, and NPC sheets show attack, chat, item action, and similar interaction controls."
       },
+      "ShowSourceAndArtist": {
+        "Name": "Show source and artist on compact sheets",
+        "Hint": "When enabled, compact adversary, environment, and NPC sheets show their source and artist at the bottom of the sheet."
+      },
       "ShowAdversaryResourceBlock": {
         "Name": "Show a separate HP and stress block on compact adversary sheets",
-        "Hint": "When enabled, compact adversary sheets show HP, stress, and damage thresholds in a separate footer block. When disabled, the footer is hidden and those values move into the header summary."
+        "Hint": "When enabled, compact adversary sheets show HP, stress, and damage thresholds in a separate footer block. When disabled, the resource block is hidden and those values move into the header summary."
       }
     },
     "Sheets": {

@@ -39,7 +39,8 @@ Module settings are available in Foundry VTT under **Configure Settings > Module
 - **Use compact sheet as the default NPC sheet** - enabled by default. This is a world setting and requires a world reload after changing.
 - **Use compact sheet as the default party sheet** - enabled by default. This is a world setting and requires a world reload after changing.
 - **Show interaction buttons on compact adversary, environment, and NPC sheets** - enabled by default. This is a world setting that shows attack, chat, item action, and similar controls on compact adversary, environment, and NPC sheets.
-- **Show a separate HP and stress block on compact adversary sheets** - enabled by default. This is a world setting that shows HP, stress, and damage thresholds in a footer block. When disabled, the footer is hidden and those values move into the header summary.
+- **Show source and artist on compact sheets** - disabled by default. This is a world setting that shows source and artist information at the bottom of compact adversary, environment, and NPC sheets.
+- **Show a separate HP and stress block on compact adversary sheets** - enabled by default. This is a world setting that shows HP, stress, and damage thresholds in a footer block. When disabled, the resource block is hidden and those values move into the header summary.
   
 ## Credits
 - [Oxy949](https://boosty.to/oxy949)

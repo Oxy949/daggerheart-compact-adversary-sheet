@@ -9,6 +9,9 @@ export function buildCompactContext(document) {
   const hordeHp = buildHordeHpContext(document.system);
   const art = getCompactDocumentArt(document);
 
+  const hasExperiences = !foundry.utils.isEmpty(document.system.experiences);
+  const hasMotivesAndTactics = hasRenderableRichText(document.system.motivesAndTactics);
+
   return {
     attackBonus: toOptionalNumber(document.system.attack?.roll?.bonus),
     artDefaultImg: art.defaultImg,
@@ -16,7 +19,11 @@ export function buildCompactContext(document) {
     artImgIsFallback: art.isFallback,
     canEditImage: document.isOwner ?? false,
     criticalThreshold: toNumber(document.system.criticalThreshold, 20),
-    hasExperiences: !foundry.utils.isEmpty(document.system.experiences),
+    hasAttack: hasRenderableRichText(document.system.attack?.name),
+    hasDetails: hasExperiences || hasMotivesAndTactics,
+    hasExperiences,
+    hasMotivesAndTactics,
+    hasTrackedResources: hitPoints.max > 0 || stress.max > 0,
     identity: {
       hordeHp,
       tierLabel: localizeFallback(I18N_KEYS.tier, "Tier")
@@ -66,6 +73,17 @@ export async function buildCompactEnvironmentContext(document) {
       typeLabel: typeKey ? localizeFallback(typeKey, system.type) : null
     },
     potentialAdversaryCategories
+  };
+}
+
+export function buildCompactAttributionContext(document, enabled = false) {
+  const source = normalizeText(document.system?.attributionLabel);
+  const artist = normalizeText(document.system?.attribution?.artist);
+
+  return {
+    artist,
+    source,
+    visible: enabled && Boolean(source || artist)
   };
 }
 
@@ -288,6 +306,13 @@ function normalizeImagePath(value) {
   if (!path || path === "null" || path === "undefined") return null;
 
   return path;
+}
+
+function normalizeText(value) {
+  if (typeof value !== "string") return null;
+
+  const text = value.trim();
+  return text || null;
 }
 
 function normalizeLabelList(labels) {

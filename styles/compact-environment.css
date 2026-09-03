@@ -6,7 +6,6 @@
 
 .sheet.dh-compact.environment .dhca-header__identity,
 .sheet.dh-compact.environment .dhca-header__description,
-.sheet.dh-compact.environment .dhca-header__attribution,
 .sheet.dh-compact.environment .dhca-header__stats,
 .sheet.dh-compact.environment .dhca-detail-panel {
   position: relative;
@@ -16,14 +15,6 @@
 
 .sheet.dh-compact.environment .dhca-header__ribbon {
   font-size: 0.82em;
-}
-
-.sheet.dh-compact.environment .dhca-header__attribution {
-  margin: 0 0 8px;
-  color: var(--dhca-text-soft);
-  font-size: 12px;
-  line-height: 1.3;
-  font-family: var(--dhca-font-family);
 }
 
 .sheet.dh-compact.environment .dhca-header__stats {
@@ -336,13 +327,4 @@
 .sheet.dh-compact.environment .dhca-panel--notes .prosemirror,
 .sheet.dh-compact.environment .dhca-panel--notes textarea {
   min-height: 240px;
-}
-
-.sheet.dh-compact.environment .dhca-notes__attribution {
-  display: block;
-  margin-top: 10px;
-  color: var(--dhca-text-soft);
-  font-size: 14px;
-  text-align: center;
-  font-family: var(--dhca-font-family);
 }
