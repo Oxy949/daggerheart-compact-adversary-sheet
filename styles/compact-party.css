@@ -444,12 +444,6 @@
   border-top: 1px dashed var(--dhca-line);
 }
 
-.sheet.dh-compact.party .dhca-panel--notes .editor,
-.sheet.dh-compact.party .dhca-panel--notes .prosemirror,
-.sheet.dh-compact.party .dhca-panel--notes textarea {
-  min-height: 320px;
-}
-
 @container (max-width: 500px) {
   .sheet.dh-compact.party .dhca-party-member__resource-grid {
     grid-template-columns: 1fr;

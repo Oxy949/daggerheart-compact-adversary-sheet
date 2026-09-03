@@ -505,10 +505,39 @@
   margin-top: 0;
 }
 
-.sheet.dh-compact.adversary .dhca-panel--notes .editor,
-.sheet.dh-compact.adversary .dhca-panel--notes .prosemirror,
-.sheet.dh-compact.adversary .dhca-panel--notes textarea {
-  min-height: 240px;
+.sheet.dh-compact .dhca-tab-panel--notes.active,
+.sheet.dh-compact .dhca-tab-panel--notes .dhca-tab-panel__scroll,
+.sheet.dh-compact .dhca-panel--notes {
+  min-height: 0;
+}
+
+.sheet.dh-compact .dhca-tab-panel--notes.active,
+.sheet.dh-compact .dhca-tab-panel--notes .dhca-tab-panel__scroll {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.sheet.dh-compact .dhca-tab-panel--notes.active {
+  margin-bottom: 0 !important;
+}
+
+.sheet.dh-compact .dhca-panel--notes {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+}
+
+.sheet.dh-compact .dhca-panel--notes > :is(.editor, .prosemirror, prose-mirror, textarea) {
+  width: 100%;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+.sheet.dh-compact .dhca-panel--notes > :is(.prosemirror, prose-mirror) .editor-container {
+  min-height: 0;
 }
 
 @container (min-width: 690px) {
