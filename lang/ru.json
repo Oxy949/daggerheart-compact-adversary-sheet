@@ -2,14 +2,24 @@
   "DHCS": {
     "Labels": {
       "AttackShort": "АТК",
+      "AddAdversaryResourceGroup": "Добавить ещё одного противника",
+      "AdversaryResourceName": "Имя противника {number}",
+      "AdversaryResourceNamePlaceholder": "Противник {number}",
       "CreateCharacter": "Создать персонажа",
       "DropActorsHere": "Перетащите сюда актёров, чтобы добавить их в группу",
       "Experiences": "Опыты",
       "Filter": "Фильтр",
       "Members": "Участники",
       "OpenMember": "Открыть {name}",
+      "RemoveAdversaryResourceGroup": "Удалить этого противника",
       "RemoveMember": "Удалить {name} из группы",
       "Thresholds": "Пороги"
+    },
+    "Dialogs": {
+      "RemoveAdversaryResourceGroup": {
+        "Title": "Удалить противника",
+        "Content": "Удалить шкалы ресурсов для «{name}»?"
+      }
     },
     "ContextMenu": {
       "ArtMenuLabel": "Меню арта",

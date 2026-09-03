@@ -2,14 +2,24 @@
   "DHCS": {
     "Labels": {
       "AttackShort": "ATK",
+      "AddAdversaryResourceGroup": "Add another adversary",
+      "AdversaryResourceName": "Name for adversary {number}",
+      "AdversaryResourceNamePlaceholder": "Adversary {number}",
       "CreateCharacter": "Create Character",
       "DropActorsHere": "Drop actors here to add them to the party",
       "Experiences": "Experiences",
       "Filter": "Filter",
       "Members": "Members",
       "OpenMember": "Open {name}",
+      "RemoveAdversaryResourceGroup": "Remove this adversary",
       "RemoveMember": "Remove {name} from the party",
       "Thresholds": "Thresholds"
+    },
+    "Dialogs": {
+      "RemoveAdversaryResourceGroup": {
+        "Title": "Remove adversary",
+        "Content": "Remove the resource tracks for {name}?"
+      }
     },
     "ContextMenu": {
       "ArtMenuLabel": "Artwork menu",

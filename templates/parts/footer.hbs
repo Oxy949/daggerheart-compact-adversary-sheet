@@ -9,13 +9,30 @@
         {{else}}
           <span>{{localize 'DAGGERHEART.GENERAL.stress'}}</span>
         {{/if}}
+        {{#if @root.editable}}
+          <button
+            type="button"
+            class="dhca-adversary-resource-groups__add"
+            data-dhca-add-adversary-resource-group
+            data-tooltip-text="{{localize 'DHCS.Labels.AddAdversaryResourceGroup'}}"
+            aria-label="{{localize 'DHCS.Labels.AddAdversaryResourceGroup'}}"
+          >
+            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+          </button>
+        {{/if}}
       </div>
     {{/if}}
 
     {{> 'modules/daggerheart-compact-sheets/templates/parts/thresholds.hbs'}}
 
     {{#if compact.useResourcePips}}
-      {{> 'modules/daggerheart-compact-sheets/templates/parts/resources.hbs'}}
+      <div class="dhca-adversary-resource-groups">
+        {{#each compact.adversaryResourceGroups.groups as |resourceGroup|}}
+          {{> 'modules/daggerheart-compact-sheets/templates/parts/adversary-resource-group.hbs'
+            resourceGroup=resourceGroup
+          }}
+        {{/each}}
+      </div>
     {{else}}
       <div class="dhca-resource-row dhca-resource-row--fallback">
         {{#if compact.resources.hitPoints.max}}

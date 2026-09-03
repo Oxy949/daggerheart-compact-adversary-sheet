@@ -21,6 +21,7 @@ Compact adaptive actor sheets for the Daggerheart (Foundryborne) system on Found
 - Dark and Light color sheme support
 - Minimal player character layout with quick traits, Hope, HP, Stress, Armor, Loadout, Inventory, Biography, and Effects
 - Quick pip controls for character and adversary resources
+- Independent named HP and Stress tracks for multiple adversaries of the same type
 - Keeps the system item/effect partials, so core sheet actions still work
 - Supports Carolingian UI theme (https://foundryvtt.com/packages/crlngn-ui)
 

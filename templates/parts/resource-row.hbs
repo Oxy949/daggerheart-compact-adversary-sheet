@@ -16,7 +16,15 @@
     </span>
   {{/if}}
 
-  <button type="button" class="dhca-resource-step" data-dhca-resource-step="{{resource.key}}" data-direction="-1" data-tooltip-text="{{label}}">-</button>
+  <button
+    type="button"
+    class="dhca-resource-step"
+    data-dhca-resource-step="{{resource.key}}"
+    data-direction="-1"
+    data-tooltip-text="{{label}}"
+    {{#if adversaryGroupId}}data-dhca-adversary-resource-group-id="{{adversaryGroupId}}"{{/if}}
+    {{disabled (not @root.editable)}}
+  >-</button>
 
   <div class="dhca-resource-row__track">
     {{#each resource.slotGroups as |group|}}
@@ -25,9 +33,16 @@
           <button
             type="button"
             class="dhca-resource-row__pip{{#if ../../pipClass}} {{../../pipClass}}{{/if}}{{#if slot.filled}} filled{{/if}}"
-            data-action="{{slot.action}}"
+            {{#if ../../adversaryGroupId}}
+              data-dhca-adversary-resource-group-id="{{../../adversaryGroupId}}"
+              data-dhca-adversary-resource-key="{{../../resource.key}}"
+              data-dhca-adversary-resource-value="{{slot.value}}"
+            {{else}}
+              data-action="{{slot.action}}"
+            {{/if}}
             data-value="{{slot.value}}"
             data-tooltip-text="{{../../label}} {{slot.value}}"
+            {{disabled (not @root.editable)}}
           >
             {{#if ../../filledIcon}}
               <i class="{{#if slot.filled}}{{../../filledIcon}}{{else}}{{../../emptyIcon}}{{/if}}"></i>
@@ -38,5 +53,13 @@
     {{/each}}
   </div>
 
-  <button type="button" class="dhca-resource-step" data-dhca-resource-step="{{resource.key}}" data-direction="1" data-tooltip-text="{{label}}">+</button>
+  <button
+    type="button"
+    class="dhca-resource-step"
+    data-dhca-resource-step="{{resource.key}}"
+    data-direction="1"
+    data-tooltip-text="{{label}}"
+    {{#if adversaryGroupId}}data-dhca-adversary-resource-group-id="{{adversaryGroupId}}"{{/if}}
+    {{disabled (not @root.editable)}}
+  >+</button>
 </div>

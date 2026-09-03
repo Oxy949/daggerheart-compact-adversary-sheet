@@ -37,6 +37,7 @@ export const ADVERSARY_TEMPLATE_PARTIALS = Object.freeze({
   art: SHARED_TEMPLATE_PARTIALS.art,
   header: `${TEMPLATE_ROOT}/parts/header.hbs`,
   footer: `${TEMPLATE_ROOT}/parts/footer.hbs`,
+  resourceGroup: `${TEMPLATE_ROOT}/parts/adversary-resource-group.hbs`,
   features: SHARED_TEMPLATE_PARTIALS.features,
   effects: SHARED_TEMPLATE_PARTIALS.effects,
   notes: SHARED_TEMPLATE_PARTIALS.notes,

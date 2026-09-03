@@ -1,0 +1,53 @@
+<section
+  class="dhca-adversary-resource-group{{#if resourceGroup.isPrimary}} dhca-adversary-resource-group--primary{{/if}}"
+  data-dhca-adversary-resource-group="{{resourceGroup.id}}"
+>
+  {{#if @root.compact.adversaryResourceGroups.hasMultiple}}
+    <div class="dhca-adversary-resource-group__header">
+      <input
+        type="text"
+        class="dhca-adversary-resource-group__name"
+        value="{{resourceGroup.name}}"
+        maxlength="80"
+        placeholder="{{localize 'DHCS.Labels.AdversaryResourceNamePlaceholder' number=resourceGroup.index}}"
+        aria-label="{{localize 'DHCS.Labels.AdversaryResourceName' number=resourceGroup.index}}"
+        data-dhca-adversary-resource-name="{{resourceGroup.id}}"
+        autocomplete="off"
+        {{disabled (not @root.editable)}}
+      />
+
+      {{#unless resourceGroup.isPrimary}}
+        <button
+          type="button"
+          class="dhca-adversary-resource-group__remove"
+          data-dhca-remove-adversary-resource-group="{{resourceGroup.id}}"
+          data-tooltip-text="{{localize 'DHCS.Labels.RemoveAdversaryResourceGroup'}}"
+          aria-label="{{localize 'DHCS.Labels.RemoveAdversaryResourceGroup'}}"
+          {{disabled (not @root.editable)}}
+        >
+          <i class="fa-solid fa-trash" aria-hidden="true"></i>
+        </button>
+      {{/unless}}
+    </div>
+  {{/if}}
+
+  <div class="dhca-resources">
+    {{#if resourceGroup.resources.hitPoints.max}}
+      {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
+        rowClass='dhca-resource-row--hp'
+        resource=resourceGroup.resources.hitPoints
+        adversaryGroupId=resourceGroup.extraId
+        label=(localize 'DAGGERHEART.GENERAL.HitPoints.short')
+      }}
+    {{/if}}
+
+    {{#if resourceGroup.resources.stress.max}}
+      {{> 'modules/daggerheart-compact-sheets/templates/parts/resource-row.hbs'
+        rowClass='dhca-resource-row--stress'
+        resource=resourceGroup.resources.stress
+        adversaryGroupId=resourceGroup.extraId
+        label=(localize 'DAGGERHEART.GENERAL.stress')
+      }}
+    {{/if}}
+  </div>
+</section>
