@@ -24,11 +24,13 @@
           <strong>{{localize 'DAGGERHEART.GENERAL.difficulty'}}:</strong>
           {{#if source.system.difficulty includeZero=true}}{{source.system.difficulty}}{{else}}-{{/if}}
         </span>
-        <span class="dhca-summary__separator">|</span>
-        <span>
-          <strong>{{localize 'DHCS.Labels.Thresholds'}}:</strong>
-          {{compact.thresholds.major}}/{{compact.thresholds.severe}}
-        </span>
+        {{#if compact.thresholds.visible}}
+          <span class="dhca-summary__separator">|</span>
+          <span>
+            <strong>{{localize 'DHCS.Labels.Thresholds'}}:</strong>
+            {{compact.thresholds.major}}/{{compact.thresholds.severe}}
+          </span>
+        {{/if}}
       </div>
       <div class="dhca-header__compact-summary-row">
         <span>

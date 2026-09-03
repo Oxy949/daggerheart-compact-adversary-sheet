@@ -52,10 +52,16 @@ export function createCompactAdversarySheetClass(BaseAdversarySheet) {
       const showAttribution = game.settings.get(MODULE_ID, SETTING_KEYS.showSourceAndArtist)
         && context.showAttribution !== false;
       const attribution = buildCompactAttributionContext(this.document, showAttribution);
+      const compactContext = buildCompactContext(this.document);
+      const hasResourceBlockContent = showResourceBlock && (
+        compactContext.hasTrackedResources
+        || compactContext.thresholds.visible
+        || compactContext.criticalThreshold < 20
+      );
       context.compact = {
-        ...buildCompactContext(this.document),
+        ...compactContext,
         attribution,
-        hasFooter: showResourceBlock || attribution.visible,
+        hasFooter: hasResourceBlockContent || attribution.visible,
         showInteractionButtons: game.settings.get(MODULE_ID, SETTING_KEYS.showAdversaryInteractionButtons),
         showResourceBlock,
         tabNav: buildTabNavContext(context.tabs, TAB_NAV_ENTRIES),

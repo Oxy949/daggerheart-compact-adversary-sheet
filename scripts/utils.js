@@ -355,6 +355,7 @@ export function buildThresholds(damageThresholds = {}) {
   return {
     major,
     severe,
+    visible: major > 0 || severe > 0,
     minorRange: major > 0 ? `< ${major}` : "-",
     majorRange: major > 0 ? (severe > major ? `${major}-${severe - 1}` : `${major}+`) : "-",
     severeRange: severe > 0 ? `${severe}+` : "-"
